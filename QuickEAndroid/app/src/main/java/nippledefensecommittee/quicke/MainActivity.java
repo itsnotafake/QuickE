@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        public static void updatePriceIndication(int position, boolean isGoodPrice){
+        static void updatePriceIndication(int position, boolean isGoodPrice){
             try{
                 priceRange.set(position, isGoodPrice);
             }catch(IndexOutOfBoundsException e){
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             areaRadius = 5;
         }
 
-        public void setRadius(int radius){
+        void setRadius(int radius){
             areaRadius = 5;
         }
 
