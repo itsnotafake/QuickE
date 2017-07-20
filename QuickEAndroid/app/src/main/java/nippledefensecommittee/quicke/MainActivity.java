@@ -15,15 +15,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    //static class that represents which price options have been selected
+    /**
+     * class that represents which price options have been selected
+     */
     public static class PriceRange{
-
         static ArrayList<Boolean> priceRange;
 
+        //this block runs only once, when PriceRange is called for the first time
         static{
             priceRange = new ArrayList<>();
-            for(int i = 0; i < 4; i++){
-                priceRange.set(i, false);
+            for(int priceLevel = 0; priceLevel < 4; priceLevel++){
+                priceRange.set(priceLevel, false);
             }
         }
 
@@ -41,6 +43,26 @@ public class MainActivity extends AppCompatActivity {
          */
         public boolean getPriceIndicationAt(int position){
             return priceRange.get(position);
+        }
+    }
+
+    /**
+     * Class that represents the search radius selected
+     */
+    public static class AreaRadius{
+        private static int areaRadius;
+
+        //I'm assuming here that the default radius will be 5 miles;
+        static{
+            areaRadius = 5;
+        }
+
+        public void setRadius(int radius){
+            areaRadius = 5;
+        }
+
+        public int getRadius(){
+            return areaRadius;
         }
     }
 }
