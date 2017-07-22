@@ -58,11 +58,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     // TODO: Handle user denying access to location
-                    Toast.makeText(MainActivity.this, "LOCATION Denied", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(MainActivity.this, "Location services are unable to be used.", Toast.LENGTH_LONG).show();
                 }
                 break;
 
             default:
+
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         }
         catch (SecurityException e) {
             // TODO: Handle Security Exception
+            Log.e(TAG, "error: " + e);
         }
     }
 
