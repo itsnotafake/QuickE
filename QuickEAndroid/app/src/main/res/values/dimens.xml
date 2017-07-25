@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- DIMENS FOR MAIN ACTIVITY -->
+    <item name="main_button_length" type="dimen">150dp</item>
+
+    <item name="main_TV_padding" type="dimen">2dp</item>
+    <item name="main_TV_padding_end" type="dimen">16dp</item>
+
+    <item name="main_base_bias_ver" format="float" type="dimen">0.05</item>
+    <item name="main_base_bias_hor" format="float" type="dimen">0.05</item>
+
+    <item name="main_base_margin_left" type="dimen">8dp</item>
+    <item name="main_base_margin_ver" type="dimen">10dp</item>
+    <item name="main_button_margin_hor" type="dimen">4dp</item>
+    <item name="main_button_margin_ver" type="dimen">4dp</item>
+</resources>

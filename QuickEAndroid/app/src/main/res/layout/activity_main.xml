@@ -23,13 +23,81 @@
         tools:context="nippledefensecommittee.quicke.MainActivity">
 
         <TextView
+            android:id="@+id/main_TV_food"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/main_text_HoT"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            android:background="@color/colorAccent"
 
+            android:padding="@dimen/main_TV_padding"
+            android:paddingRight="@dimen/main_TV_padding_end"
+            android:paddingEnd="@dimen/main_TV_padding_end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintVertical_bias="@dimen/main_base_bias_ver"
+            android:layout_marginLeft="@dimen/main_base_margin_left"
+            android:layout_marginStart="@dimen/main_base_margin_left"/>
+        
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/main_IB_eat"
+            android:layout_width="@dimen/main_button_length"
+            android:layout_height="@dimen/main_button_length"
+
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_TV_food"
+            android:layout_marginLeft="@dimen/main_button_margin_hor"
+            android:layout_marginStart="@dimen/main_button_margin_hor"
+            android:layout_marginRight="@dimen/main_button_margin_hor"
+            android:layout_marginEnd="@dimen/main_button_margin_hor"
+            android:layout_marginTop="@dimen/main_button_margin_ver"/>
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/main_IB_drink"
+            android:layout_width="@dimen/main_button_length"
+            android:layout_height="@dimen/main_button_length"
+
+            app:layout_constraintLeft_toRightOf="@+id/main_IB_eat"
+            app:layout_constraintTop_toBottomOf="@id/main_TV_food"
+            android:layout_marginLeft="@dimen/main_button_margin_hor"
+            android:layout_marginStart="@dimen/main_button_margin_hor"
+            android:layout_marginTop="@dimen/main_button_margin_ver"/>
+
+        <TextView
+            android:id="@+id/main_TV_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_text_price"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            android:background="@color/colorAccent"
+
+            android:padding="@dimen/main_TV_padding"
+            android:paddingRight="@dimen/main_TV_padding_end"
+            android:paddingEnd="@dimen/main_TV_padding_end"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_IB_drink"
+            android:layout_marginLeft="@dimen/main_base_margin_left"
+            android:layout_marginStart="@dimen/main_base_margin_left"
+            android:layout_marginTop="@dimen/main_base_margin_ver"
+            android:layout_marginBottom="@dimen/main_base_margin_ver"/>
+
+        <TextView
+            android:id="@+id/main_TV_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_text_distance"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            android:background="@color/colorAccent"
+
+            android:padding="@dimen/main_TV_padding"
+            android:paddingRight="@dimen/main_TV_padding_end"
+            android:paddingEnd="@dimen/main_TV_padding_end"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_TV_price"
+            android:layout_marginLeft="@dimen/main_base_margin_left"
+            android:layout_marginStart="@dimen/main_base_margin_left"
+            android:layout_marginTop="@dimen/main_base_margin_ver"
+            android:layout_marginBottom="@dimen/main_base_margin_ver"/>
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
