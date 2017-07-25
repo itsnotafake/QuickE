@@ -47,12 +47,9 @@
             android:elevation="4dp"
             android:theme="@style/GoButton"
 
-            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/main_button_drink"
             app:layout_constraintTop_toBottomOf="@+id/main_TV_food"
-            android:layout_marginLeft="@dimen/main_button_choice_margin_hor"
-            android:layout_marginStart="@dimen/main_button_choice_margin_hor"
-            android:layout_marginRight="@dimen/main_button_choice_margin_hor"
-            android:layout_marginEnd="@dimen/main_button_choice_margin_hor"
             android:layout_marginTop="@dimen/main_button_choice_margin_ver"/>
 
         <android.support.v7.widget.AppCompatImageButton
@@ -63,9 +60,8 @@
             android:theme="@style/GoButton"
 
             app:layout_constraintLeft_toRightOf="@+id/main_button_eat"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/main_TV_food"
-            android:layout_marginLeft="@dimen/main_button_choice_margin_hor"
-            android:layout_marginStart="@dimen/main_button_choice_margin_hor"
             android:layout_marginTop="@dimen/main_button_choice_margin_ver"/>
 
         <TextView
