@@ -7,4 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/BLACK</item>
     </style>
+
+    <!-- MainActivity styles -->
+    <style name="GoButton" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="colorButtonNormal">@color/colorPrimaryDark</item>
+    </style>
 </resources>

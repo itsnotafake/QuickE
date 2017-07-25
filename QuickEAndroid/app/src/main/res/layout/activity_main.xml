@@ -106,11 +106,11 @@
             android:id="@+id/main_button_go"
             android:layout_width="@dimen/main_button_go_width"
             android:layout_height="@dimen/main_button_go_height"
-            android:background="@color/colorPrimaryDark"
             android:src="@drawable/ic_go"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             android:elevation="4dp"
+            android:theme="@style/GoButton"
 
             app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintRight_toLeftOf="parent"
