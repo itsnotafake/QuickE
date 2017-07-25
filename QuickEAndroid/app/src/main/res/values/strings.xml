@@ -6,4 +6,8 @@
     <string name="main_text_HoT">Hungry or Thirsty?</string>
     <string name="main_text_price">Price:</string>
     <string name="main_text_distance">Distance:</string>
+    <string name="main_button_price_1">$</string>
+    <string name="main_button_price_2">$$</string>
+    <string name="main_button_price_3">$$$</string>
+    <string name="main_button_price_4">$$$$</string>
 </resources>
