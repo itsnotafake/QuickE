@@ -41,28 +41,30 @@
             android:layout_marginStart="@dimen/main_base_margin_left"/>
         
         <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/main_IB_eat"
-            android:layout_width="@dimen/main_button_length"
-            android:layout_height="@dimen/main_button_length"
+            android:id="@+id/main_button_eat"
+            android:layout_width="@dimen/main_button_choice_length"
+            android:layout_height="@dimen/main_button_choice_length"
+            android:elevation="4dp"
 
             app:layout_constraintLeft_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_TV_food"
-            android:layout_marginLeft="@dimen/main_button_margin_hor"
-            android:layout_marginStart="@dimen/main_button_margin_hor"
-            android:layout_marginRight="@dimen/main_button_margin_hor"
-            android:layout_marginEnd="@dimen/main_button_margin_hor"
-            android:layout_marginTop="@dimen/main_button_margin_ver"/>
+            android:layout_marginLeft="@dimen/main_button_choice_margin_hor"
+            android:layout_marginStart="@dimen/main_button_choice_margin_hor"
+            android:layout_marginRight="@dimen/main_button_choice_margin_hor"
+            android:layout_marginEnd="@dimen/main_button_choice_margin_hor"
+            android:layout_marginTop="@dimen/main_button_choice_margin_ver"/>
 
         <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/main_IB_drink"
-            android:layout_width="@dimen/main_button_length"
-            android:layout_height="@dimen/main_button_length"
+            android:id="@+id/main_button_drink"
+            android:layout_width="@dimen/main_button_choice_length"
+            android:layout_height="@dimen/main_button_choice_length"
+            android:elevation="4dp"
 
-            app:layout_constraintLeft_toRightOf="@+id/main_IB_eat"
+            app:layout_constraintLeft_toRightOf="@+id/main_button_eat"
             app:layout_constraintTop_toBottomOf="@id/main_TV_food"
-            android:layout_marginLeft="@dimen/main_button_margin_hor"
-            android:layout_marginStart="@dimen/main_button_margin_hor"
-            android:layout_marginTop="@dimen/main_button_margin_ver"/>
+            android:layout_marginLeft="@dimen/main_button_choice_margin_hor"
+            android:layout_marginStart="@dimen/main_button_choice_margin_hor"
+            android:layout_marginTop="@dimen/main_button_choice_margin_ver"/>
 
         <TextView
             android:id="@+id/main_TV_price"
@@ -76,7 +78,7 @@
             android:paddingRight="@dimen/main_TV_padding_end"
             android:paddingEnd="@dimen/main_TV_padding_end"
             app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_IB_drink"
+            app:layout_constraintTop_toBottomOf="@+id/main_button_drink"
             android:layout_marginLeft="@dimen/main_base_margin_left"
             android:layout_marginStart="@dimen/main_base_margin_left"
             android:layout_marginTop="@dimen/main_base_margin_ver"
@@ -99,5 +101,19 @@
             android:layout_marginStart="@dimen/main_base_margin_left"
             android:layout_marginTop="@dimen/main_base_margin_ver"
             android:layout_marginBottom="@dimen/main_base_margin_ver"/>
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/main_button_go"
+            android:layout_width="@dimen/main_button_go_width"
+            android:layout_height="@dimen/main_button_go_height"
+            android:background="@color/colorPrimaryDark"
+            android:src="@drawable/ic_go"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:elevation="4dp"
+
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="parent"
+            android:layout_margin="@dimen/main_button_go_margin"/>
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
