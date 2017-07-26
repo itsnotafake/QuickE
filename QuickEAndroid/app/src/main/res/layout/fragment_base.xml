@@ -30,7 +30,7 @@
         android:layout_width="@dimen/main_button_choice_length"
         android:layout_height="@dimen/main_button_choice_length"
         android:elevation="4dp"
-        android:theme="@style/GoButton"
+        android:theme="@style/MainButton"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/main_button_drink"
@@ -42,7 +42,7 @@
         android:layout_width="@dimen/main_button_choice_length"
         android:layout_height="@dimen/main_button_choice_length"
         android:elevation="4dp"
-        android:theme="@style/GoButton"
+        android:theme="@style/MainButton"
 
         app:layout_constraintLeft_toRightOf="@+id/main_button_eat"
         app:layout_constraintRight_toRightOf="parent"
@@ -67,7 +67,7 @@
         android:layout_marginTop="@dimen/main_base_margin_ver"
         android:layout_marginBottom="@dimen/main_base_margin_ver"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/main_button_price_1"
         android:layout_width="@dimen/main_button_price_width"
         android:layout_height="@dimen/main_button_price_height"
@@ -81,7 +81,7 @@
         app:layout_constraintTop_toTopOf="@+id/main_TV_price"
         app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/main_button_price_2"
         android:layout_width="@dimen/main_button_price_width"
         android:layout_height="@dimen/main_button_price_height"
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toTopOf="@+id/main_TV_price"
         app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/main_button_price_3"
         android:layout_width="@dimen/main_button_price_width"
         android:layout_height="@dimen/main_button_price_height"
@@ -107,7 +107,7 @@
         app:layout_constraintTop_toTopOf="@+id/main_TV_price"
         app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/main_button_price_4"
         android:layout_width="@dimen/main_button_price_width"
         android:layout_height="@dimen/main_button_price_height"
@@ -163,7 +163,7 @@
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:elevation="4dp"
-        android:theme="@style/GoButton"
+        android:theme="@style/MainButton"
 
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
