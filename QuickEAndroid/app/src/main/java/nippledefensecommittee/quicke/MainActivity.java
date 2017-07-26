@@ -2,8 +2,14 @@ package nippledefensecommittee.quicke;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
+import android.os.Build;
+import android.provider.Settings;
+import android.support.design.internal.SnackbarContentLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +19,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
+import android.support.design.widget.Snackbar;
+
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -34,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeAppBar();
-        getUserPermission();
+
+        locationClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
     }
 
     @Override
@@ -63,69 +73,140 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Checks user permissions. If granted permission then call getUserLocation().
-     * Otherwise, requests permission from user. Permission result handler takes care
-     * of user response.
+     * On application startup the app will check for location permission.
+     * If permission is not yet granted the app will ask for permission.
+     * Otherwise app will get user location.
      */
-    @TargetApi(23)
-    private void getUserPermission() {
-        if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_CODE);
-            userLoc.setGrantedPermission(false);
-        }
-        else {
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if (!checkUserPermission()) {
+            requestUserPermission();
+        } else {
             getUserLocation();
         }
     }
 
     /**
+     * Creates a snackbar to display a message to user.
+     */
+    private void showSnack(final String msg) {
+        View mainContainer = findViewById(R.id.main_container);
+        if (mainContainer != null) {
+            Snackbar.make(mainContainer, msg, Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * Creates a snackbar to display a message, set an action, and wait for user response.
+     */
+    private void showSnack(final int textID, final int actionID, View.OnClickListener listener) {
+        Snackbar.make(findViewById(android.R.id.content), getString(textID),
+                Snackbar.LENGTH_INDEFINITE).setAction(getString(actionID), listener).show();
+    }
+
+    /**
+     * Checks if the user has given permission to access their location.
+     */
+    private boolean checkUserPermission() {
+        int userPermission = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+        return userPermission == PackageManager.PERMISSION_GRANTED;
+    }
+
+    /**
+     * Requests permission to access user location.
+     *
+     * Depending on if extra context is necessary, function will either directly request permission
+     * or display a snackbar with context before asking for permission.
+     */
+    private void requestUserPermission() {
+        boolean rationale = ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+
+        final String[] permission = new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
+
+        if (!rationale) {
+            Log.i(TAG, "Requesting permission from user.");
+
+            ActivityCompat.requestPermissions(MainActivity.this, permission, LOCATION_CODE);
+        } else {
+            Log.i(TAG, "Providing context for location use to user.");
+
+            showSnack(R.string.rationale, android.R.string.ok, new View.OnClickListener() {
+               @Override
+                public void onClick(View view) {
+                   ActivityCompat.requestPermissions(MainActivity.this, permission, LOCATION_CODE);
+               }
+            });
+        }
+    }
+
+    /**
      * User permission response handler.
+     *
+     * If permission is granted handler will obtain last known user location.
+     * If permission is denied handler will display a message asking user to reconsider and
+     * redirect them to the settings page.
      */
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] results) {
+        Log.i(TAG, "Handling permission request result.");
+
         switch (requestCode) {
             case LOCATION_CODE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (results.length <= 0) {
+                    Log.i(TAG, "User interaction was cancelled.");
+                } else if (results[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.i(TAG, "Permission Granted!");
                     getUserLocation();
-                }
-                else {
-                    // TODO: Handle user denying access to location
+                } else {
+                    Log.i(TAG, "Permission Denied!");
+                    showSnack(R.string.permission_denied, R.string.settings, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent();
+                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
 
-                    Toast.makeText(MainActivity.this, "Location services are unable to be used.", Toast.LENGTH_LONG).show();
+                            Uri uri = Uri.fromParts("package", BuildConfig.APPLICATION_ID, null);
+                            intent.setData(uri);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+                    });
                 }
                 break;
 
             default:
-
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                super.onRequestPermissionsResult(requestCode, permissions, results);
         }
     }
 
     /**
      * Uses Google Play Services to obtain last known user location, which is usually
-     * the user's current location. Populates fields of static UserLocation object.
+     * the user's current location.
+     *
+     * Populates fields of static UserLocation object.
      */
+    @SuppressWarnings("MissingPermission")
     private void getUserLocation() {
-        locationClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
-        try {
-            locationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                @Override
-                public void onSuccess(Location location){
-                    if (location != null) {
-                        final double longitude = location.getLongitude();
-                        final double latitude = location.getLatitude();
+        locationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location){
+                if (location != null) {
+                    final double longitude = location.getLongitude();
+                    final double latitude = location.getLatitude();
 
-                        userLoc.setUserLocation(longitude, latitude);
-                        userLoc.setUserLocationStrings(location.convert(longitude, Location.FORMAT_DEGREES), location.convert(latitude, Location.FORMAT_DEGREES));
-                        userLoc.setGrantedPermission(true);
-                    }
+                    userLoc.setUserLocation(longitude, latitude);
+                    userLoc.setUserLocationStrings(location.convert(longitude, Location.FORMAT_DEGREES), location.convert(latitude, Location.FORMAT_DEGREES));
+                    userLoc.setGrantedPermission(true);
+                } else {
+                    Log.d(TAG, "Unable to detect location.");
+                    showSnack(getString(R.string.no_location));
                 }
-            });
-        }
-        catch (SecurityException e) {
-            // TODO: Handle Security Exception
-            Log.e(TAG, "error: " + e);
-        }
+            }
+        });
     }
 
     /**

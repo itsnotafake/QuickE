@@ -10,4 +10,13 @@
     <string name="main_button_price_2">$$</string>
     <string name="main_button_price_3">$$$</string>
     <string name="main_button_price_4">$$$$</string>
+
+    <!-- LOCATION STRINGS -->
+    <string name="no_location">Unable to detect user location. Please enable location services
+        on this device.</string>
+    <string name="rationale">We require location services to provide you with the best possible
+        dining locations.</string>
+    <string name="permission_denied">Permission to use location has been denied. This inhibits our
+        effectiveness.</string>
+    <string name="settings">Settings</string>
 </resources>
