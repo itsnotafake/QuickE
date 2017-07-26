@@ -155,6 +155,22 @@
             android:layout_marginTop="@dimen/main_base_margin_ver"
             android:layout_marginBottom="@dimen/main_base_margin_ver"/>
 
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/main_seekbar_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:thumb="@drawable/seek_distance_thumb"
+            android:progressDrawable="@drawable/seek_distance_prog"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_TV_distance"
+            android:layout_marginLeft="@dimen/main_progress_margin_hor"
+            android:layout_marginStart="@dimen/main_progress_margin_hor"
+            android:layout_marginRight="@dimen/main_progress_margin_hor"
+            android:layout_marginEnd="@dimen/main_progress_margin_hor"
+            android:layout_marginTop="@dimen/main_progress_margin_ver"/>
+
         <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/main_button_go"
             android:layout_width="@dimen/main_button_go_width"

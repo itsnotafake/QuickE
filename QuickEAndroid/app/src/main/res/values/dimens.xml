@@ -6,6 +6,7 @@
     <item name="main_button_go_height" type="dimen">50dp</item>
     <item name="main_button_price_height" type="dimen">45dp</item>
     <item name="main_button_price_width" type="dimen">75dp</item>
+    <item name="main_progress_thumb_length" type="dimen">30dp</item>
 
     <item name="main_TV_padding" type="dimen">2dp</item>
     <item name="main_TV_padding_end" type="dimen">16dp</item>
@@ -18,6 +19,8 @@
     <item name="main_button_choice_margin_hor" type="dimen">4dp</item>
     <item name="main_button_choice_margin_ver" type="dimen">4dp</item>
     <item name="main_button_go_margin" type="dimen">16dp</item>
+    <item name="main_progress_margin_ver" type="dimen">38dp</item>
+    <item name="main_progress_margin_hor" type="dimen">12dp</item>
 
     <item name="main_button_price_radius" type="dimen">15dp</item>
 </resources>
