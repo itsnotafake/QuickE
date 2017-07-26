@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="nippledefensecommittee.quicke.MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/main_TV_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_text_HoT"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:background="@drawable/main_header_tv"
+
+        android:padding="@dimen/main_TV_padding"
+        android:paddingRight="@dimen/main_TV_padding_end"
+        android:paddingEnd="@dimen/main_TV_padding_end"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintVertical_bias="@dimen/main_base_bias_ver"
+        android:layout_marginLeft="@dimen/main_base_margin_left"
+        android:layout_marginStart="@dimen/main_base_margin_left"/>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/main_button_eat"
+        android:layout_width="@dimen/main_button_choice_length"
+        android:layout_height="@dimen/main_button_choice_length"
+        android:elevation="4dp"
+        android:theme="@style/GoButton"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/main_button_drink"
+        app:layout_constraintTop_toBottomOf="@+id/main_TV_food"
+        android:layout_marginTop="@dimen/main_button_choice_margin_ver"/>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/main_button_drink"
+        android:layout_width="@dimen/main_button_choice_length"
+        android:layout_height="@dimen/main_button_choice_length"
+        android:elevation="4dp"
+        android:theme="@style/GoButton"
+
+        app:layout_constraintLeft_toRightOf="@+id/main_button_eat"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_TV_food"
+        android:layout_marginTop="@dimen/main_button_choice_margin_ver"/>
+
+    <TextView
+        android:id="@+id/main_TV_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_text_price"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:background="@drawable/main_header_tv"
+
+        android:padding="@dimen/main_TV_padding"
+        android:paddingRight="@dimen/main_TV_padding_end"
+        android:paddingEnd="@dimen/main_TV_padding_end"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_button_drink"
+        android:layout_marginLeft="@dimen/main_base_margin_left"
+        android:layout_marginStart="@dimen/main_base_margin_left"
+        android:layout_marginTop="@dimen/main_base_margin_ver"
+        android:layout_marginBottom="@dimen/main_base_margin_ver"/>
+
+    <Button
+        android:id="@+id/main_button_price_1"
+        android:layout_width="@dimen/main_button_price_width"
+        android:layout_height="@dimen/main_button_price_height"
+        android:text="@string/main_button_price_1"
+        android:background="@drawable/button_price_left_ripple"
+        android:theme="@style/PriceButton"
+
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/main_button_price_2"
+        app:layout_constraintTop_toTopOf="@+id/main_TV_price"
+        app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance" />
+
+    <Button
+        android:id="@+id/main_button_price_2"
+        android:layout_width="@dimen/main_button_price_width"
+        android:layout_height="@dimen/main_button_price_height"
+        android:text="@string/main_button_price_2"
+        android:background="@drawable/button_price_middle_ripple"
+        android:theme="@style/PriceButton"
+
+        app:layout_constraintLeft_toRightOf="@+id/main_button_price_1"
+        app:layout_constraintRight_toLeftOf="@+id/main_button_price_3"
+        app:layout_constraintTop_toTopOf="@+id/main_TV_price"
+        app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"/>
+
+    <Button
+        android:id="@+id/main_button_price_3"
+        android:layout_width="@dimen/main_button_price_width"
+        android:layout_height="@dimen/main_button_price_height"
+        android:text="@string/main_button_price_3"
+        android:background="@drawable/button_price_middle_ripple"
+        android:theme="@style/PriceButton"
+
+        app:layout_constraintLeft_toRightOf="@+id/main_button_price_2"
+        app:layout_constraintRight_toLeftOf="@+id/main_button_price_4"
+        app:layout_constraintTop_toTopOf="@+id/main_TV_price"
+        app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"/>
+
+    <Button
+        android:id="@+id/main_button_price_4"
+        android:layout_width="@dimen/main_button_price_width"
+        android:layout_height="@dimen/main_button_price_height"
+        android:text="@string/main_button_price_4"
+        android:background="@drawable/button_price_right_ripple"
+        android:theme="@style/PriceButton"
+
+        app:layout_constraintLeft_toRightOf="@+id/main_button_price_3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/main_TV_price"
+        app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"/>
+
+
+    <TextView
+        android:id="@+id/main_TV_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_text_distance"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:background="@drawable/main_header_tv"
+
+        android:padding="@dimen/main_TV_padding"
+        android:paddingRight="@dimen/main_TV_padding_end"
+        android:paddingEnd="@dimen/main_TV_padding_end"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_button_price_1"
+        android:layout_marginLeft="@dimen/main_base_margin_left"
+        android:layout_marginStart="@dimen/main_base_margin_left"
+        android:layout_marginTop="@dimen/main_base_margin_ver"
+        android:layout_marginBottom="@dimen/main_base_margin_ver"/>
+
+    <android.support.v7.widget.AppCompatSeekBar
+        android:id="@+id/main_seekbar_distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:thumb="@drawable/seek_distance_thumb"
+        android:progressDrawable="@drawable/seek_distance_prog"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_TV_distance"
+        android:layout_marginLeft="@dimen/main_progress_margin_hor"
+        android:layout_marginStart="@dimen/main_progress_margin_hor"
+        android:layout_marginRight="@dimen/main_progress_margin_hor"
+        android:layout_marginEnd="@dimen/main_progress_margin_hor"
+        android:layout_marginTop="@dimen/main_progress_margin_ver"/>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/main_button_go"
+        android:layout_width="@dimen/main_button_go_width"
+        android:layout_height="@dimen/main_button_go_height"
+        android:src="@drawable/ic_go"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:elevation="4dp"
+        android:theme="@style/GoButton"
+
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        android:layout_margin="@dimen/main_button_go_margin"/>
+</android.support.constraint.ConstraintLayout>

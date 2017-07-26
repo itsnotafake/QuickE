@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getName();
 
     private static UserLocation userLoc = new UserLocation();
-    private static FusedLocationProviderClient locationClient;
+    private FusedLocationProviderClient locationClient;
     private static final int LOCATION_CODE = 123;
 
     @Override
