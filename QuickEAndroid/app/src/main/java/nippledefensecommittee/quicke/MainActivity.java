@@ -210,9 +210,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * A simple boolean[2] to indicate whether the user is looking for a dining or drinking
+     * experience. As of right now the user can select both. Perhaps in the future this will
+     * be change to just one
+     */
+    static class QuickEUsage{
+        static boolean[] quickEUsage;
+
+        //initialize boolean array to false false
+        static{
+            quickEUsage = new boolean[2];
+            quickEUsage[0] = false;
+            quickEUsage[1] = false;
+        }
+
+        static void updateQuickEUsage(int position, boolean isGoodOption){
+            quickEUsage[position] = isGoodOption;
+        }
+
+        static boolean getQuickEUsageAt(int position){
+            return quickEUsage[position];
+        }
+    }
+
+    /**
      * class that represents which price options have been selected
      */
-    public static class PriceRange{
+    static class PriceRange{
         static ArrayList<Boolean> priceRange;
 
         //this block runs only once, when PriceRange is called for the first time
@@ -235,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
          * Any changes made to priceRange should be done with 'updatePriceIndication'
          * @return a copy of Price Range
          */
-        public boolean getPriceIndicationAt(int position){
+        static boolean getPriceIndicationAt(int position){
             return priceRange.get(position);
         }
     }
@@ -243,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Class that represents the search radius selected
      */
-    public static class AreaRadius{
+    static class AreaRadius{
         private static int areaRadius;
 
         //I'm assuming here that the default radius will be 5 miles;

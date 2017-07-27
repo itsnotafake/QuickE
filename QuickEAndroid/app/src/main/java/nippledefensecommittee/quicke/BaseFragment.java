@@ -2,28 +2,31 @@ package nippledefensecommittee.quicke;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Color;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.PixelFormat;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.SeekBar;
 
 /**
  * Created by Devin on 7/26/2017.
  */
 
-public class BaseFragment extends Fragment{
+public class BaseFragment extends Fragment {
     private static final String TAG = BaseFragment.class.getName();
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
@@ -32,15 +35,17 @@ public class BaseFragment extends Fragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_base, container, false);
         initializeButtons(view);
+        initializeSeekBar(view);
         return view;
     }
 
     /**
      * Method designed to move code out of onCreateView. Simply assigns to the necessary buttons
      * the correct onButtonClick methods
+     *
      * @param view - View for finding the buttons within the view
      */
-    public void initializeButtons(View view){
+    public void initializeButtons(View view) {
         final AppCompatImageButton button_eat = (AppCompatImageButton)
                 view.findViewById(R.id.main_button_eat);
         final AppCompatImageButton button_drink = (AppCompatImageButton)
@@ -88,6 +93,7 @@ public class BaseFragment extends Fragment{
             public void onClick(View v) {
                 boolean activated = button_price1.isActivated();
                 button_price1.setActivated(!activated);
+                MainActivity.PriceRange.updatePriceIndication(1, button_price1.isActivated());
             }
         });
         button_price2.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +101,7 @@ public class BaseFragment extends Fragment{
             public void onClick(View v) {
                 boolean activated = button_price2.isActivated();
                 button_price2.setActivated(!activated);
+                MainActivity.PriceRange.updatePriceIndication(2, button_price2.isActivated());
             }
         });
         button_price3.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +109,7 @@ public class BaseFragment extends Fragment{
             public void onClick(View v) {
                 boolean activated = button_price3.isActivated();
                 button_price3.setActivated(!activated);
+                MainActivity.PriceRange.updatePriceIndication(3, button_price3.isActivated());
             }
         });
         button_price4.setOnClickListener(new View.OnClickListener() {
@@ -109,25 +117,46 @@ public class BaseFragment extends Fragment{
             public void onClick(View v) {
                 boolean activated = button_price4.isActivated();
                 button_price4.setActivated(!activated);
+                MainActivity.PriceRange.updatePriceIndication(4, button_price4.isActivated());
             }
         });
     }
 
-    public static ColorStateList getButtonColorStateListBG(Context context){
+    public static ColorStateList getButtonColorStateListBG(Context context) {
         int primaryDark = context.getResources().getColor(R.color.colorPrimaryDark);
-        int accent =  context.getResources().getColor(R.color.colorAccent);
+        int accent = context.getResources().getColor(R.color.colorAccent);
 
         return new ColorStateList(
-                new int[][] {{android.R.attr.state_activated}, {-android.R.attr.state_activated}},
-                new int[] { accent, primaryDark});
+                new int[][]{{android.R.attr.state_activated}, {-android.R.attr.state_activated}},
+                new int[]{accent, primaryDark});
     }
 
-    public static ColorStateList getButtonColorStateListText(Context context){
+    public static ColorStateList getButtonColorStateListText(Context context) {
         int primaryDark = context.getResources().getColor(R.color.colorPrimaryDark);
-        int accent =  context.getResources().getColor(R.color.colorAccent);
+        int accent = context.getResources().getColor(R.color.colorAccent);
 
         return new ColorStateList(
-                new int[][] {{android.R.attr.state_activated}, {-android.R.attr.state_activated}},
-                new int[] { primaryDark, accent});
+                new int[][]{{android.R.attr.state_activated}, {-android.R.attr.state_activated}},
+                new int[]{primaryDark, accent});
+    }
+
+    public void initializeSeekBar(View view) {
+        SeekBar seekBar = (SeekBar) view.findViewById(R.id.main_seekbar_distance);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                seekBar.setText
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 }
