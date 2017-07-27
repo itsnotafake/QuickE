@@ -1,16 +1,19 @@
 package nippledefensecommittee.quicke;
 
 import android.Manifest;
-import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.design.internal.SnackbarContentLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,22 +23,64 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 import android.support.design.widget.Snackbar;
 
-
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
+        LocationListener,
+        ResultCallback<LocationSettingsResult> {
     private static final String TAG = MainActivity.class.getName();
+    private static final String TAG2 = "WTF";
+
+    private static final int LOCATION_CODE = 123;
+
+    // Desired and fastest interval rate for location updates
+    public static final long UPDATE_INTERVAL_BASE = 10000;
+    public static final long UPDATE_INTERVAL_FAST = UPDATE_INTERVAL_BASE / 2;
+
+    // Bundle keys for storing activity state
+    // Most likely unnecessary
+    protected final String KEY_REQ_LOC = "requesting_location_updates";
+    protected final String KEY_LOC = "location";
+    protected final String KEY_TIME_UPDATED = "last_time_updated";
+
+    protected GoogleApiClient mGoogleApiClient;
+    protected LocationRequest mLocationReq;
+    protected LocationSettingsRequest mLocationSettingsReq;
+    protected Location mLocation;
+
+    protected boolean mRequestingLocation;
+    protected String mLastUpdateTime;
 
     private static UserLocation userLoc = new UserLocation();
     private static FusedLocationProviderClient locationClient;
-    private static final int LOCATION_CODE = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +90,12 @@ public class MainActivity extends AppCompatActivity {
         initializeAppBar();
 
         locationClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
+        mRequestingLocation = false;
+        mLastUpdateTime = "";
+
+        createGoogleApiClient();
+        createLocationRequest();
+        createLocationSettingsRequest();
     }
 
     @Override
@@ -81,36 +132,116 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
+        locationStartup();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (mGoogleApiClient.isConnected()) {
+            checkLocationSettings();
+        } else {
+            locationStartup();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        }
+    }
+
+    private void updateUserLocation() {
+        double longitude = mLocation.getLongitude();
+        double latitude = mLocation.getLatitude();
+
+        userLoc.setUserLocation(longitude, latitude);
+        userLoc.setUserLocationStrings(mLocation.convert(longitude, Location.FORMAT_DEGREES), mLocation.convert(latitude, Location.FORMAT_DEGREES));
+        userLoc.setGrantedPermission(true);
+    }
+
+    // TODO: DECIDE WHETHER OR NOT TO USE GOOGLE API CLIENT
+    private void locationStartup() {
         if (!checkUserPermission()) {
             requestUserPermission();
         } else {
-            getUserLocation();
+            checkLocationSettings2();
+            //mGoogleApiClient.connect();
         }
     }
 
-    /**
-     * Creates a snackbar to display a message to user.
-     */
-    private void showSnack(final String msg) {
-        View mainContainer = findViewById(R.id.main_container);
-        if (mainContainer != null) {
-            Snackbar.make(mainContainer, msg, Snackbar.LENGTH_LONG).show();
-        }
+    protected synchronized void createGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
     }
 
-    /**
-     * Creates a snackbar to display a message, set an action, and wait for user response.
-     */
-    private void showSnack(final int textID, final int actionID, View.OnClickListener listener) {
-        Snackbar.make(findViewById(android.R.id.content), getString(textID),
-                Snackbar.LENGTH_INDEFINITE).setAction(getString(actionID), listener).show();
+    protected void createLocationRequest() {
+        mLocationReq = new LocationRequest();
+        mLocationReq.setInterval(UPDATE_INTERVAL_BASE);
+        mLocationReq.setFastestInterval(UPDATE_INTERVAL_FAST);
+        mLocationReq.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+        // TODO: See if this works
+        //mLocationReq.setNumUpdates(1);
+    }
+
+    protected void createLocationSettingsRequest() {
+        LocationSettingsRequest.Builder mBuilder = new LocationSettingsRequest.Builder();
+        mBuilder.addLocationRequest(mLocationReq);
+        mLocationSettingsReq = mBuilder.build();
+    }
+
+    protected void checkLocationSettings() {
+        PendingResult<LocationSettingsResult> result = LocationServices.SettingsApi
+                .checkLocationSettings(mGoogleApiClient, mLocationSettingsReq);
+        result.setResultCallback(this);
+    }
+
+    protected void checkLocationSettings2() {
+        SettingsClient client = LocationServices.getSettingsClient(this);
+        Task<LocationSettingsResponse> task = client.checkLocationSettings(mLocationSettingsReq);
+
+        task.addOnSuccessListener(this, new OnSuccessListener<LocationSettingsResponse>() {
+            @Override
+            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+                getUserLocation();
+            }
+        });
+
+        task.addOnFailureListener(this, new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                int statusCode = ((ApiException) e).getStatusCode();
+                switch (statusCode) {
+                    case CommonStatusCodes.RESOLUTION_REQUIRED:
+                        Log.i(TAG, "Location settings invalid: Showing user dialog to resolve.");
+                        try {
+                            ResolvableApiException resolvable = (ResolvableApiException) e;
+                            resolvable.startResolutionForResult(MainActivity.this, LOCATION_CODE);
+                        } catch (IntentSender.SendIntentException ex) {
+                            Log.e(TAG, "Error occurred when sending intent: " + ex);
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        Log.i(TAG, "Location settings are invalid and cannot be fixed.");
+                        break;
+                }
+            }
+        });
     }
 
     /**
      * Checks if the user has given permission to access their location.
      */
     private boolean checkUserPermission() {
-        int userPermission = ActivityCompat.checkSelfPermission(this,
+        int userPermission = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
         return userPermission == PackageManager.PERMISSION_GRANTED;
     }
@@ -125,22 +256,60 @@ public class MainActivity extends AppCompatActivity {
         boolean rationale = ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
 
-        final String[] permission = new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
+        final String[] permissionFine = new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
 
         if (!rationale) {
             Log.i(TAG, "Requesting permission from user.");
 
-            ActivityCompat.requestPermissions(MainActivity.this, permission, LOCATION_CODE);
+            ActivityCompat.requestPermissions(MainActivity.this, permissionFine, LOCATION_CODE);
         } else {
             Log.i(TAG, "Providing context for location use to user.");
 
             showSnack(R.string.rationale, android.R.string.ok, new View.OnClickListener() {
                @Override
                 public void onClick(View view) {
-                   ActivityCompat.requestPermissions(MainActivity.this, permission, LOCATION_CODE);
+                   ActivityCompat.requestPermissions(MainActivity.this, permissionFine, LOCATION_CODE);
                }
             });
         }
+    }
+
+    /**
+     * Uses Google Play Services to obtain last known user location, which is usually
+     * the user's current location.
+     *
+     * Populates fields of static UserLocation object.
+     */
+    @SuppressWarnings("MissingPermission")
+    private void getUserLocation() {
+        locationClient.getLastLocation().addOnCompleteListener(this, new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                if (task.isSuccessful() && task.getResult() != null) {
+                    mLocation = task.getResult();
+                    updateUserLocation();
+                    showSnack("Location found at LONG: " + userLoc.getLongStr() + " LAT: " + userLoc.getLatStr());
+                } else {
+                    Log.d(TAG, "Unable to detect location.");
+                    showSnack(getString(R.string.no_location));
+                }
+            }
+        });
+
+        /*
+        locationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location){
+                if (location != null) {
+                    mLocation = location;
+                    updateUserLocation();
+                } else {
+                    Log.d(TAG2, "Unable to detect location.");
+                    showSnack(getString(R.string.no_location));
+                }
+
+            }
+        }); */
     }
 
     /**
@@ -160,7 +329,13 @@ public class MainActivity extends AppCompatActivity {
                     Log.i(TAG, "User interaction was cancelled.");
                 } else if (results[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.i(TAG, "Permission Granted!");
-                    getUserLocation();
+
+                    /*if (mGoogleApiClient.isConnected() == false) {
+                        mGoogleApiClient.connect();
+                    } else {
+                        checkLocationSettings();
+                    }*/
+                    checkLocationSettings2();
                 } else {
                     Log.i(TAG, "Permission Denied!");
                     showSnack(R.string.permission_denied, R.string.settings, new View.OnClickListener() {
@@ -183,30 +358,94 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Uses Google Play Services to obtain last known user location, which is usually
-     * the user's current location.
-     *
-     * Populates fields of static UserLocation object.
-     */
-    @SuppressWarnings("MissingPermission")
-    private void getUserLocation() {
-        locationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location){
-                if (location != null) {
-                    final double longitude = location.getLongitude();
-                    final double latitude = location.getLatitude();
-
-                    userLoc.setUserLocation(longitude, latitude);
-                    userLoc.setUserLocationStrings(location.convert(longitude, Location.FORMAT_DEGREES), location.convert(latitude, Location.FORMAT_DEGREES));
-                    userLoc.setGrantedPermission(true);
-                } else {
-                    Log.d(TAG, "Unable to detect location.");
-                    showSnack(getString(R.string.no_location));
+    @Override
+    public void onResult(LocationSettingsResult locSetRes) {
+        final Status locStatus = locSetRes.getStatus();
+        switch (locStatus.getStatusCode()) {
+            case LocationSettingsStatusCodes.SUCCESS:
+                Log.i(TAG, "Location settings valid: Attempting to get user location.");
+                getUserLocation();
+                break;
+            case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                Log.i(TAG, "Location settings invalid: Showing user dialog to resolve.");
+                try {
+                    locStatus.startResolutionForResult(MainActivity.this, LOCATION_CODE);
+                } catch (IntentSender.SendIntentException e) {
+                    Log.e(TAG, "Error occurred when sending intent: " + e);
                 }
-            }
-        });
+                break;
+            case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                Log.i(TAG, "Location settings are invalid and cannot be fixed.");
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int reqCode, int resCode, Intent data) {
+        switch (reqCode) {
+            case LOCATION_CODE:
+                switch (resCode) {
+                    case Activity.RESULT_OK:
+                        Log.i(TAG, "User made required location settings changes.");
+                        getUserLocation();
+                        break;
+                    case Activity.RESULT_CANCELED:
+                        Log.i(TAG, "User did not make required changes.");
+                        break;
+                }
+                break;
+        }
+    }
+
+    /**
+     * Runs when a GoogleApiClient object successfully connects.
+     */
+    @Override
+    public void onConnected(Bundle connectionHint) {
+        Log.i(TAG, "Connected to GoogleApiClient");
+
+        checkLocationSettings();
+    }
+
+    /**
+     * Callback that fires when the location changes.
+     */
+    @Override
+    public void onLocationChanged(Location location) {
+        mLocation = location;
+        mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
+        updateUserLocation();
+    }
+
+    @Override
+    public void onConnectionSuspended(int cause) {
+        Log.i(TAG, "Connection suspended");
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult result) {
+        Log.i(TAG, "Connection failed: " + result.getErrorCode());
+        if (result.getErrorCode() == 2) {
+            showSnack(getString(R.string.updateGPS));
+        }
+    }
+
+    /**
+     * Creates a snackbar to display a message to user.
+     */
+    private void showSnack(final String msg) {
+        View mainContainer = findViewById(R.id.main_container);
+        if (mainContainer != null) {
+            Snackbar.make(mainContainer, msg, Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * Creates a snackbar to display a message, set an action, and wait for user response.
+     */
+    private void showSnack(final int textID, final int actionID, View.OnClickListener listener) {
+        Snackbar.make(findViewById(android.R.id.content), getString(textID),
+                Snackbar.LENGTH_INDEFINITE).setAction(getString(actionID), listener).show();
     }
 
     /**
