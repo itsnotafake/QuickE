@@ -35,7 +35,7 @@ public class BaseFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_base, container, false);
         initializeButtons(view);
-        initializeSeekBar(view);
+        //initializeSeekBar(view);
         return view;
     }
 
@@ -142,21 +142,5 @@ public class BaseFragment extends Fragment {
 
     public void initializeSeekBar(View view) {
         SeekBar seekBar = (SeekBar) view.findViewById(R.id.main_seekbar_distance);
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                seekBar.setText
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
     }
 }
