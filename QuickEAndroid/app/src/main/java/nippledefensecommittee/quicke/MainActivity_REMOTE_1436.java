@@ -80,8 +80,7 @@ public class MainActivity extends AppCompatActivity implements
     protected String mLastUpdateTime;
 
     private static UserLocation userLoc = new UserLocation();
-    private FusedLocationProviderClient locationClient;
-    private static final int LOCATION_CODE = 123;
+    private static FusedLocationProviderClient locationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -450,46 +449,22 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     /**
-     * A simple boolean[2] to indicate whether the user is looking for a dining or drinking
-     * experience. As of right now the user can select both. Perhaps in the future this will
-     * be change to just one
-     */
-    static class QuickEUsage{
-        static boolean[] quickEUsage;
-
-        //initialize boolean array to false false
-        static{
-            quickEUsage = new boolean[2];
-            quickEUsage[0] = false;
-            quickEUsage[1] = false;
-        }
-
-        static void updateQuickEUsage(int position, boolean isGoodOption){
-            quickEUsage[position] = isGoodOption;
-        }
-
-        static boolean getQuickEUsageAt(int position){
-            return quickEUsage[position];
-        }
-    }
-
-    /**
      * class that represents which price options have been selected
      */
-    static class PriceRange{
-        static boolean[] priceRange;
+    public static class PriceRange{
+        static ArrayList<Boolean> priceRange;
 
         //this block runs only once, when PriceRange is called for the first time
         static{
-            priceRange = new boolean[4];
+            priceRange = new ArrayList<>();
             for(int priceLevel = 0; priceLevel < 4; priceLevel++){
-                priceRange[priceLevel] = false;
+                priceRange.set(priceLevel, false);
             }
         }
 
         static void updatePriceIndication(int position, boolean isGoodPrice){
             try{
-                priceRange[position] = isGoodPrice;
+                priceRange.set(position, isGoodPrice);
             }catch(IndexOutOfBoundsException e){
                 Log.e(TAG, "error: " + e);
             }
@@ -499,13 +474,15 @@ public class MainActivity extends AppCompatActivity implements
          * Any changes made to priceRange should be done with 'updatePriceIndication'
          * @return a copy of Price Range
          */
-        static boolean getPriceIndicationAt(int position){return priceRange[position];}
+        public boolean getPriceIndicationAt(int position){
+            return priceRange.get(position);
+        }
     }
 
     /**
      * Class that represents the search radius selected
      */
-    static class AreaRadius{
+    public static class AreaRadius{
         private static int areaRadius;
 
         //I'm assuming here that the default radius will be 5 miles;

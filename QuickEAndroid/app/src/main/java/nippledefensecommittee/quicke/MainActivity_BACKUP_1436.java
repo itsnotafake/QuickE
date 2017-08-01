@@ -80,8 +80,12 @@ public class MainActivity extends AppCompatActivity implements
     protected String mLastUpdateTime;
 
     private static UserLocation userLoc = new UserLocation();
+<<<<<<< HEAD
     private FusedLocationProviderClient locationClient;
     private static final int LOCATION_CODE = 123;
+=======
+    private static FusedLocationProviderClient locationClient;
+>>>>>>> 95911c2d65a5b7c46a79bdfb100ab5dcbcaad5a2
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
