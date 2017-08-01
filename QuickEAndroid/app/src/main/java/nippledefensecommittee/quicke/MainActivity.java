@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements
 
     private static UserLocation userLoc = new UserLocation();
     private FusedLocationProviderClient locationClient;
-    private static final int LOCATION_CODE = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
