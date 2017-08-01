@@ -391,6 +391,9 @@ public class MainActivity extends AppCompatActivity implements
                         break;
                     case Activity.RESULT_CANCELED:
                         Log.i(TAG, "User did not make required changes.");
+                        showSnack("Unable to access location services. Closing application.");
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(0);
                         break;
                 }
                 break;
