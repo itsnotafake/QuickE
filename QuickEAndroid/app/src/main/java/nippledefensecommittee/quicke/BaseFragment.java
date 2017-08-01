@@ -93,7 +93,7 @@ public class BaseFragment extends Fragment {
             public void onClick(View v) {
                 boolean activated = button_price1.isActivated();
                 button_price1.setActivated(!activated);
-                MainActivity.PriceRange.updatePriceIndication(1, button_price1.isActivated());
+                MainActivity.PriceRange.updatePriceIndication(0, button_price1.isActivated());
             }
         });
         button_price2.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +101,7 @@ public class BaseFragment extends Fragment {
             public void onClick(View v) {
                 boolean activated = button_price2.isActivated();
                 button_price2.setActivated(!activated);
-                MainActivity.PriceRange.updatePriceIndication(2, button_price2.isActivated());
+                MainActivity.PriceRange.updatePriceIndication(1, button_price2.isActivated());
             }
         });
         button_price3.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +109,7 @@ public class BaseFragment extends Fragment {
             public void onClick(View v) {
                 boolean activated = button_price3.isActivated();
                 button_price3.setActivated(!activated);
-                MainActivity.PriceRange.updatePriceIndication(3, button_price3.isActivated());
+                MainActivity.PriceRange.updatePriceIndication(2, button_price3.isActivated());
             }
         });
         button_price4.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +117,7 @@ public class BaseFragment extends Fragment {
             public void onClick(View v) {
                 boolean activated = button_price4.isActivated();
                 button_price4.setActivated(!activated);
-                MainActivity.PriceRange.updatePriceIndication(4, button_price4.isActivated());
+                MainActivity.PriceRange.updatePriceIndication(3, button_price4.isActivated());
             }
         });
     }

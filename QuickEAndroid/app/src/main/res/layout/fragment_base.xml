@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:text="@string/main_text_HoT"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:background="@drawable/main_header_tv"
+        android:background="@color/TRANSPARENT"
+        android:textColor="@color/WHITE"
 
         android:padding="@dimen/main_TV_padding"
         android:paddingRight="@dimen/main_TV_padding_end"

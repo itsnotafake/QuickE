@@ -237,19 +237,19 @@ public class MainActivity extends AppCompatActivity {
      * class that represents which price options have been selected
      */
     static class PriceRange{
-        static ArrayList<Boolean> priceRange;
+        static boolean[] priceRange;
 
         //this block runs only once, when PriceRange is called for the first time
         static{
-            priceRange = new ArrayList<>();
+            priceRange = new boolean[4];
             for(int priceLevel = 0; priceLevel < 4; priceLevel++){
-                priceRange.set(priceLevel, false);
+                priceRange[priceLevel] = false;
             }
         }
 
         static void updatePriceIndication(int position, boolean isGoodPrice){
             try{
-                priceRange.set(position, isGoodPrice);
+                priceRange[position] = isGoodPrice;
             }catch(IndexOutOfBoundsException e){
                 Log.e(TAG, "error: " + e);
             }
@@ -259,9 +259,7 @@ public class MainActivity extends AppCompatActivity {
          * Any changes made to priceRange should be done with 'updatePriceIndication'
          * @return a copy of Price Range
          */
-        static boolean getPriceIndicationAt(int position){
-            return priceRange.get(position);
-        }
+        static boolean getPriceIndicationAt(int position){return priceRange[position];}
     }
 
     /**
