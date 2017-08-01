@@ -8,5 +8,5 @@
             <solid android:color="@color/BLACK" />
         </shape>
     </item>
-    <item android:drawable="@drawable/button_price_middle"/>
+    <item android:drawable="@drawable/button_bg"/>
 </ripple>

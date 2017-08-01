@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 /**
  * Created by Devin on 7/26/2017.
@@ -45,7 +48,7 @@ public class BaseFragment extends Fragment {
      *
      * @param view - View for finding the buttons within the view
      */
-    public void initializeButtons(View view) {
+    private void initializeButtons(View view) {
         final AppCompatImageButton button_eat = (AppCompatImageButton)
                 view.findViewById(R.id.main_button_eat);
         final AppCompatImageButton button_drink = (AppCompatImageButton)
@@ -122,7 +125,7 @@ public class BaseFragment extends Fragment {
         });
     }
 
-    public static ColorStateList getButtonColorStateListBG(Context context) {
+    private static ColorStateList getButtonColorStateListBG(Context context) {
         int primaryDark = context.getResources().getColor(R.color.colorPrimaryDark);
         int accent = context.getResources().getColor(R.color.colorAccent);
 
@@ -131,7 +134,7 @@ public class BaseFragment extends Fragment {
                 new int[]{accent, primaryDark});
     }
 
-    public static ColorStateList getButtonColorStateListText(Context context) {
+    private static ColorStateList getButtonColorStateListText(Context context) {
         int primaryDark = context.getResources().getColor(R.color.colorPrimaryDark);
         int accent = context.getResources().getColor(R.color.colorAccent);
 
@@ -140,7 +143,7 @@ public class BaseFragment extends Fragment {
                 new int[]{primaryDark, accent});
     }
 
-    public void initializeSeekBar(View view) {
+    private void initializeSeekBar(View view) {
         SeekBar seekBar = (SeekBar) view.findViewById(R.id.main_seekbar_distance);
     }
 }

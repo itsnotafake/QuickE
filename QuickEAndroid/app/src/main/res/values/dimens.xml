@@ -10,17 +10,21 @@
 
     <item name="main_TV_padding" type="dimen">2dp</item>
     <item name="main_TV_padding_end" type="dimen">16dp</item>
+    <item name="main_base_padding_left" type="dimen">16dp</item>
 
     <item name="main_base_bias_ver" format="float" type="dimen">0.05</item>
     <item name="main_base_bias_hor" format="float" type="dimen">0.05</item>
 
-    <item name="main_base_margin_left" type="dimen">16dp</item>
     <item name="main_base_margin_ver" type="dimen">10dp</item>
     <item name="main_button_choice_margin_hor" type="dimen">4dp</item>
     <item name="main_button_choice_margin_ver" type="dimen">4dp</item>
+    <item name="main_button_price_margin_ver" type="dimen">8dp</item>
     <item name="main_button_go_margin" type="dimen">16dp</item>
     <item name="main_progress_margin_ver" type="dimen">38dp</item>
     <item name="main_progress_margin_hor" type="dimen">12dp</item>
 
     <item name="main_button_price_radius" type="dimen">15dp</item>
+
+    <item name="main_TV_elevation" type="dimen">4dp</item>
+    <item name="main_button_elevation" type="dimen">4dp</item>
 </resources>
