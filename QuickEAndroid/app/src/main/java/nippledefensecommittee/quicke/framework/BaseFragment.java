@@ -77,6 +77,7 @@ public class BaseFragment extends Fragment {
             public void onClick(View v) {
                 boolean activated = button_eat.isActivated();
                 button_eat.setActivated(!activated);
+                MainActivity.QuickEUsage.updateQuickEUsage(0, button_eat.isActivated());
             }
         });
         button_drink.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +85,7 @@ public class BaseFragment extends Fragment {
             public void onClick(View v) {
                 boolean activated = button_drink.isActivated();
                 button_drink.setActivated(!activated);
+                MainActivity.QuickEUsage.updateQuickEUsage(1, button_drink.isActivated());
             }
         });
 
