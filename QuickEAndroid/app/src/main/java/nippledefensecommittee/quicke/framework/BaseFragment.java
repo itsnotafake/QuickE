@@ -133,7 +133,7 @@ public class BaseFragment extends Fragment {
     }
 
     private static ColorStateList getButtonColorStateListBG(Context context) {
-        int primaryDark = context.getResources().getColor(R.color.colorPrimaryDark);
+        int primaryDark = context.getResources().getColor(R.color.colorPrimaryDark85Opac);
         int accent = context.getResources().getColor(R.color.colorAccent);
 
         return new ColorStateList(

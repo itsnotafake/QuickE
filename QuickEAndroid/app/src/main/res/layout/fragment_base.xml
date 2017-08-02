@@ -5,7 +5,7 @@
     tools:context="nippledefensecommittee.quicke.framework.MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/ramenshop">
 
     <TextView
         android:id="@+id/main_TV_food"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/main_text_HoT"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:background="@color/colorPrimaryDark50Opac"
+        android:background="@color/colorPrimaryDark85Opac"
         android:textColor="@color/main_text"
         android:elevation="@dimen/main_TV_elevation"
 
@@ -58,7 +58,7 @@
         android:text="@string/main_text_price"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/main_text"
-        android:background="@color/colorPrimaryDark50Opac"
+        android:background="@color/colorPrimaryDark85Opac"
         android:elevation="@dimen/main_TV_elevation"
 
         android:padding="@dimen/main_TV_padding"
@@ -140,7 +140,7 @@
         android:text="@string/main_text_distance"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         android:textColor="@color/main_text"
-        android:background="@color/colorPrimaryDark50Opac"
+        android:background="@color/colorPrimaryDark85Opac"
         android:elevation="@dimen/main_TV_elevation"
 
         android:padding="@dimen/main_TV_padding"
