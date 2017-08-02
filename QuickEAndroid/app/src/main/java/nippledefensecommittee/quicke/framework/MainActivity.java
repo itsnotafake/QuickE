@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements
      */
     private void initializeAppBar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.colorAccent));
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.main_text));
         setSupportActionBar(toolbar);
     }
 

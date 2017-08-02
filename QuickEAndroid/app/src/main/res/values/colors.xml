@@ -10,4 +10,6 @@
     <color name="WHITE">#FFFFFF</color>
 
     <color name="TRANSPARENT">#00000000</color>
+
+    <color name="main_text">@color/WHITE</color>
 </resources>
