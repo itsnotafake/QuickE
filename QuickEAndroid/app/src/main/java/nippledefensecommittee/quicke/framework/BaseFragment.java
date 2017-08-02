@@ -1,25 +1,17 @@
-package nippledefensecommittee.quicke;
+package nippledefensecommittee.quicke.framework;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.graphics.PixelFormat;
-import android.graphics.Rect;
-import android.graphics.Shader;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
-import android.widget.TextView;
+
+import nippledefensecommittee.quicke.R;
 
 /**
  * Created by Devin on 7/26/2017.
@@ -63,6 +55,9 @@ public class BaseFragment extends Fragment {
         final AppCompatButton button_price4 = (AppCompatButton)
                 view.findViewById(R.id.main_button_price_4);
 
+        final AppCompatImageButton button_go = (AppCompatImageButton)
+                view.findViewById(R.id.main_button_go);
+
         ColorStateList cswBG = getButtonColorStateListBG(getContext());
         button_eat.setSupportBackgroundTintList(cswBG);
         button_drink.setSupportBackgroundTintList(cswBG);
@@ -91,6 +86,7 @@ public class BaseFragment extends Fragment {
                 button_drink.setActivated(!activated);
             }
         });
+
         button_price1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,6 +117,15 @@ public class BaseFragment extends Fragment {
                 boolean activated = button_price4.isActivated();
                 button_price4.setActivated(!activated);
                 MainActivity.PriceRange.updatePriceIndication(3, button_price4.isActivated());
+            }
+        });
+
+        button_go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new FoodSelectFragment();
+                FragmentChangeListener fcl = (FragmentChangeListener) getActivity();
+                fcl.replaceFragment(fragment, true);
             }
         });
     }

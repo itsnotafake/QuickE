@@ -1,4 +1,4 @@
-package nippledefensecommittee.quicke;
+package nippledefensecommittee.quicke.framework;
 
 import android.Manifest;
 import android.app.Activity;
@@ -7,14 +7,13 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.design.internal.SnackbarContentLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.PermissionChecker;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -48,16 +47,22 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+
+import nippledefensecommittee.quicke.BuildConfig;
+import nippledefensecommittee.quicke.R;
 
 public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener,
-        ResultCallback<LocationSettingsResult> {
+        ResultCallback<LocationSettingsResult>,
+        FragmentChangeListener {
+
     private static final String TAG = MainActivity.class.getName();
     private static final String TAG2 = "WTF";
+
+    private int mContainerId;
 
     private static final int LOCATION_CODE = 123;
 
@@ -86,8 +91,10 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mContainerId = R.id.fragment_container;
 
         initializeAppBar();
+        initializeFragment();
 
         locationClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
         mRequestingLocation = false;
@@ -109,7 +116,8 @@ public class MainActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
             case R.id.action_refresh:
-                //TODO
+                Fragment fragment = new BaseFragment();
+                replaceFragment(fragment, false);
                 return true;
             default:
                 Log.e(TAG, "Unrecognized item onOptionsItemSelected");
@@ -117,10 +125,25 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    /**
+     * Appbar initialization removed from onCreate to avoid clutter
+     */
     private void initializeAppBar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.colorAccent));
         setSupportActionBar(toolbar);
+    }
+
+    /**
+     * Loading base fragment into Activity. Removed logic from onCreate
+     * to avoid clutter
+     */
+    private void initializeFragment(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        BaseFragment fragment = new BaseFragment();
+        fragmentTransaction.add(mContainerId, fragment);
+        fragmentTransaction.commit();
     }
 
     /**
@@ -449,6 +472,21 @@ public class MainActivity extends AppCompatActivity implements
     private void showSnack(final int textID, final int actionID, View.OnClickListener listener) {
         Snackbar.make(findViewById(android.R.id.content), getString(textID),
                 Snackbar.LENGTH_INDEFINITE).setAction(getString(actionID), listener).show();
+    }
+
+    /**
+     *
+     * @param fragment fragment to be swapped in
+     * @param addToBackStack true if you want to add to the backStack
+     */
+    public void replaceFragment(Fragment fragment, boolean addToBackStack){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(mContainerId, fragment, fragment.toString());
+        if(addToBackStack) {
+            fragmentTransaction.addToBackStack(fragment.toString());
+        }
+        fragmentTransaction.commit();
     }
 
     /**
