@@ -3,13 +3,29 @@
 
     <!-- MAIN ACTIVITY STRINGS -->
     <string name="action_refresh">Refresh</string>
-    <string name="main_text_HoT">Hungry or Thirsty?</string>
-    <string name="main_text_price">Price:</string>
-    <string name="main_text_distance">Distance:</string>
-    <string name="main_button_price_1">$</string>
-    <string name="main_button_price_2">$$</string>
-    <string name="main_button_price_3">$$$</string>
-    <string name="main_button_price_4">$$$$</string>
+
+    <!-- BaseFragment STRINGS -->
+    <string name="base_text_HoT">Hungry or Thirsty?</string>
+    <string name="base_text_price">Price:</string>
+    <string name="base_text_distance">Distance:</string>
+    <string name="base_button_price_1" translatable="false">$</string>
+    <string name="base_button_price_2" translatable="false">$$</string>
+    <string name="base_button_price_3" translatable="false">$$$</string>
+    <string name="base_button_price_4" translatable="false">$$$$</string>
+
+    <!-- FoodSelectionFragment STRINGS -->
+    <string name="foodselection_american">American</string>
+    <string name="foodselection_latino">Latino</string>
+    <string name="foodselection_asian">Asian</string>
+    <string name="foodselection_italian">Italian</string>
+    <string name="foodselection_indian">Indian</string>
+    <string name="foodselection_middleeast">Middle Eastern</string>
+    <string name="foodselection_french">French</string>
+
+    <string name="foodselection_coffeetea">Coffee and Tea</string>
+    <string name="foodselection_milktea">Milk Tea</string>
+    <string name="foodselection_alcohol">Alcohol</string>
+    <string name="foodselection_smoothie">Smoothie</string>
 
     <!-- LOCATION STRINGS -->
     <string name="no_location">Unable to detect user location. Please enable location services

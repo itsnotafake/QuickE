@@ -30,7 +30,7 @@
 
             android:paddingRight="@dimen/base_TV_padding_end"
             android:paddingStart="@dimen/base_TV_padding_left"
-            android:text="@string/main_text_HoT"
+            android:text="@string/base_text_HoT"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
             android:textColor="@color/main_text"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +76,7 @@
             android:paddingLeft="@dimen/base_TV_padding_left"
             android:paddingRight="@dimen/base_TV_padding_end"
             android:paddingStart="@dimen/base_TV_padding_left"
-            android:text="@string/main_text_price"
+            android:text="@string/base_text_price"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
             android:textColor="@color/main_text"
             app:layout_constraintLeft_toRightOf="parent"
@@ -90,7 +90,7 @@
             android:layout_marginTop="@dimen/base_button_price_margin_ver"
             android:background="@drawable/button_price_left_ripple"
 
-            android:text="@string/main_button_price_1"
+            android:text="@string/base_button_price_1"
             android:theme="@style/PriceButton"
             app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -106,7 +106,7 @@
             android:layout_marginTop="@dimen/base_button_price_margin_ver"
             android:background="@drawable/button_bg_ripple"
 
-            android:text="@string/main_button_price_2"
+            android:text="@string/base_button_price_2"
             android:theme="@style/PriceButton"
             app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
             app:layout_constraintLeft_toRightOf="@+id/main_button_price_1"
@@ -121,7 +121,7 @@
             android:layout_marginTop="@dimen/base_button_price_margin_ver"
             android:background="@drawable/button_bg_ripple"
 
-            android:text="@string/main_button_price_3"
+            android:text="@string/base_button_price_3"
             android:theme="@style/PriceButton"
             app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
             app:layout_constraintLeft_toRightOf="@+id/main_button_price_2"
@@ -136,7 +136,7 @@
             android:layout_marginTop="@dimen/base_button_price_margin_ver"
             android:background="@drawable/button_price_right_ripple"
 
-            android:text="@string/main_button_price_4"
+            android:text="@string/base_button_price_4"
             android:theme="@style/PriceButton"
             app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
             app:layout_constraintLeft_toRightOf="@+id/main_button_price_3"
@@ -158,7 +158,7 @@
             android:paddingLeft="@dimen/base_TV_padding_left"
             android:paddingRight="@dimen/base_TV_padding_end"
             android:paddingStart="@dimen/base_TV_padding_left"
-            android:text="@string/main_text_distance"
+            android:text="@string/base_text_distance"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
             android:textColor="@color/main_text"
             app:layout_constraintLeft_toRightOf="parent"
