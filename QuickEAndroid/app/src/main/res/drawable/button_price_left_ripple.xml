@@ -7,8 +7,8 @@
         <shape android:shape="rectangle">
             <solid android:color="@color/BLACK" />
             <corners
-                android:bottomLeftRadius="@dimen/main_button_price_radius"
-                android:topLeftRadius="@dimen/main_button_price_radius"/>
+                android:bottomLeftRadius="@dimen/base_button_price_radius"
+                android:topLeftRadius="@dimen/base_button_price_radius"/>
         </shape>
     </item>
     <item android:drawable="@drawable/button_price_left"/>

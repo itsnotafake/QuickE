@@ -1,185 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context="nippledefensecommittee.quicke.framework.MainActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/ramenshop">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/main_TV_food"
+    <ImageView
+        android:id="@+id/base_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main_text_HoT"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:background="@color/colorPrimaryDark85Opac"
-        android:textColor="@color/main_text"
-        android:elevation="@dimen/main_TV_elevation"
+        android:layout_height="match_parent"
+        android:src="@drawable/ramenshop"
+        android:scaleType="centerCrop"
+        android:contentDescription="@null"/>
 
-        android:padding="@dimen/main_TV_padding"
-        android:paddingRight="@dimen/main_TV_padding_end"
-        android:paddingEnd="@dimen/main_TV_padding_end"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintVertical_bias="@dimen/main_base_bias_ver"
-        android:paddingLeft="@dimen/main_base_padding_left"
-        android:paddingStart="@dimen/main_base_padding_left"/>
-
-    <android.support.v7.widget.AppCompatImageButton
-        android:id="@+id/main_button_eat"
-        android:layout_width="@dimen/main_button_choice_length"
-        android:layout_height="@dimen/main_button_choice_length"
-        android:elevation="@dimen/main_button_elevation"
-        android:theme="@style/MainButton"
-
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/main_button_drink"
-        app:layout_constraintTop_toBottomOf="@+id/main_TV_food"
-        android:layout_marginTop="@dimen/main_button_choice_margin_ver"/>
-
-    <android.support.v7.widget.AppCompatImageButton
-        android:id="@+id/main_button_drink"
-        android:layout_width="@dimen/main_button_choice_length"
-        android:layout_height="@dimen/main_button_choice_length"
-        android:elevation="@dimen/main_button_elevation"
-        android:theme="@style/MainButton"
-
-        app:layout_constraintLeft_toRightOf="@+id/main_button_eat"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_TV_food"
-        android:layout_marginTop="@dimen/main_button_choice_margin_ver"/>
-
-    <TextView
-        android:id="@+id/main_TV_price"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main_text_price"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:textColor="@color/main_text"
-        android:background="@color/colorPrimaryDark85Opac"
-        android:elevation="@dimen/main_TV_elevation"
+        android:layout_height="match_parent">
 
-        android:padding="@dimen/main_TV_padding"
-        android:paddingRight="@dimen/main_TV_padding_end"
-        android:paddingEnd="@dimen/main_TV_padding_end"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_button_drink"
-        android:paddingLeft="@dimen/main_base_padding_left"
-        android:paddingStart="@dimen/main_base_padding_left"
-        android:layout_marginTop="@dimen/main_base_margin_ver"
-        android:layout_marginBottom="@dimen/main_base_margin_ver"/>
+        <TextView
+            android:id="@+id/base_TV_food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark85Opac"
+            android:elevation="@dimen/base_TV_elevation"
+            android:padding="@dimen/base_TV_padding"
+            android:paddingEnd="@dimen/base_TV_padding_end"
+            android:paddingLeft="@dimen/base_TV_padding_left"
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/main_button_price_1"
-        android:layout_width="@dimen/main_button_price_width"
-        android:layout_height="@dimen/main_button_price_height"
-        android:text="@string/main_button_price_1"
-        android:background="@drawable/button_price_left_ripple"
-        android:theme="@style/PriceButton"
+            android:paddingRight="@dimen/base_TV_padding_end"
+            android:paddingStart="@dimen/base_TV_padding_left"
+            android:text="@string/main_text_HoT"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            android:textColor="@color/main_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="@dimen/base_bias_ver" />
 
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/main_button_price_2"
-        app:layout_constraintTop_toTopOf="@+id/main_TV_price"
-        app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
-        android:layout_marginTop="@dimen/main_button_price_margin_ver"
-        android:layout_marginBottom="@dimen/main_button_price_margin_ver"/>
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/main_button_eat"
+            android:layout_width="@dimen/base_button_choice_length"
+            android:layout_height="@dimen/base_button_choice_length"
+            android:layout_marginTop="@dimen/base_button_choice_margin_ver"
+            android:elevation="@dimen/base_button_elevation"
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/main_button_price_2"
-        android:layout_width="@dimen/main_button_price_width"
-        android:layout_height="@dimen/main_button_price_height"
-        android:text="@string/main_button_price_2"
-        android:background="@drawable/button_bg_ripple"
-        android:theme="@style/PriceButton"
+            android:theme="@style/MainButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/main_button_drink"
+            app:layout_constraintTop_toBottomOf="@+id/base_TV_food" />
 
-        app:layout_constraintLeft_toRightOf="@+id/main_button_price_1"
-        app:layout_constraintRight_toLeftOf="@+id/main_button_price_3"
-        app:layout_constraintTop_toTopOf="@+id/main_TV_price"
-        app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
-        android:layout_marginTop="@dimen/main_button_price_margin_ver"
-        android:layout_marginBottom="@dimen/main_button_price_margin_ver"/>
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/main_button_drink"
+            android:layout_width="@dimen/base_button_choice_length"
+            android:layout_height="@dimen/base_button_choice_length"
+            android:layout_marginTop="@dimen/base_button_choice_margin_ver"
+            android:elevation="@dimen/base_button_elevation"
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/main_button_price_3"
-        android:layout_width="@dimen/main_button_price_width"
-        android:layout_height="@dimen/main_button_price_height"
-        android:text="@string/main_button_price_3"
-        android:background="@drawable/button_bg_ripple"
-        android:theme="@style/PriceButton"
+            android:theme="@style/MainButton"
+            app:layout_constraintLeft_toRightOf="@+id/main_button_eat"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/base_TV_food" />
 
-        app:layout_constraintLeft_toRightOf="@+id/main_button_price_2"
-        app:layout_constraintRight_toLeftOf="@+id/main_button_price_4"
-        app:layout_constraintTop_toTopOf="@+id/main_TV_price"
-        app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
-        android:layout_marginTop="@dimen/main_button_price_margin_ver"
-        android:layout_marginBottom="@dimen/main_button_price_margin_ver"/>
+        <TextView
+            android:id="@+id/main_TV_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/base_margin_ver"
+            android:layout_marginTop="@dimen/base_margin_ver"
+            android:background="@color/colorPrimaryDark85Opac"
+            android:elevation="@dimen/base_TV_elevation"
+            android:padding="@dimen/base_TV_padding"
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/main_button_price_4"
-        android:layout_width="@dimen/main_button_price_width"
-        android:layout_height="@dimen/main_button_price_height"
-        android:text="@string/main_button_price_4"
-        android:background="@drawable/button_price_right_ripple"
-        android:theme="@style/PriceButton"
+            android:paddingEnd="@dimen/base_TV_padding_end"
+            android:paddingLeft="@dimen/base_TV_padding_left"
+            android:paddingRight="@dimen/base_TV_padding_end"
+            android:paddingStart="@dimen/base_TV_padding_left"
+            android:text="@string/main_text_price"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            android:textColor="@color/main_text"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_button_drink" />
 
-        app:layout_constraintLeft_toRightOf="@+id/main_button_price_3"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/main_TV_price"
-        app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
-        android:layout_marginTop="@dimen/main_button_price_margin_ver"
-        android:layout_marginBottom="@dimen/main_button_price_margin_ver"/>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/main_button_price_1"
+            android:layout_width="@dimen/base_button_price_width"
+            android:layout_height="@dimen/base_button_price_height"
+            android:layout_marginBottom="@dimen/base_button_price_margin_ver"
+            android:layout_marginTop="@dimen/base_button_price_margin_ver"
+            android:background="@drawable/button_price_left_ripple"
+
+            android:text="@string/main_button_price_1"
+            android:theme="@style/PriceButton"
+            app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/main_button_price_2"
+            app:layout_constraintTop_toTopOf="@+id/main_TV_price" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/main_button_price_2"
+            android:layout_width="@dimen/base_button_price_width"
+            android:layout_height="@dimen/base_button_price_height"
+            android:layout_marginBottom="@dimen/base_button_price_margin_ver"
+            android:layout_marginTop="@dimen/base_button_price_margin_ver"
+            android:background="@drawable/button_bg_ripple"
+
+            android:text="@string/main_button_price_2"
+            android:theme="@style/PriceButton"
+            app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
+            app:layout_constraintLeft_toRightOf="@+id/main_button_price_1"
+            app:layout_constraintRight_toLeftOf="@+id/main_button_price_3"
+            app:layout_constraintTop_toTopOf="@+id/main_TV_price" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/main_button_price_3"
+            android:layout_width="@dimen/base_button_price_width"
+            android:layout_height="@dimen/base_button_price_height"
+            android:layout_marginBottom="@dimen/base_button_price_margin_ver"
+            android:layout_marginTop="@dimen/base_button_price_margin_ver"
+            android:background="@drawable/button_bg_ripple"
+
+            android:text="@string/main_button_price_3"
+            android:theme="@style/PriceButton"
+            app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
+            app:layout_constraintLeft_toRightOf="@+id/main_button_price_2"
+            app:layout_constraintRight_toLeftOf="@+id/main_button_price_4"
+            app:layout_constraintTop_toTopOf="@+id/main_TV_price" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/main_button_price_4"
+            android:layout_width="@dimen/base_button_price_width"
+            android:layout_height="@dimen/base_button_price_height"
+            android:layout_marginBottom="@dimen/base_button_price_margin_ver"
+            android:layout_marginTop="@dimen/base_button_price_margin_ver"
+            android:background="@drawable/button_price_right_ripple"
+
+            android:text="@string/main_button_price_4"
+            android:theme="@style/PriceButton"
+            app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
+            app:layout_constraintLeft_toRightOf="@+id/main_button_price_3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/main_TV_price" />
 
 
-    <TextView
-        android:id="@+id/main_TV_distance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main_text_distance"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:textColor="@color/main_text"
-        android:background="@color/colorPrimaryDark85Opac"
-        android:elevation="@dimen/main_TV_elevation"
+        <TextView
+            android:id="@+id/main_TV_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/base_margin_ver"
+            android:layout_marginTop="@dimen/base_margin_ver"
+            android:background="@color/colorPrimaryDark85Opac"
+            android:elevation="@dimen/base_TV_elevation"
+            android:padding="@dimen/base_TV_padding"
 
-        android:padding="@dimen/main_TV_padding"
-        android:paddingRight="@dimen/main_TV_padding_end"
-        android:paddingEnd="@dimen/main_TV_padding_end"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_button_price_1"
-        android:paddingLeft="@dimen/main_base_padding_left"
-        android:paddingStart="@dimen/main_base_padding_left"
-        android:layout_marginTop="@dimen/main_base_margin_ver"
-        android:layout_marginBottom="@dimen/main_base_margin_ver"/>
+            android:paddingEnd="@dimen/base_TV_padding_end"
+            android:paddingLeft="@dimen/base_TV_padding_left"
+            android:paddingRight="@dimen/base_TV_padding_end"
+            android:paddingStart="@dimen/base_TV_padding_left"
+            android:text="@string/main_text_distance"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            android:textColor="@color/main_text"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_button_price_1" />
 
-    <android.support.v7.widget.AppCompatSeekBar
-        android:id="@+id/main_seekbar_distance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:thumb="@drawable/seek_distance_thumb"
-        android:progressDrawable="@drawable/seek_distance_prog"
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/main_seekbar_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/base_progress_margin_hor"
+            android:layout_marginLeft="@dimen/base_progress_margin_hor"
 
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_TV_distance"
-        android:layout_marginLeft="@dimen/main_progress_margin_hor"
-        android:layout_marginStart="@dimen/main_progress_margin_hor"
-        android:layout_marginRight="@dimen/main_progress_margin_hor"
-        android:layout_marginEnd="@dimen/main_progress_margin_hor"
-        android:layout_marginTop="@dimen/main_progress_margin_ver"/>
+            android:layout_marginRight="@dimen/base_progress_margin_hor"
+            android:layout_marginStart="@dimen/base_progress_margin_hor"
+            android:layout_marginTop="@dimen/base_progress_margin_ver"
+            android:progressDrawable="@drawable/seek_distance_prog"
+            android:thumb="@drawable/seek_distance_thumb"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_TV_distance" />
 
-    <android.support.v7.widget.AppCompatImageButton
-        android:id="@+id/main_button_go"
-        android:layout_width="@dimen/main_button_go_width"
-        android:layout_height="@dimen/main_button_go_height"
-        android:src="@drawable/ic_gow"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:elevation="@dimen/main_button_elevation"
-        android:theme="@style/MainButton"
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/main_button_go"
+            android:layout_width="@dimen/base_button_go_width"
+            android:layout_height="@dimen/base_button_go_height"
+            android:layout_margin="@dimen/base_button_go_margin"
+            android:adjustViewBounds="true"
+            android:elevation="@dimen/base_button_elevation"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_gow"
 
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
-        android:layout_margin="@dimen/main_button_go_margin"/>
-</android.support.constraint.ConstraintLayout>
+            android:theme="@style/MainButton"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>
