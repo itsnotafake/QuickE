@@ -602,6 +602,42 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     /**
+     * Static class representing the different foods and drinks we will be presented with on the
+     * FoodSelection fragment screen.
+     */
+    static class MealSelection{
+        private static int[] foodSelection;
+        private static int[] beverageSelection;
+
+        static{
+            foodSelection = new int[]{
+                    R.string.foodselection_american,
+                    R.string.foodselection_latino,
+                    R.string.foodselection_asian,
+                    R.string.foodselection_italian,
+                    R.string.foodselection_indian,
+                    R.string.foodselection_middleeast,
+                    R.string.foodselection_french
+            };
+
+            beverageSelection = new int[]{
+                    R.string.foodselection_coffeetea,
+                    R.string.foodselection_milktea,
+                    R.string.foodselection_alcohol,
+                    R.string.foodselection_smoothie
+            };
+        }
+
+        int[] getFoodSelection(){
+            return foodSelection;
+        }
+
+        int[] getBeverageSelection(){
+            return beverageSelection;
+        }
+    }
+
+    /**
      * Class representing user's location
      */
     public static class UserLocation {
