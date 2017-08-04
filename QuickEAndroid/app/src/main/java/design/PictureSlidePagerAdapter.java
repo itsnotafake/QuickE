@@ -1,4 +1,4 @@
-package nippledefensecommittee.quicke.framework;
+package design;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import nippledefensecommittee.quicke.R;
+import nippledefensecommittee.quicke.framework.PictureSlideFragment;
 
 /**
  * Created by ETD on 8/1/2017.

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import design.PictureSlidePagerAdapter;
 import nippledefensecommittee.quicke.R;
 
 /**
