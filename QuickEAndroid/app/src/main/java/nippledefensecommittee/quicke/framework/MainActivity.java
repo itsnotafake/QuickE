@@ -62,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements
     private static final String TAG = MainActivity.class.getName();
     private static final String TAG2 = "WTF";
 
+    //key for our out/in statebundle that determines which fragment we show in onCreate().
+    private static final String FRAGCHECK = "basefragcheck";
+
     private int mContainerId;
 
     private static final int LOCATION_CODE = 123;
@@ -94,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements
         mContainerId = R.id.fragment_container;
 
         initializeAppBar();
-        initializeFragment();
+        initializeFragment(savedInstanceState);
 
         locationClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
         mRequestingLocation = false;
@@ -140,11 +143,24 @@ public class MainActivity extends AppCompatActivity implements
     /**
      * Loading base fragment into Activity. Removed logic from onCreate
      * to avoid clutter
+     * @param savedInstanceState used to determine which fragment to instantiate. If the screen
+     * was rotated when displaying FoodSelectFragment, then we want to display FoodSelectFragment
      */
-    private void initializeFragment(){
+    private void initializeFragment(Bundle savedInstanceState){
+        boolean isFoodSelectFragment;
+        try{
+            isFoodSelectFragment = savedInstanceState.getBoolean(FRAGCHECK);
+        }catch(NullPointerException e){
+            isFoodSelectFragment = false;
+        }
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        BaseFragment fragment = new BaseFragment();
+        Fragment fragment;
+        if(!isFoodSelectFragment){
+            fragment = new BaseFragment();
+        }else{
+            fragment = new FoodSelectFragment();
+        }
         fragmentTransaction.add(mContainerId, fragment);
         fragmentTransaction.commit();
     }
@@ -180,6 +196,18 @@ public class MainActivity extends AppCompatActivity implements
         if(baseFragment != null && baseFragment.isVisible()){
             finish();
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+
+        boolean isFoodSelectFragment = false;
+        Fragment foodSelectFragment = getSupportFragmentManager().findFragmentByTag("FoodSelectFragment");
+        if(foodSelectFragment != null && foodSelectFragment.isVisible()){
+            isFoodSelectFragment = true;
+        }
+        outState.putBoolean(FRAGCHECK, isFoodSelectFragment);
     }
 
     @Override
