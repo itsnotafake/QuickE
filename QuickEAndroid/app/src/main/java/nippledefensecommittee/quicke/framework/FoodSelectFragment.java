@@ -25,4 +25,9 @@ public class FoodSelectFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_foodselect, container, false);
     }
+
+    @Override
+    public String toString(){
+        return "FoodSelectFragment";
+    }
 }

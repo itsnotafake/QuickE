@@ -173,6 +173,16 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+
+        Fragment baseFragment = getSupportFragmentManager().findFragmentByTag("BaseFragment");
+        if(baseFragment != null && baseFragment.isVisible()){
+            finish();
+        }
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
 
@@ -486,9 +496,7 @@ public class MainActivity extends AppCompatActivity implements
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(mContainerId, fragment, fragment.toString());
-        if(addToBackStack) {
-            fragmentTransaction.addToBackStack(fragment.toString());
-        }
+        fragmentTransaction.addToBackStack(fragment.toString());
         fragmentTransaction.commit();
     }
 

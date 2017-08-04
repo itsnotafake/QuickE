@@ -34,6 +34,11 @@ public class BaseFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public String toString(){
+        return "BaseFragment";
+    }
+
     /**
      * Method designed to move code out of onCreateView. Simply assigns to the necessary buttons
      * the correct onButtonClick methods
