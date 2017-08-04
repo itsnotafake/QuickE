@@ -5,7 +5,7 @@
         android:width="0.05dp"
         android:color="@color/colorAccent" />
     <corners
-        android:bottomRightRadius="@dimen/main_button_price_radius"
-        android:topRightRadius="@dimen/main_button_price_radius"/>
+        android:bottomRightRadius="@dimen/base_button_price_radius"
+        android:topRightRadius="@dimen/base_button_price_radius"/>
     <solid android:color="@color/colorPrimaryDark" />
 </shape>

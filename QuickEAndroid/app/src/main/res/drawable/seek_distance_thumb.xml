@@ -3,8 +3,8 @@
     android:shape="oval">
 
     <size
-        android:width="@dimen/main_progress_thumb_length"
-        android:height="@dimen/main_progress_thumb_length" />
+        android:width="@dimen/base_progress_thumb_length"
+        android:height="@dimen/base_progress_thumb_length" />
     <gradient
         android:type="radial"
         android:gradientRadius="60%"
