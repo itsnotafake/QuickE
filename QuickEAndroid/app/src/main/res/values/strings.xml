@@ -12,20 +12,22 @@
     <string name="base_button_price_2" translatable="false">$$</string>
     <string name="base_button_price_3" translatable="false">$$$</string>
     <string name="base_button_price_4" translatable="false">$$$$</string>
+    <string name="select_QuickEUsage">You need to select an eat or drink option</string>
+    <string name="select_PriceRange">You need to select a pricing option</string>
 
     <!-- FoodSelectionFragment STRINGS -->
-    <string name="foodselection_american">American</string>
-    <string name="foodselection_latino">Latino</string>
-    <string name="foodselection_asian">Asian</string>
-    <string name="foodselection_italian">Italian</string>
-    <string name="foodselection_indian">Indian</string>
-    <string name="foodselection_middleeast">Middle Eastern</string>
-    <string name="foodselection_french">French</string>
+    <string name="mealselection_american">American</string>
+    <string name="mealselection_latino">Latino</string>
+    <string name="mealselection_asian">Asian</string>
+    <string name="mealselection_italian">Italian</string>
+    <string name="mealselection_indian">Indian</string>
+    <string name="mealselection_middleeast">Middle Eastern</string>
+    <string name="mealselection_french">French</string>
 
-    <string name="foodselection_coffeetea">Coffee and Tea</string>
-    <string name="foodselection_milktea">Milk Tea</string>
-    <string name="foodselection_alcohol">Alcohol</string>
-    <string name="foodselection_smoothie">Smoothie</string>
+    <string name="mealselection_coffeetea">Coffee and Tea</string>
+    <string name="mealselection_milktea">Milk Tea</string>
+    <string name="mealselection_alcohol">Alcohol</string>
+    <string name="mealselection_smoothie">Smoothie</string>
 
     <!-- LOCATION STRINGS -->
     <string name="no_location">Unable to detect user location. Please enable location services

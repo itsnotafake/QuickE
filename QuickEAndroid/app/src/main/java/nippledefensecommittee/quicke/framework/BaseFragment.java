@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import nippledefensecommittee.quicke.R;
 
@@ -48,17 +49,23 @@ public class BaseFragment extends Fragment {
     private void initializeButtons(View view) {
         final AppCompatImageButton button_eat = (AppCompatImageButton)
                 view.findViewById(R.id.main_button_eat);
+        button_eat.setActivated(MainActivity.QuickEUsage.getQuickEUsageAt(0));
         final AppCompatImageButton button_drink = (AppCompatImageButton)
                 view.findViewById(R.id.main_button_drink);
+        button_drink.setActivated(MainActivity.QuickEUsage.getQuickEUsageAt(1));
 
         final AppCompatButton button_price1 = (AppCompatButton)
                 view.findViewById(R.id.main_button_price_1);
+        button_price1.setActivated(MainActivity.PriceRange.getPriceIndicationAt(0));
         final AppCompatButton button_price2 = (AppCompatButton)
                 view.findViewById(R.id.main_button_price_2);
+        button_price2.setActivated(MainActivity.PriceRange.getPriceIndicationAt(1));
         final AppCompatButton button_price3 = (AppCompatButton)
                 view.findViewById(R.id.main_button_price_3);
+        button_price3.setActivated(MainActivity.PriceRange.getPriceIndicationAt(2));
         final AppCompatButton button_price4 = (AppCompatButton)
                 view.findViewById(R.id.main_button_price_4);
+        button_price4.setActivated(MainActivity.PriceRange.getPriceIndicationAt(3));
 
         final AppCompatImageButton button_go = (AppCompatImageButton)
                 view.findViewById(R.id.main_button_go);
@@ -130,9 +137,19 @@ public class BaseFragment extends Fragment {
         button_go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new FoodSelectFragment();
-                FragmentChangeListener fcl = (FragmentChangeListener) getActivity();
-                fcl.replaceFragment(fragment, true);
+                if(!MainActivity.QuickEUsage.hasSelection()) {
+                    Toast.makeText(getContext(), getResources()
+                            .getText(R.string.select_QuickEUsage), Toast.LENGTH_LONG)
+                            .show();
+                }else if(!MainActivity.PriceRange.hasSelection()){
+                    Toast.makeText(getContext(), getResources()
+                            .getText(R.string.select_PriceRange), Toast.LENGTH_LONG)
+                            .show();
+                }else{
+                    Fragment fragment = new FoodSelectFragment();
+                    FragmentChangeListener fcl = (FragmentChangeListener) getActivity();
+                    fcl.replaceFragment(fragment, true);
+                }
             }
         });
     }

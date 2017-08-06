@@ -550,6 +550,10 @@ public class MainActivity extends AppCompatActivity implements
         static boolean getQuickEUsageAt(int position){
             return quickEUsage[position];
         }
+
+        static boolean hasSelection(){
+            return quickEUsage[0] || quickEUsage[1];
+        }
     }
 
     /**
@@ -579,6 +583,11 @@ public class MainActivity extends AppCompatActivity implements
          * @return a copy of Price Range
          */
         static boolean getPriceIndicationAt(int position){return priceRange[position];}
+
+        static boolean hasSelection(){
+            return getPriceIndicationAt(0) || getPriceIndicationAt(1) || getPriceIndicationAt(2) ||
+                    getPriceIndicationAt(3);
+        }
     }
 
     /**
@@ -605,34 +614,34 @@ public class MainActivity extends AppCompatActivity implements
      * Static class representing the different foods and drinks we will be presented with on the
      * FoodSelection fragment screen.
      */
-    static class MealSelection{
+    public static class MealSelection{
         private static int[] foodSelection;
         private static int[] beverageSelection;
 
         static{
             foodSelection = new int[]{
-                    R.string.foodselection_american,
-                    R.string.foodselection_latino,
-                    R.string.foodselection_asian,
-                    R.string.foodselection_italian,
-                    R.string.foodselection_indian,
-                    R.string.foodselection_middleeast,
-                    R.string.foodselection_french
+                    R.string.mealselection_american,
+                    R.string.mealselection_latino,
+                    R.string.mealselection_asian,
+                    R.string.mealselection_italian,
+                    R.string.mealselection_indian,
+                    R.string.mealselection_middleeast,
+                    R.string.mealselection_french
             };
 
             beverageSelection = new int[]{
-                    R.string.foodselection_coffeetea,
-                    R.string.foodselection_milktea,
-                    R.string.foodselection_alcohol,
-                    R.string.foodselection_smoothie
+                    R.string.mealselection_coffeetea,
+                    R.string.mealselection_milktea,
+                    R.string.mealselection_alcohol,
+                    R.string.mealselection_smoothie
             };
         }
 
-        int[] getFoodSelection(){
+        public static int[] getFoodSelection(){
             return foodSelection;
         }
 
-        int[] getBeverageSelection(){
+        public static int[] getBeverageSelection(){
             return beverageSelection;
         }
     }

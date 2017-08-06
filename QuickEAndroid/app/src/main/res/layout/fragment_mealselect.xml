@@ -15,7 +15,7 @@
         android:src="@drawable/bar" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/foodselect_recycler"
+        android:id="@+id/mealselect_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </FrameLayout>
