@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import nippledefensecommittee.quicke.R;
@@ -43,9 +44,8 @@ public class MealSelectAdapter extends
 
     @Override
     public MealSelectAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
-        int layout_id = R.layout.mealselect_listitem;
-        View view = LayoutInflater.from(mContext).inflate(layout_id, viewGroup, false);
-        view.setFocusable(true);
+        LinearLayout view = (LinearLayout) LayoutInflater.from(mContext)
+                .inflate(R.layout.mealselect_listitem, viewGroup, false);
         return new MealSelectAdapterViewHolder(view, viewType);
     }
 
