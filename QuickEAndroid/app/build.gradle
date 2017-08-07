@@ -27,10 +27,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    //Dagger2 dependencies
-    compile 'com.google.dagger:dagger:2.9'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
-    provided 'javax.annotation:jsr250-api:1.0'
+    //Picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
 
     //Location dependencies
     compile 'com.google.android.gms:play-services-location:11.0.2'

@@ -44,6 +44,7 @@
             android:layout_height="@dimen/base_button_choice_length"
             android:layout_marginTop="@dimen/base_button_choice_margin_ver"
             android:elevation="@dimen/base_button_elevation"
+            android:scaleType="centerInside"
 
             android:theme="@style/MainButton"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -56,6 +57,7 @@
             android:layout_height="@dimen/base_button_choice_length"
             android:layout_marginTop="@dimen/base_button_choice_margin_ver"
             android:elevation="@dimen/base_button_elevation"
+            android:scaleType="centerInside"
 
             android:theme="@style/MainButton"
             app:layout_constraintLeft_toRightOf="@+id/main_button_eat"

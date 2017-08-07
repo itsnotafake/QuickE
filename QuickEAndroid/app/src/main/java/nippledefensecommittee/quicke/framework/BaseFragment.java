@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import nippledefensecommittee.quicke.R;
 
 /**
@@ -83,6 +85,9 @@ public class BaseFragment extends Fragment {
         button_price2.setTextColor(cswText);
         button_price3.setTextColor(cswText);
         button_price4.setTextColor(cswText);
+
+        Picasso.with(getContext()).load(R.drawable.eat).into(button_eat);
+        Picasso.with(getContext()).load(R.drawable.drink).into(button_drink);
 
         button_eat.setOnClickListener(new View.OnClickListener() {
             @Override
