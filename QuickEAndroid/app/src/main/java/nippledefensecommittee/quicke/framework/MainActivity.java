@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements
         mRequestingLocation = false;
         mLastUpdateTime = "";
 
-        createGoogleApiClient();
+        //createGoogleApiClient();
         createLocationRequest();
         createLocationSettingsRequest();
     }
@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.action_test_rec:
                 Intent intent = new Intent(MainActivity.this, RecommendationActivity.class);
                 startActivity(intent);
+                return true;
             default:
                 Log.e(TAG, "Unrecognized item onOptionsItemSelected");
                 return super.onOptionsItemSelected(item);
@@ -181,10 +182,33 @@ public class MainActivity extends AppCompatActivity implements
     public void onResume() {
         super.onResume();
 
+        locationStartup();
+        /*
         if (mGoogleApiClient.isConnected()) {
             checkLocationSettings();
         } else {
             locationStartup();
+        } */
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        locationStartup();
+        /*
+        if (mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        } */
+    }
+
+    // TODO: DECIDE WHETHER OR NOT TO USE GOOGLE API CLIENT
+    private void locationStartup() {
+        if (!checkUserPermission()) {
+            requestUserPermission();
+        } else {
+            checkLocationSettings2();
+            //mGoogleApiClient.connect();
         }
     }
 
@@ -210,15 +234,6 @@ public class MainActivity extends AppCompatActivity implements
         outState.putBoolean(FRAGCHECK, isFoodSelectFragment);
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        if (mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.disconnect();
-        }
-    }
-
     private void updateUserLocation() {
         double longitude = mLocation.getLongitude();
         double latitude = mLocation.getLatitude();
@@ -226,16 +241,6 @@ public class MainActivity extends AppCompatActivity implements
         userLoc.setUserLocation(longitude, latitude);
         userLoc.setUserLocationStrings(mLocation.convert(longitude, Location.FORMAT_DEGREES), mLocation.convert(latitude, Location.FORMAT_DEGREES));
         userLoc.setGrantedPermission(true);
-    }
-
-    // TODO: DECIDE WHETHER OR NOT TO USE GOOGLE API CLIENT
-    private void locationStartup() {
-        if (!checkUserPermission()) {
-            requestUserPermission();
-        } else {
-            checkLocationSettings2();
-            //mGoogleApiClient.connect();
-        }
     }
 
     protected synchronized void createGoogleApiClient() {
@@ -359,21 +364,6 @@ public class MainActivity extends AppCompatActivity implements
                 }
             }
         });
-
-        /*
-        locationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location){
-                if (location != null) {
-                    mLocation = location;
-                    updateUserLocation();
-                } else {
-                    Log.d(TAG2, "Unable to detect location.");
-                    showSnack(getString(R.string.no_location));
-                }
-
-            }
-        }); */
     }
 
     /**
@@ -393,12 +383,6 @@ public class MainActivity extends AppCompatActivity implements
                     Log.i(TAG, "User interaction was cancelled.");
                 } else if (results[0] == PackageManager.PERMISSION_GRANTED) {
                     Log.i(TAG, "Permission Granted!");
-
-                    /*if (mGoogleApiClient.isConnected() == false) {
-                        mGoogleApiClient.connect();
-                    } else {
-                        checkLocationSettings();
-                    }*/
                     checkLocationSettings2();
                 } else {
                     Log.i(TAG, "Permission Denied!");
@@ -456,8 +440,10 @@ public class MainActivity extends AppCompatActivity implements
                     case Activity.RESULT_CANCELED:
                         Log.i(TAG, "User did not make required changes.");
                         showSnack("Unable to access location services. Closing application.");
-                        android.os.Process.killProcess(android.os.Process.myPid());
-                        System.exit(0);
+
+                        // TODO
+                        //android.os.Process.killProcess(android.os.Process.myPid());
+                        //System.exit(0);
                         break;
                 }
                 break;
