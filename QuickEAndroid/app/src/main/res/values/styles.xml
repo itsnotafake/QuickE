@@ -9,12 +9,12 @@
     </style>
 
     <!-- MainActivity styles -->
-    <style name="MainButton" parent="ThemeOverlay.AppCompat.Dark">
+    <style name="StandardImageButton" parent="ThemeOverlay.AppCompat.Dark">
         <item name="colorButtonNormal">@color/colorPrimaryDark85Opac</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
     </style>
 
-    <style name="PriceButton" parent="ThemeOverlay.AppCompat.Dark">
+    <style name="StandardButton" parent="ThemeOverlay.AppCompat.Dark">
         <item name="colorControlHighlight">@color/colorPrimary</item>
     </style>
 </resources>

@@ -46,7 +46,7 @@
             android:elevation="@dimen/base_button_elevation"
             android:scaleType="centerInside"
 
-            android:theme="@style/MainButton"
+            android:theme="@style/StandardImageButton"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/main_button_drink"
             app:layout_constraintTop_toBottomOf="@+id/base_TV_food" />
@@ -58,8 +58,8 @@
             android:layout_marginTop="@dimen/base_button_choice_margin_ver"
             android:elevation="@dimen/base_button_elevation"
             android:scaleType="centerInside"
+            android:theme="@style/StandardImageButton"
 
-            android:theme="@style/MainButton"
             app:layout_constraintLeft_toRightOf="@+id/main_button_eat"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/base_TV_food" />
@@ -91,9 +91,9 @@
             android:layout_marginBottom="@dimen/base_button_price_margin_ver"
             android:layout_marginTop="@dimen/base_button_price_margin_ver"
             android:background="@drawable/button_price_left_ripple"
-
             android:text="@string/base_button_price_1"
-            android:theme="@style/PriceButton"
+            android:theme="@style/StandardButton"
+
             app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -107,9 +107,9 @@
             android:layout_marginBottom="@dimen/base_button_price_margin_ver"
             android:layout_marginTop="@dimen/base_button_price_margin_ver"
             android:background="@drawable/button_bg_ripple"
-
             android:text="@string/base_button_price_2"
-            android:theme="@style/PriceButton"
+            android:theme="@style/StandardButton"
+
             app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
             app:layout_constraintLeft_toRightOf="@+id/main_button_price_1"
             app:layout_constraintRight_toLeftOf="@+id/main_button_price_3"
@@ -122,9 +122,9 @@
             android:layout_marginBottom="@dimen/base_button_price_margin_ver"
             android:layout_marginTop="@dimen/base_button_price_margin_ver"
             android:background="@drawable/button_bg_ripple"
-
             android:text="@string/base_button_price_3"
-            android:theme="@style/PriceButton"
+            android:theme="@style/StandardButton"
+
             app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
             app:layout_constraintLeft_toRightOf="@+id/main_button_price_2"
             app:layout_constraintRight_toLeftOf="@+id/main_button_price_4"
@@ -137,9 +137,9 @@
             android:layout_marginBottom="@dimen/base_button_price_margin_ver"
             android:layout_marginTop="@dimen/base_button_price_margin_ver"
             android:background="@drawable/button_price_right_ripple"
-
             android:text="@string/base_button_price_4"
-            android:theme="@style/PriceButton"
+            android:theme="@style/StandardButton"
+
             app:layout_constraintBottom_toBottomOf="@+id/main_TV_distance"
             app:layout_constraintLeft_toRightOf="@+id/main_button_price_3"
             app:layout_constraintRight_toRightOf="parent"
@@ -191,8 +191,8 @@
             android:elevation="@dimen/base_button_elevation"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_gow"
+            android:theme="@style/StandardImageButton"
 
-            android:theme="@style/MainButton"
             app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintRight_toLeftOf="parent" />
     </android.support.constraint.ConstraintLayout>

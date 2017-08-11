@@ -1,16 +1,17 @@
 package design;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import nippledefensecommittee.quicke.R;
 import nippledefensecommittee.quicke.framework.MainActivity;
+import utility.ColorState;
 
 /**
  * Created by Devin on 8/4/2017.
@@ -38,13 +39,11 @@ public class MealSelectAdapter extends
 
         mFoodSelection = MainActivity.MealSelection.getFoodSelection();
         mBeverageSelection = MainActivity.MealSelection.getBeverageSelection();
-
-        Log.e(TAG, "mealSwitch: " + mealSwitch);
     }
 
     @Override
     public MealSelectAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
-        LinearLayout view = (LinearLayout) LayoutInflater.from(mContext)
+        AppCompatCheckBox view = (AppCompatCheckBox) LayoutInflater.from(mContext)
                 .inflate(R.layout.mealselect_listitem, viewGroup, false);
         return new MealSelectAdapterViewHolder(view, viewType);
     }
@@ -52,6 +51,13 @@ public class MealSelectAdapter extends
     @Override
     public void onBindViewHolder(final MealSelectAdapterViewHolder viewHolder, final int position){
         viewHolder.setMeal(getMealAt(position));
+        viewHolder.mMeal_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatCheckBox checkbox = (AppCompatCheckBox) v;
+                Toast.makeText(mContext, checkbox.getText().toString(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private String getMealAt(int position){
@@ -100,15 +106,18 @@ public class MealSelectAdapter extends
     }
 
     class MealSelectAdapterViewHolder extends RecyclerView.ViewHolder{
-        private TextView mMeal_TV;
+        private AppCompatCheckBox mMeal_button;
 
         MealSelectAdapterViewHolder(View view, int viewType){
             super(view);
-            mMeal_TV = (TextView) view.findViewById(R.id.meal_type);
+            mMeal_button = (AppCompatCheckBox) view.findViewById(R.id.meal_type);
+
+            ColorStateList cswText = ColorState.getButtonColorStateListText(mContext);
+            mMeal_button.setTextColor(cswText);
         }
 
         void setMeal(String meal){
-            mMeal_TV.setText(meal);
+            mMeal_button.setText(meal);
         }
     }
 }

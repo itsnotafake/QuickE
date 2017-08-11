@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+<android.support.v7.widget.AppCompatCheckBox xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/meal_type"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal|center_vertical"
+    android:theme="@style/StandardButton"
+    android:background="@drawable/button_bg_ripple"
 
-    <TextView
-        android:id="@+id/meal_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/WHITE"/>
-
-</LinearLayout>
+    android:layout_marginTop="@dimen/mealselect_listitem_margin_ver"
+    android:layout_marginLeft="@dimen/mealselect_listitem_margin_hor"
+    android:layout_marginStart="@dimen/mealselect_listitem_margin_hor"
+    android:layout_marginRight="@dimen/mealselect_listitem_margin_hor"
+    android:layout_marginEnd="@dimen/mealselect_listitem_margin_hor"
+    android:paddingTop="@dimen/mealselect_listitem_padding_ver"
+    android:paddingBottom="@dimen/mealselect_listitem_padding_ver"/>

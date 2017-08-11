@@ -7,15 +7,62 @@
     tools:context="nippledefensecommittee.quicke.framework.MainActivity">
 
     <ImageView
-        android:id="@+id/foodselect_bg"
+        android:id="@+id/mealselect_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/bar" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/mealselect_recycler"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mealselect_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/mealselect_recycler_margin_ver"
+            android:layout_marginLeft="@dimen/mealselect_recycler_margin_hor"
+            android:layout_marginStart="@dimen/mealselect_recycler_margin_hor"
+            android:layout_marginRight="@dimen/mealselect_recycler_margin_hor"
+            android:layout_marginEnd="@dimen/mealselect_recycler_margin_hor"/>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/mealselect_selectall"
+            android:layout_height="@dimen/mealselect_button_height"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal|center_vertical"
+            android:theme="@style/StandardButton"
+            android:background="@drawable/button_bg_ripple"
+            android:text="@string/mealselection_selectall"
+
+            app:layout_constraintTop_toBottomOf="@+id/mealselect_recycler"
+            app:layout_constraintLeft_toRightOf="parent"
+            android:layout_marginTop="@dimen/mealselect_selectall_margin_ver"
+            android:layout_marginLeft="@dimen/mealselect_selectall_margin_hor"
+            android:layout_marginStart="@dimen/mealselect_selectall_margin_hor"
+            android:paddingRight="@dimen/mealselect_selectall_padding_hor"
+            android:paddingEnd="@dimen/mealselect_selectall_padding_hor"/>
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/mealselect_button_go"
+            android:layout_width="@dimen/mealselect_button_width"
+            android:layout_height="@dimen/mealselect_button_height"
+            android:adjustViewBounds="true"
+            android:elevation="@dimen/base_button_elevation"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_gow"
+            android:theme="@style/StandardImageButton"
+
+            android:layout_margin="@dimen/base_button_go_margin"
+            app:layout_constraintTop_toTopOf="@+id/mealselect_recycler"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintVertical_bias="@dimen/mealselect_go_bias_ver" />
+    </android.support.constraint.ConstraintLayout>
 </FrameLayout>

@@ -16,6 +16,8 @@
     <string name="select_PriceRange">You need to select a pricing option</string>
 
     <!-- FoodSelectionFragment STRINGS -->
+    <string name="mealselection_title">Choose Your Cuisine</string>
+
     <string name="mealselection_american">American</string>
     <string name="mealselection_latino">Latino</string>
     <string name="mealselection_asian">Asian</string>
@@ -28,6 +30,12 @@
     <string name="mealselection_milktea">Milk Tea</string>
     <string name="mealselection_alcohol">Alcohol</string>
     <string name="mealselection_smoothie">Smoothie</string>
+
+    <string name="mealselection_selectall">Select All</string>
+    <string name="mealselection_deselectall">Deselect All</string>
+
+    <string name="mealselect_food">Food</string>
+    <string name="mealselect_beverage">Drinks</string>
 
     <!-- LOCATION STRINGS -->
     <string name="no_location">Unable to detect user location. Please enable location services

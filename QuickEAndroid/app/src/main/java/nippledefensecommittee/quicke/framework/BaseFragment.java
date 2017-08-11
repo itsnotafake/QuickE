@@ -1,11 +1,14 @@
 package nippledefensecommittee.quicke.framework;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import nippledefensecommittee.quicke.R;
+import utility.ColorState;
 
 /**
  * Created by Devin on 7/26/2017.
@@ -22,10 +26,17 @@ import nippledefensecommittee.quicke.R;
 
 public class BaseFragment extends Fragment {
     private static final String TAG = BaseFragment.class.getName();
+    private ActionBar mMainActionBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onAttach(Activity activity){
+        super.onAttach(activity);
+        mMainActionBar = ((MainActivity)activity).getSupportActionBar();
     }
 
     @Override
@@ -35,6 +46,16 @@ public class BaseFragment extends Fragment {
         initializeButtons(view);
         //initializeSeekBar(view);
         return view;
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        try {
+            mMainActionBar.setTitle(R.string.app_name);
+        }catch(NullPointerException e){
+            Log.e(TAG, "NullPointerException, title not changed");
+        }
     }
 
     @Override
@@ -72,7 +93,7 @@ public class BaseFragment extends Fragment {
         final AppCompatImageButton button_go = (AppCompatImageButton)
                 view.findViewById(R.id.main_button_go);
 
-        ColorStateList cswBG = getButtonColorStateListBG(getContext());
+        ColorStateList cswBG = ColorState.getButtonColorStateListBG(getContext());
         button_eat.setSupportBackgroundTintList(cswBG);
         button_drink.setSupportBackgroundTintList(cswBG);
         button_price1.setSupportBackgroundTintList(cswBG);
@@ -80,7 +101,7 @@ public class BaseFragment extends Fragment {
         button_price3.setSupportBackgroundTintList(cswBG);
         button_price4.setSupportBackgroundTintList(cswBG);
 
-        ColorStateList cswText = getButtonColorStateListText(getContext());
+        ColorStateList cswText = ColorState.getButtonColorStateListText(getContext());
         button_price1.setTextColor(cswText);
         button_price2.setTextColor(cswText);
         button_price3.setTextColor(cswText);
@@ -157,24 +178,6 @@ public class BaseFragment extends Fragment {
                 }
             }
         });
-    }
-
-    private static ColorStateList getButtonColorStateListBG(Context context) {
-        int primaryDark = context.getResources().getColor(R.color.colorPrimaryDark85Opac);
-        int accent = context.getResources().getColor(R.color.colorAccent);
-
-        return new ColorStateList(
-                new int[][]{{android.R.attr.state_activated}, {-android.R.attr.state_activated}},
-                new int[]{accent, primaryDark});
-    }
-
-    private static ColorStateList getButtonColorStateListText(Context context) {
-        int primaryDark = context.getResources().getColor(R.color.colorPrimaryDark);
-        int accent = context.getResources().getColor(R.color.colorAccent);
-
-        return new ColorStateList(
-                new int[][]{{android.R.attr.state_activated}, {-android.R.attr.state_activated}},
-                new int[]{primaryDark, accent});
     }
 
     private void initializeSeekBar(View view) {
