@@ -48,7 +48,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import nippledefensecommittee.quicke.BuildConfig;
 import nippledefensecommittee.quicke.R;
@@ -606,6 +608,8 @@ public class MainActivity extends AppCompatActivity implements
         private static int[] foodSelection;
         private static int[] beverageSelection;
 
+        private static HashMap<String, String> selected;
+
         static{
             foodSelection = new int[]{
                     R.string.mealselection_american,
@@ -623,6 +627,8 @@ public class MainActivity extends AppCompatActivity implements
                     R.string.mealselection_alcohol,
                     R.string.mealselection_smoothie
             };
+
+            selected = new HashMap<>();
         }
 
         public static int[] getFoodSelection(){
@@ -631,6 +637,24 @@ public class MainActivity extends AppCompatActivity implements
 
         public static int[] getBeverageSelection(){
             return beverageSelection;
+        }
+
+        public static void addSelected(String meal){
+            if(!selected.containsKey(meal)) {
+                selected.put(meal, meal);
+            }
+        }
+
+        public static void removeSelected(String meal){
+            try{
+                selected.remove(meal);
+            }catch(NullPointerException e){
+                Log.e(TAG, meal + " does not exist in Hashmap 'selected'");
+            }
+        }
+
+        public static void clear(){
+            selected.clear();
         }
     }
 

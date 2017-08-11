@@ -55,7 +55,11 @@ public class MealSelectAdapter extends
             @Override
             public void onClick(View v) {
                 AppCompatCheckBox checkbox = (AppCompatCheckBox) v;
-                Toast.makeText(mContext, checkbox.getText().toString(), Toast.LENGTH_LONG).show();
+                if(checkbox.isChecked()) {
+                    MainActivity.MealSelection.addSelected(checkbox.getText().toString());
+                }else if(!checkbox.isChecked()){
+                    MainActivity.MealSelection.removeSelected(checkbox.getText().toString());
+                }
             }
         });
     }
@@ -105,7 +109,7 @@ public class MealSelectAdapter extends
         return VIEW_TYPE_NORMAL;
     }
 
-    class MealSelectAdapterViewHolder extends RecyclerView.ViewHolder{
+    public class MealSelectAdapterViewHolder extends RecyclerView.ViewHolder{
         private AppCompatCheckBox mMeal_button;
 
         MealSelectAdapterViewHolder(View view, int viewType){
@@ -118,6 +122,19 @@ public class MealSelectAdapter extends
 
         void setMeal(String meal){
             mMeal_button.setText(meal);
+        }
+
+        public String getMeal(){
+            return mMeal_button.getText().toString();
+        }
+
+        public void setChecked(boolean setChecked){
+            mMeal_button.setChecked(setChecked);
+            if(setChecked){
+                MainActivity.MealSelection.addSelected(getMeal());
+            }else{
+                MainActivity.MealSelection.removeSelected(getMeal());
+            }
         }
     }
 }

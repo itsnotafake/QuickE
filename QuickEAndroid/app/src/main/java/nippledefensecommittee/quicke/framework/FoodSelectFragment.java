@@ -62,6 +62,20 @@ public class FoodSelectFragment extends Fragment {
     }
 
     @Override
+    public void onStop(){
+        super.onStop();
+        MainActivity.MealSelection.clear();
+        setCheckboxes(false);
+        try {
+            AppCompatCheckBox selectAll =
+                    (AppCompatCheckBox) getView().findViewById(R.id.mealselect_selectall);
+            selectAll.setChecked(false);
+        }catch(NullPointerException e){
+            Log.e(TAG, "Did not find view 'mealselect_selectall, '" + e);
+        }
+    }
+
+    @Override
     public String toString(){
         return "FoodSelectFragment";
     }
@@ -79,14 +93,66 @@ public class FoodSelectFragment extends Fragment {
     }
 
     private void initializeButtons(View view){
-        AppCompatCheckBox selectAll =
+        final AppCompatCheckBox selectAll =
                 (AppCompatCheckBox) view.findViewById(R.id.mealselect_selectall);
+        final RecyclerView recycler = (RecyclerView) view.findViewById(R.id.mealselect_recycler);
+        final MealSelectAdapter adapter = (MealSelectAdapter) recycler.getAdapter();
+
         AppCompatImageButton goButton =
                 (AppCompatImageButton) view.findViewById(R.id.mealselect_button_go);
 
         //First set the checkbox's text color
         ColorStateList cswText = ColorState.getButtonColorStateListText(getContext());
         selectAll.setTextColor(cswText);
+
+        //Allow selectAll checkbox to update text onChecked() vs !onChecked()
+        //and difference in checked state affect all other checkboxes
+        selectAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //int adapterSize = adapter.getItemCount();
+                //boolean setChecked;
+                //MealSelectAdapter.MealSelectAdapterViewHolder viewHolder;
+                if(selectAll.isChecked()){
+                    //setChecked = true;
+                    //selectAll.setText(getString(R.string.mealselection_deselectall));
+                    setCheckboxes(true);
+                }else if(!selectAll.isChecked()){
+                    //setChecked = false;
+                    //selectAll.setText(getString(R.string.mealselection_selectall));
+                    setCheckboxes(false);
+                }else{
+                    //setChecked = false;
+                    throw new NullPointerException(
+                            "FoodSelectFragment.initializeButtons().selectAll problems"
+                    );
+                }
+
+                /*for(int i  = 0; i < adapterSize; i++){
+                    viewHolder = (MealSelectAdapter.MealSelectAdapterViewHolder)
+                            recycler.findViewHolderForAdapterPosition(i);
+                    viewHolder.setChecked(setChecked);
+                }*/
+            }
+        });
+
+    }
+
+    private void setCheckboxes(boolean setChecked){
+        try {
+            RecyclerView recycler = (RecyclerView) getView().findViewById(R.id.mealselect_recycler);
+            MealSelectAdapter adapter = (MealSelectAdapter) recycler.getAdapter();
+            int adapterSize = adapter.getItemCount();
+            MealSelectAdapter.MealSelectAdapterViewHolder viewHolder;
+
+            for(int i  = 0; i < adapterSize; i++){
+                viewHolder = (MealSelectAdapter.MealSelectAdapterViewHolder)
+                        recycler.findViewHolderForAdapterPosition(i);
+                viewHolder.setChecked(setChecked);
+            }
+        }catch(NullPointerException e){
+            Log.e(TAG, "FoodSelectFragment.setCheckboxes() cannot find view");
+        }
     }
 
     private int getMealSwitch(){
