@@ -14,6 +14,8 @@
     <string name="base_button_price_4" translatable="false">$$$$</string>
     <string name="select_QuickEUsage">You need to select an eat or drink option</string>
     <string name="select_PriceRange">You need to select a pricing option</string>
+    <string name="base_seekbar_range_default">1 Mile</string>
+    <string name="base_seekbar_range_plural">Miles</string>
 
     <!-- FoodSelectionFragment STRINGS -->
     <string name="mealselection_title">Choose Your Cuisine</string>

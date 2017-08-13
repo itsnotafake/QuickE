@@ -8,11 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
+import android.support.v7.widget.AppCompatSeekBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -44,7 +47,7 @@ public class BaseFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_base, container, false);
         initializeButtons(view);
-        //initializeSeekBar(view);
+        initializeSeekBar(view);
         return view;
     }
 
@@ -181,6 +184,33 @@ public class BaseFragment extends Fragment {
     }
 
     private void initializeSeekBar(View view) {
-        SeekBar seekBar = (SeekBar) view.findViewById(R.id.main_seekbar_distance);
+        AppCompatSeekBar seekBar = (AppCompatSeekBar) view.findViewById(R.id.main_seekbar_distance);
+        final TextView seekBarTV = (TextView) view.findViewById(R.id.main_seekbar_indicator);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                String seekBarTV_text;
+                if(progress < 1){
+                    seekBarTV_text = getString(R.string.base_seekbar_range_default);
+                    seekBarTV.setText(seekBarTV_text);
+                }else{
+                    seekBarTV_text = (progress+1) + " " +
+                            getString(R.string.base_seekbar_range_plural);
+                    seekBarTV.setText(seekBarTV_text);
+                }
+                MainActivity.AreaRadius.setRadius(progress+1);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 }

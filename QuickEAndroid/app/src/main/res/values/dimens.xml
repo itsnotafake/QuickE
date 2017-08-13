@@ -7,12 +7,15 @@
     <item name="base_button_price_height" type="dimen">45dp</item>
     <item name="base_button_price_width" type="dimen">75dp</item>
     <item name="base_progress_thumb_length" type="dimen">30dp</item>
+    <item name="base_seekbar_TV_width" type="dimen">84dp</item>
     <item name="mealselect_button_width" type="dimen">100dp</item>
     <item name="mealselect_button_height" type="dimen">50dp</item>
 
     <item name="base_TV_padding" type="dimen">2dp</item>
     <item name="base_TV_padding_end" type="dimen">16dp</item>
     <item name="base_TV_padding_left" type="dimen">16dp</item>
+    <item name="base_seekbar_TV_padding_hor" type="dimen">8dp</item>
+    <item name="base_seekbar_TV_padding_ver" type="dimen">4dp</item>
     <item name="mealselect_listitem_padding_ver" type="dimen">8dp</item>
     <item name="mealselect_selectall_padding_hor" type="dimen">16dp</item>
 
@@ -25,6 +28,7 @@
     <item name="base_button_choice_margin_ver" type="dimen">4dp</item>
     <item name="base_button_price_margin_ver" type="dimen">8dp</item>
     <item name="base_button_go_margin" type="dimen">16dp</item>
+    <item name="base_seekbar_TV_margin_hor" type="dimen">20dp</item>
     <item name="base_progress_margin_ver" type="dimen">38dp</item>
     <item name="base_progress_margin_hor" type="dimen">12dp</item>
     <item name="mealselect_title_margin_ver" type="dimen">24dp</item>
@@ -36,6 +40,7 @@
     <item name="mealselect_selectall_margin_hor" type="dimen">20dp</item>
 
     <item name="base_button_price_radius" type="dimen">15dp</item>
+    <item name="base_seekbar_max" type="dimen">9</item>
 
     <item name="base_TV_elevation" type="dimen">4dp</item>
     <item name="base_button_elevation" type="dimen">4dp</item>

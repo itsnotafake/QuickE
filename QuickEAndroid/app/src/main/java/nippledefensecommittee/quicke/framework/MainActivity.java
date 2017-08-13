@@ -591,11 +591,11 @@ public class MainActivity extends AppCompatActivity implements
             areaRadius = 5;
         }
 
-        void setRadius(int radius){
-            areaRadius = 5;
+        static void setRadius(int radius){
+            areaRadius = radius;
         }
 
-        public int getRadius(){
+        static int getRadius(){
             return areaRadius;
         }
     }

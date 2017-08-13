@@ -30,6 +30,9 @@ dependencies {
     //Picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
 
+    //Anothem/android-range-seek-bar
+    compile 'org.florescu.android.rangeseekbar:rangeseekbar-library:0.3.0'
+
     //Location dependencies
     compile 'com.google.android.gms:play-services-location:11.0.2'
     compile 'com.android.support:design:25.3.1'
