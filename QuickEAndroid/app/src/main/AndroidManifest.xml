@@ -2,9 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="nippledefensecommittee.quicke">
 
-    <!-- User Location permission and feature -->
+    <!-- Permissions and features -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-feature android:name="android.hardware.location.gps" />
 
     <application
@@ -14,14 +15,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".framework.MainActivity">
+
+        <activity
+            android:name=".framework.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".framework.RecommendationActivity"></activity>
-        <activity android:name=".framework.PictureSlideFragmentActivity"></activity>
+
+        <activity
+            android:name=".framework.RecommendationActivity"/>
+
+        <activity android:name=".framework.PictureSlideFragmentActivity"/>
+
+        <service
+            android:name="sync.AuthIntentService"
+            android:exported="false"/>
     </application>
 
 </manifest>

@@ -49,4 +49,7 @@
     <string name="settings">Settings</string>
     <string name="updateGPS">Please update Google Play Services from the Play Store and restart
         QuickE.</string>
+
+    <!-- AUTH INTENT SERVICE STRINGS -->
+    <string name="auth_URI" translatable="false">https://api.yelp.com/oauth2/token</string>
 </resources>

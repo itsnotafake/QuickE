@@ -2,6 +2,7 @@ package nippledefensecommittee.quicke.framework;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -54,6 +55,7 @@ import java.util.HashMap;
 
 import nippledefensecommittee.quicke.BuildConfig;
 import nippledefensecommittee.quicke.R;
+import sync.AuthIntentService;
 
 public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
@@ -64,10 +66,10 @@ public class MainActivity extends AppCompatActivity implements
 
     private static final String TAG = MainActivity.class.getName();
     private static final String TAG2 = "WTF";
-
     //key for our out/in statebundle that determines which fragment we show in onCreate().
     private static final String FRAGCHECK = "basefragcheck";
 
+    private Context mContext;
     private int mContainerId;
 
     private static final int LOCATION_CODE = 123;
@@ -97,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mContext = this;
         mContainerId = R.id.fragment_container;
 
         initializeAppBar();
