@@ -50,6 +50,7 @@ import com.google.android.gms.tasks.Task;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -554,7 +555,7 @@ public class MainActivity extends AppCompatActivity implements
      * The radius is set in miles, but is converted to meters (as required by Yelp) when
      * fetched
      */
-    static class PriceRange{
+    public static class PriceRange{
         static boolean[] priceRange;
 
         //this block runs only once, when PriceRange is called for the first time
@@ -583,12 +584,30 @@ public class MainActivity extends AppCompatActivity implements
             return getPriceIndicationAt(0) || getPriceIndicationAt(1) || getPriceIndicationAt(2) ||
                     getPriceIndicationAt(3);
         }
+
+        public static String getPriceRangeString(){
+            StringBuilder price = new StringBuilder();
+            int counter = 1;
+            for(boolean b : priceRange){
+                if((price.length() == 0) && b){
+                    price.append(counter);
+                    counter++;
+                }else if(b){
+                    price.append(",");
+                    price.append(counter);
+                    counter++;
+                }else{
+                    counter++;
+                }
+            }
+            return price.toString();
+        }
     }
 
     /**
      * Class that represents the search radius selected
      */
-    static class AreaRadius{
+    public static class AreaRadius{
         private static int areaRadius;
         private static final int MILES_TO_METERS = 1600;
 
@@ -607,7 +626,7 @@ public class MainActivity extends AppCompatActivity implements
          * 40,000 meters which Yelp says corresponds to 25 miles, so we are doing 1 mile is equal
          * to 1600 meters
          */
-        static int getRadius(){
+        public static int getRadius(){
             return areaRadius * MILES_TO_METERS;
         }
     }
@@ -665,8 +684,16 @@ public class MainActivity extends AppCompatActivity implements
             }
         }
 
-        public static void clear(){
+        static boolean selectedIsEmpty(){
+            return selected.isEmpty();
+        }
+
+        static void clear(){
             selected.clear();
+        }
+
+        public static Collection<String> getSelectedCollection(){
+            return selected.values();
         }
     }
 
@@ -714,11 +741,11 @@ public class MainActivity extends AppCompatActivity implements
             Log.d(TAG, "New Location at LONG: " + longStr + " LAT: " + latStr);
         }
 
-        public double getLongitude() {
+        public static double getLongitude() {
             return longitude;
         }
 
-        public double getLatitude() {
+        public static double getLatitude() {
             return latitude;
         }
 

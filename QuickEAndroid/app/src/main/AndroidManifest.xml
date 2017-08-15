@@ -32,6 +32,10 @@
         <service
             android:name="sync.AuthIntentService"
             android:exported="false"/>
+
+        <service
+            android:name="sync.YelpSearchIntentService"
+            android:exported="false"/>
     </application>
 
 </manifest>

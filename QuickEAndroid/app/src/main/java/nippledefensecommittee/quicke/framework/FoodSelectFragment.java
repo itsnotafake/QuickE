@@ -2,6 +2,7 @@ package nippledefensecommittee.quicke.framework;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,9 +15,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import design.MealSelectAdapter;
 import nippledefensecommittee.quicke.R;
+import sync.YelpSearchIntentService;
 import utility.ColorState;
 
 /**
@@ -95,8 +98,6 @@ public class FoodSelectFragment extends Fragment {
     private void initializeButtons(View view){
         final AppCompatCheckBox selectAll =
                 (AppCompatCheckBox) view.findViewById(R.id.mealselect_selectall);
-        final RecyclerView recycler = (RecyclerView) view.findViewById(R.id.mealselect_recycler);
-        final MealSelectAdapter adapter = (MealSelectAdapter) recycler.getAdapter();
 
         AppCompatImageButton goButton =
                 (AppCompatImageButton) view.findViewById(R.id.mealselect_button_go);
@@ -110,29 +111,29 @@ public class FoodSelectFragment extends Fragment {
         selectAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //int adapterSize = adapter.getItemCount();
-                //boolean setChecked;
-                //MealSelectAdapter.MealSelectAdapterViewHolder viewHolder;
                 if(selectAll.isChecked()){
-                    //setChecked = true;
-                    //selectAll.setText(getString(R.string.mealselection_deselectall));
                     setCheckboxes(true);
                 }else if(!selectAll.isChecked()){
-                    //setChecked = false;
-                    //selectAll.setText(getString(R.string.mealselection_selectall));
                     setCheckboxes(false);
                 }else{
-                    //setChecked = false;
                     throw new NullPointerException(
                             "FoodSelectFragment.initializeButtons().selectAll problems"
                     );
                 }
+            }
+        });
 
-                /*for(int i  = 0; i < adapterSize; i++){
-                    viewHolder = (MealSelectAdapter.MealSelectAdapterViewHolder)
-                            recycler.findViewHolderForAdapterPosition(i);
-                    viewHolder.setChecked(setChecked);
-                }*/
+        goButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(runCheck()){
+                    Intent yelpSync = new Intent(getContext(), YelpSearchIntentService.class);
+                    yelpSync.putExtra(YelpSearchIntentService.OFFSET_MULTIPLIER, 0);
+                    getContext().startService(yelpSync);
+                }else{
+                    Toast.makeText(getContext(), "You must have a cuisine selected to continue",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -169,6 +170,11 @@ public class FoodSelectFragment extends Fragment {
             throw new IllegalArgumentException("No Food or Drink selected in QuickEUsage");
         }
         return mealSwitch;
+    }
+
+    private boolean runCheck(){
+        //if selectedisEmpty is true we want to return false to indicate the runCheck failed
+        return !MainActivity.MealSelection.selectedIsEmpty();
     }
 
     private class CustomGridLayoutManager extends GridLayoutManager {
