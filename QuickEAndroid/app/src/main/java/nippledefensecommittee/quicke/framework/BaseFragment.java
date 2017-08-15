@@ -191,15 +191,18 @@ public class BaseFragment extends Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 String seekBarTV_text;
+                int realProgress;
                 if(progress < 1){
                     seekBarTV_text = getString(R.string.base_seekbar_range_default);
                     seekBarTV.setText(seekBarTV_text);
+                    realProgress = 1;
                 }else{
-                    seekBarTV_text = (progress+1) + " " +
+                    realProgress = progress*5;
+                    seekBarTV_text = (realProgress) + " " +
                             getString(R.string.base_seekbar_range_plural);
                     seekBarTV.setText(seekBarTV_text);
                 }
-                MainActivity.AreaRadius.setRadius(progress+1);
+                MainActivity.AreaRadius.setRadius(realProgress);
             }
 
             @Override

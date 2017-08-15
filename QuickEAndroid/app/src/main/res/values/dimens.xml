@@ -40,7 +40,7 @@
     <item name="mealselect_selectall_margin_hor" type="dimen">20dp</item>
 
     <item name="base_button_price_radius" type="dimen">15dp</item>
-    <item name="base_seekbar_max" type="dimen">9</item>
+    <item name="base_seekbar_max" type="dimen">5</item>
 
     <item name="base_TV_elevation" type="dimen">4dp</item>
     <item name="base_button_elevation" type="dimen">4dp</item>

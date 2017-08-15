@@ -551,6 +551,8 @@ public class MainActivity extends AppCompatActivity implements
 
     /**
      * class that represents which price options have been selected
+     * The radius is set in miles, but is converted to meters (as required by Yelp) when
+     * fetched
      */
     static class PriceRange{
         static boolean[] priceRange;
@@ -588,6 +590,7 @@ public class MainActivity extends AppCompatActivity implements
      */
     static class AreaRadius{
         private static int areaRadius;
+        private static final int MILES_TO_METERS = 1600;
 
         //I'm assuming here that the default radius will be 5 miles;
         static{
@@ -598,8 +601,14 @@ public class MainActivity extends AppCompatActivity implements
             areaRadius = radius;
         }
 
+        /**
+         *
+         * @return our radius in meters. There are 1609.34 meters ina mile but the max value is
+         * 40,000 meters which Yelp says corresponds to 25 miles, so we are doing 1 mile is equal
+         * to 1600 meters
+         */
         static int getRadius(){
-            return areaRadius;
+            return areaRadius * MILES_TO_METERS;
         }
     }
 

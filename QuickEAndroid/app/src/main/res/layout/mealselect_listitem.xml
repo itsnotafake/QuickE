@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:gravity="center_horizontal|center_vertical"
     android:theme="@style/StandardButton"
-    android:background="@drawable/button_bg_ripple"
+    android:background="@drawable/mealselect_listitem_ripple"
 
     android:layout_marginTop="@dimen/mealselect_listitem_margin_ver"
     android:layout_marginLeft="@dimen/mealselect_listitem_margin_hor"
