@@ -641,25 +641,158 @@ public class MainActivity extends AppCompatActivity implements
 
         private static HashMap<String, String> selected;
 
+        private static int[] selectionAmerican;
+        private static int[] selectionLatino;
+        private static int[] selectionAsian;
+        private static int[] selectionIndian;
+        private static int[] selectionMiddleEastern;
+        private static int[] selectionEuropean;
+        private static int[] selectionAfrican;
+
+        private static int[] selectionCoffeeAndTea;
+        private static int[] selectionMilkTea;
+        private static int[] selectionAlcohol;
+        private static int[] selectionSmoothie;
+        private static int[] selectionMilkshake;
+
         static{
             foodSelection = new int[]{
                     R.string.mealselection_american,
                     R.string.mealselection_latino,
                     R.string.mealselection_asian,
-                    R.string.mealselection_italian,
                     R.string.mealselection_indian,
                     R.string.mealselection_middleeast,
-                    R.string.mealselection_french
+                    R.string.mealselection_european,
+                    R.string.mealselection_african
             };
 
             beverageSelection = new int[]{
                     R.string.mealselection_coffeetea,
                     R.string.mealselection_milktea,
                     R.string.mealselection_alcohol,
-                    R.string.mealselection_smoothie
+                    R.string.mealselection_smoothie,
             };
 
             selected = new HashMap<>();
+
+            selectionAmerican = new int[]{
+                    R.string.american_newamerican,
+                    R.string.american_tradamerican,
+                    R.string.american_bbq,
+                    R.string.american_burgers,
+                    R.string.american_cajun,
+                    R.string.american_diners,
+                    R.string.american_hotdog,
+                    R.string.american_sandwiches,
+                    R.string.american_soulfood,
+                    R.string.american_southern,
+                    R.string.american_steak
+            };
+
+            selectionLatino = new int[]{
+                    R.string.latino_argentine,
+                    R.string.latino_brazilian,
+                    R.string.latino_cuban,
+                    R.string.latino_honduran,
+                    R.string.latino_latin,
+                    R.string.latino_mexican,
+                    R.string.latino_nicaraguan,
+                    R.string.latino_peruvian
+            };
+
+            selectionAsian = new int[]{
+                    R.string.asian_asianfusion,
+                    R.string.asian_burmese,
+                    R.string.asian_cambodian,
+                    R.string.asian_chinese,
+                    R.string.asian_dumplings,
+                    R.string.asian_filipino,
+                    R.string.asian_hotpot,
+                    R.string.asian_hkcafe,
+                    R.string.asian_indonesian,
+                    R.string.asian_japanese,
+                    R.string.asian_korean,
+                    R.string.asian_malaysian,
+                    R.string.asian_mongolian,
+                    R.string.asian_noodles,
+                    R.string.asian_singaporean,
+                    R.string.asian_srilankan,
+                    R.string.asian_sushi,
+                    R.string.asian_taiwanese,
+                    R.string.asian_thai,
+                    R.string.asian_vietnamese
+            };
+
+            selectionIndian = new int[]{
+                    R.string.indian_bangladeshi,
+                    R.string.indian_indpak,
+                    R.string.indian_pakistani
+            };
+
+            selectionMiddleEastern = new int[]{
+                    R.string.middleeastern_afghani,
+                    R.string.middleastern_arabian,
+                    R.string.middleeastern_halal,
+                    R.string.middleeastern_kebab,
+                    R.string.middleeastern_mideastern,
+                    R.string.middleeastern_persian,
+                    R.string.middleeastern_syrian
+            };
+
+            selectionEuropean = new int[]{
+                    R.string.european_austrian,
+                    R.string.european_baguettes,
+                    R.string.european_belgian,
+                    R.string.european_british,
+                    R.string.european_catalan,
+                    R.string.european_czech,
+                    R.string.european_fishnchips,
+                    R.string.european_french,
+                    R.string.european_german,
+                    R.string.european_greek,
+                    R.string.european_hungarian,
+                    R.string.european_iberian,
+                    R.string.european_irish,
+                    R.string.european_italian,
+                    R.string.european_mediterranean,
+                    R.string.european_modern_european,
+                    R.string.european_pizza,
+                    R.string.european_polish,
+                    R.string.european_portuguese,
+                    R.string.european_russian,
+                    R.string.european_scandinavian,
+                    R.string.european_scottish,
+                    R.string.european_slovakian,
+                    R.string.european_spanish,
+                    R.string.european_tapas,
+                    R.string.european_ukrainian,
+                    R.string.european_uzbek
+            };
+
+            selectionAfrican = new int[]{
+                    R.string.african_african,
+                    R.string.african_ethiopian
+            };
+
+            selectionCoffeeAndTea = new int[]{
+                    R.string.coffee_coffee,
+                    R.string.coffee_cafes,
+                    R.string.coffee_tea
+            };
+
+            selectionMilkTea = new int[]{
+                    R.string.milktea_bubbletea
+            };
+
+            selectionAlcohol = new int[]{
+                    R.string.alcohol_alcohol,
+                    R.string.alcohol_breweries,
+                    R.string.alcohol_wineries
+            };
+
+            selectionSmoothie = new int[]{
+                    R.string.smoothie_juicebars
+            };
         }
 
         public static int[] getFoodSelection(){
@@ -695,6 +828,7 @@ public class MainActivity extends AppCompatActivity implements
         public static Collection<String> getSelectedCollection(){
             return selected.values();
         }
+
     }
 
     /**

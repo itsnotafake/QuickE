@@ -31,6 +31,7 @@ public class YelpSearchIntentService extends IntentService {
         int totalOffset = OFFSET * intent.getIntExtra(OFFSET_MULTIPLIER, 0);
         String price = MainActivity.PriceRange.getPriceRangeString();
         final boolean isOpenNow = true;
+        printValues(latitude,longitude,radius,categories,totalOffset,price,isOpenNow);
     }
 
     /**

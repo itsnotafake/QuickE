@@ -23,10 +23,10 @@
     <string name="mealselection_american">American</string>
     <string name="mealselection_latino">Latino</string>
     <string name="mealselection_asian">Asian</string>
-    <string name="mealselection_italian">Italian</string>
+    <string name="mealselection_european">European</string>
     <string name="mealselection_indian">Indian</string>
     <string name="mealselection_middleeast">Middle Eastern</string>
-    <string name="mealselection_french">French</string>
+    <string name="mealselection_african">African</string>
 
     <string name="mealselection_coffeetea">Coffee and Tea</string>
     <string name="mealselection_milktea">Milk Tea</string>
@@ -38,6 +38,100 @@
 
     <string name="mealselect_food">Food</string>
     <string name="mealselect_beverage">Drinks</string>
+
+    <string name="american_newamerican">newamerican</string>
+    <string name="american_tradamerican">tradamerican</string>
+    <string name="american_bbq">bbq</string>
+    <string name="american_burgers">burgers</string>
+    <string name="american_cajun">cajun</string>
+    <string name="american_diners">diners</string>
+    <string name="american_hotdog">hotdog</string>
+    <string name="american_sandwiches">sandwiches</string>
+    <string name="american_soulfood">soulfood</string>
+    <string name="american_southern">southern</string>
+    <string name="american_steak">steak</string>
+
+    <string name="latino_argentine">argentine</string>
+    <string name="latino_brazilian">brazilian</string>
+    <string name="latino_cuban">cuban</string>
+    <string name="latino_honduran">honduran</string>
+    <string name="latino_latin">latin</string>
+    <string name="latino_mexican">mexican</string>
+    <string name="latino_nicaraguan">nicaraguan</string>
+    <string name="latino_peruvian">peruvian</string>
+
+    <string name="asian_asianfusion">asianfusion</string>
+    <string name="asian_burmese">burmese</string>
+    <string name="asian_cambodian">cambodian</string>
+    <string name="asian_chinese">chinese</string>
+    <string name="asian_dumplings">dumplings</string>
+    <string name="asian_filipino">filipino</string>
+    <string name="asian_hkcafe">hkcafe</string>
+    <string name="asian_hotpot">hotpot</string>
+    <string name="asian_indonesian">indonesian</string>
+    <string name="asian_japanese">japanese</string>
+    <string name="asian_korean">korean</string>
+    <string name="asian_malaysian">malaysian</string>
+    <string name="asian_mongolian">mongolian</string>
+    <string name="asian_noodles">noodles</string>
+    <string name="asian_singaporean">singaporean</string>
+    <string name="asian_srilankan">srilankan</string>
+    <string name="asian_sushi">sushi</string>
+    <string name="asian_taiwanese">taiwanese</string>
+    <string name="asian_thai">thai</string>
+    <string name="asian_vietnamese">vietnamese</string>
+
+    <string name="indian_bangladeshi">bangladeshi</string>
+    <string name="indian_indpak">indpak</string>
+    <string name="indian_pakistani">pakistani</string>
+
+    <string name="middleeastern_afghani">afghani</string>
+    <string name="middleastern_arabian">arabian</string>
+    <string name="middleeastern_halal">halal</string>
+    <string name="middleeastern_kebab">kebab</string>
+    <string name="middleeastern_mideastern">mideastern</string>
+    <string name="middleeastern_persian">persian</string>
+    <string name="middleeastern_syrian">syrian</string>
+
+    <string name="european_austrian">austrian</string>
+    <string name="european_baguettes">baguettes</string>
+    <string name="european_belgian">belgian</string>
+    <string name="european_british">british</string>
+    <string name="european_catalan">catalan</string>
+    <string name="european_czech">czech</string>
+    <string name="european_fishnchips">fishnchips</string>
+    <string name="european_french">french</string>
+    <string name="european_german">german</string>
+    <string name="european_greek">greek</string>
+    <string name="european_hungarian">hungarian</string>
+    <string name="european_iberian">iberian</string>
+    <string name="european_irish">irish</string>
+    <string name="european_italian">italian</string>
+    <string name="european_mediterranean">mediterranean</string>
+    <string name="european_modern_european">modern_european</string>
+    <string name="european_pizza">pizza</string>
+    <string name="european_polish">polish</string>
+    <string name="european_portuguese">portuguese</string>
+    <string name="european_russian">russian</string>
+    <string name="european_scandinavian">scandinavian</string>
+    <string name="european_scottish">scottish</string>
+    <string name="european_slovakian">slovakian</string>
+    <string name="european_spanish">spanish</string>
+    <string name="european_tapas">tapas</string>
+    <string name="european_ukrainian">ukrainian</string>
+    <string name="european_uzbek">uzbek</string>
+
+    <string name="african_african">african</string>
+    <string name="african_ethiopian">ethiopian</string>
+
+    <string name="coffee_coffee">coffee</string>
+    <string name="coffee_cafes">cafes</string>
+    <string name="coffee_tea">tea</string>
+    <string name="milktea_bubbletea">bubbletea</string>
+    <string name="alcohol_alcohol">beer_and_wine</string>
+    <string name="alcohol_breweries">breweries</string>
+    <string name="alcohol_wineries">wineries</string>
+    <string name="smoothie_juicebars">juicebars</string>
 
     <!-- LOCATION STRINGS -->
     <string name="no_location">Unable to detect user location. Please enable location services
