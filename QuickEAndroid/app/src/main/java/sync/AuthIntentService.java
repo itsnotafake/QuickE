@@ -29,7 +29,6 @@ import utility.AuthToken;
  */
 public class AuthIntentService extends IntentService {
     private static final String TAG = AuthIntentService.class.getName();
-    private static final String GRANT_TYPE = "authorization_code";
 
     public AuthIntentService() {
         super("AuthIntentService");
@@ -63,7 +62,7 @@ public class AuthIntentService extends IntentService {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("grant_type", GRANT_TYPE);
+                params.put("grant_type", AuthToken.getGrantType());
                 params.put("client_id", AuthToken.getClientId());
                 params.put("client_secret", AuthToken.getClientSecret());
                 return params;

@@ -641,19 +641,18 @@ public class MainActivity extends AppCompatActivity implements
 
         private static HashMap<String, String> selected;
 
-        private static int[] selectionAmerican;
-        private static int[] selectionLatino;
-        private static int[] selectionAsian;
-        private static int[] selectionIndian;
-        private static int[] selectionMiddleEastern;
-        private static int[] selectionEuropean;
-        private static int[] selectionAfrican;
+        public static final int[] selectionAmerican;
+        public static final int[] selectionLatino;
+        public static final int[] selectionAsian;
+        public static final int[] selectionIndian;
+        public static final int[] selectionMiddleEastern;
+        public static final int[] selectionEuropean;
+        public static final int[] selectionAfrican;
 
-        private static int[] selectionCoffeeAndTea;
-        private static int[] selectionMilkTea;
-        private static int[] selectionAlcohol;
-        private static int[] selectionSmoothie;
-        private static int[] selectionMilkshake;
+        public static final int[] selectionCoffeeAndTea;
+        public static final int[] selectionMilkTea;
+        public static final int[] selectionAlcohol;
+        public static final int[] selectionSmoothie;
 
         static{
             foodSelection = new int[]{
@@ -828,7 +827,6 @@ public class MainActivity extends AppCompatActivity implements
         public static Collection<String> getSelectedCollection(){
             return selected.values();
         }
-
     }
 
     /**

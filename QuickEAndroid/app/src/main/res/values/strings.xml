@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name" translatable="false">QuickE</string>
+    <string name="sharedpref_file_key" translatable="false">ndc.quicke.SHAREDPREF_FILE_KEY</string>
+    <string name="sharedpref_token" translatable="false">ndc.quicke.YELP_ACCESS_TOKEN</string>
+    <string name="sharedpref_token_exp" translatable="false">ndc.quicke.TOKEN_EXPIRATION</string>
 
     <!-- MAIN ACTIVITY STRINGS -->
     <string name="action_refresh">Refresh</string>
+    <string name="toast_nocuisine">You must have a cuisine selected to continue</string>
+    <string name="toast_nointernet">You must have an internet connection before you can continue</string>
 
     <!-- BaseFragment STRINGS -->
     <string name="base_text_HoT">Hungry or Thirsty?</string>
@@ -39,99 +44,99 @@
     <string name="mealselect_food">Food</string>
     <string name="mealselect_beverage">Drinks</string>
 
-    <string name="american_newamerican">newamerican</string>
-    <string name="american_tradamerican">tradamerican</string>
-    <string name="american_bbq">bbq</string>
-    <string name="american_burgers">burgers</string>
-    <string name="american_cajun">cajun</string>
-    <string name="american_diners">diners</string>
-    <string name="american_hotdog">hotdog</string>
-    <string name="american_sandwiches">sandwiches</string>
-    <string name="american_soulfood">soulfood</string>
-    <string name="american_southern">southern</string>
-    <string name="american_steak">steak</string>
+    <string name="american_newamerican" translatable="false">newamerican</string>
+    <string name="american_tradamerican" translatable="false">tradamerican</string>
+    <string name="american_bbq" translatable="false">bbq</string>
+    <string name="american_burgers" translatable="false">burgers</string>
+    <string name="american_cajun" translatable="false">cajun</string>
+    <string name="american_diners" translatable="false">diners</string>
+    <string name="american_hotdog" translatable="false">hotdog</string>
+    <string name="american_sandwiches" translatable="false">sandwiches</string>
+    <string name="american_soulfood" translatable="false">soulfood</string>
+    <string name="american_southern" translatable="false">southern</string>
+    <string name="american_steak" translatable="false">steak</string>
 
-    <string name="latino_argentine">argentine</string>
-    <string name="latino_brazilian">brazilian</string>
-    <string name="latino_cuban">cuban</string>
-    <string name="latino_honduran">honduran</string>
-    <string name="latino_latin">latin</string>
-    <string name="latino_mexican">mexican</string>
-    <string name="latino_nicaraguan">nicaraguan</string>
-    <string name="latino_peruvian">peruvian</string>
+    <string name="latino_argentine" translatable="false">argentine</string>
+    <string name="latino_brazilian" translatable="false">brazilian</string>
+    <string name="latino_cuban" translatable="false">cuban</string>
+    <string name="latino_honduran" translatable="false">honduran</string>
+    <string name="latino_latin" translatable="false">latin</string>
+    <string name="latino_mexican" translatable="false">mexican</string>
+    <string name="latino_nicaraguan" translatable="false">nicaraguan</string>
+    <string name="latino_peruvian" translatable="false">peruvian</string>
 
-    <string name="asian_asianfusion">asianfusion</string>
-    <string name="asian_burmese">burmese</string>
-    <string name="asian_cambodian">cambodian</string>
-    <string name="asian_chinese">chinese</string>
-    <string name="asian_dumplings">dumplings</string>
-    <string name="asian_filipino">filipino</string>
-    <string name="asian_hkcafe">hkcafe</string>
-    <string name="asian_hotpot">hotpot</string>
-    <string name="asian_indonesian">indonesian</string>
-    <string name="asian_japanese">japanese</string>
-    <string name="asian_korean">korean</string>
-    <string name="asian_malaysian">malaysian</string>
-    <string name="asian_mongolian">mongolian</string>
-    <string name="asian_noodles">noodles</string>
-    <string name="asian_singaporean">singaporean</string>
-    <string name="asian_srilankan">srilankan</string>
-    <string name="asian_sushi">sushi</string>
-    <string name="asian_taiwanese">taiwanese</string>
-    <string name="asian_thai">thai</string>
-    <string name="asian_vietnamese">vietnamese</string>
+    <string name="asian_asianfusion" translatable="false">asianfusion</string>
+    <string name="asian_burmese" translatable="false">burmese</string>
+    <string name="asian_cambodian" translatable="false">cambodian</string>
+    <string name="asian_chinese" translatable="false">chinese</string>
+    <string name="asian_dumplings" translatable="false">dumplings</string>
+    <string name="asian_filipino" translatable="false">filipino</string>
+    <string name="asian_hkcafe" translatable="false">hkcafe</string>
+    <string name="asian_hotpot" translatable="false">hotpot</string>
+    <string name="asian_indonesian" translatable="false">indonesian</string>
+    <string name="asian_japanese" translatable="false">japanese</string>
+    <string name="asian_korean" translatable="false">korean</string>
+    <string name="asian_malaysian" translatable="false">malaysian</string>
+    <string name="asian_mongolian" translatable="false">mongolian</string>
+    <string name="asian_noodles" translatable="false">noodles</string>
+    <string name="asian_singaporean" translatable="false">singaporean</string>
+    <string name="asian_srilankan" translatable="false">srilankan</string>
+    <string name="asian_sushi" translatable="false">sushi</string>
+    <string name="asian_taiwanese" translatable="false">taiwanese</string>
+    <string name="asian_thai" translatable="false">thai</string>
+    <string name="asian_vietnamese" translatable="false">vietnamese</string>
 
-    <string name="indian_bangladeshi">bangladeshi</string>
-    <string name="indian_indpak">indpak</string>
-    <string name="indian_pakistani">pakistani</string>
+    <string name="indian_bangladeshi" translatable="false">bangladeshi</string>
+    <string name="indian_indpak" translatable="false">indpak</string>
+    <string name="indian_pakistani" translatable="false">pakistani</string>
 
-    <string name="middleeastern_afghani">afghani</string>
-    <string name="middleastern_arabian">arabian</string>
-    <string name="middleeastern_halal">halal</string>
-    <string name="middleeastern_kebab">kebab</string>
-    <string name="middleeastern_mideastern">mideastern</string>
-    <string name="middleeastern_persian">persian</string>
-    <string name="middleeastern_syrian">syrian</string>
+    <string name="middleeastern_afghani" translatable="false">afghani</string>
+    <string name="middleastern_arabian" translatable="false">arabian</string>
+    <string name="middleeastern_halal" translatable="false">halal</string>
+    <string name="middleeastern_kebab" translatable="false">kebab</string>
+    <string name="middleeastern_mideastern" translatable="false">mideastern</string>
+    <string name="middleeastern_persian" translatable="false">persian</string>
+    <string name="middleeastern_syrian" translatable="false">syrian</string>
 
-    <string name="european_austrian">austrian</string>
-    <string name="european_baguettes">baguettes</string>
-    <string name="european_belgian">belgian</string>
-    <string name="european_british">british</string>
-    <string name="european_catalan">catalan</string>
-    <string name="european_czech">czech</string>
-    <string name="european_fishnchips">fishnchips</string>
-    <string name="european_french">french</string>
-    <string name="european_german">german</string>
-    <string name="european_greek">greek</string>
-    <string name="european_hungarian">hungarian</string>
-    <string name="european_iberian">iberian</string>
-    <string name="european_irish">irish</string>
-    <string name="european_italian">italian</string>
-    <string name="european_mediterranean">mediterranean</string>
-    <string name="european_modern_european">modern_european</string>
-    <string name="european_pizza">pizza</string>
-    <string name="european_polish">polish</string>
-    <string name="european_portuguese">portuguese</string>
-    <string name="european_russian">russian</string>
-    <string name="european_scandinavian">scandinavian</string>
-    <string name="european_scottish">scottish</string>
-    <string name="european_slovakian">slovakian</string>
-    <string name="european_spanish">spanish</string>
-    <string name="european_tapas">tapas</string>
-    <string name="european_ukrainian">ukrainian</string>
-    <string name="european_uzbek">uzbek</string>
+    <string name="european_austrian" translatable="false">austrian</string>
+    <string name="european_baguettes" translatable="false">baguettes</string>
+    <string name="european_belgian" translatable="false">belgian</string>
+    <string name="european_british" translatable="false">british</string>
+    <string name="european_catalan" translatable="false">catalan</string>
+    <string name="european_czech" translatable="false">czech</string>
+    <string name="european_fishnchips" translatable="false">fishnchips</string>
+    <string name="european_french" translatable="false">french</string>
+    <string name="european_german" translatable="false">german</string>
+    <string name="european_greek" translatable="false">greek</string>
+    <string name="european_hungarian" translatable="false">hungarian</string>
+    <string name="european_iberian" translatable="false">iberian</string>
+    <string name="european_irish" translatable="false">irish</string>
+    <string name="european_italian" translatable="false">italian</string>
+    <string name="european_mediterranean" translatable="false">mediterranean</string>
+    <string name="european_modern_european" translatable="false">modern_european</string>
+    <string name="european_pizza" translatable="false">pizza</string>
+    <string name="european_polish" translatable="false">polish</string>
+    <string name="european_portuguese" translatable="false">portuguese</string>
+    <string name="european_russian" translatable="false">russian</string>
+    <string name="european_scandinavian" translatable="false">scandinavian</string>
+    <string name="european_scottish" translatable="false">scottish</string>
+    <string name="european_slovakian" translatable="false">slovakian</string>
+    <string name="european_spanish" translatable="false">spanish</string>
+    <string name="european_tapas" translatable="false">tapas</string>
+    <string name="european_ukrainian" translatable="false">ukrainian</string>
+    <string name="european_uzbek" translatable="false">uzbek</string>
 
-    <string name="african_african">african</string>
-    <string name="african_ethiopian">ethiopian</string>
+    <string name="african_african" translatable="false">african</string>
+    <string name="african_ethiopian" translatable="false">ethiopian</string>
 
-    <string name="coffee_coffee">coffee</string>
-    <string name="coffee_cafes">cafes</string>
-    <string name="coffee_tea">tea</string>
-    <string name="milktea_bubbletea">bubbletea</string>
-    <string name="alcohol_alcohol">beer_and_wine</string>
-    <string name="alcohol_breweries">breweries</string>
-    <string name="alcohol_wineries">wineries</string>
-    <string name="smoothie_juicebars">juicebars</string>
+    <string name="coffee_coffee" translatable="false">coffee</string>
+    <string name="coffee_cafes" translatable="false">cafes</string>
+    <string name="coffee_tea" translatable="false">tea</string>
+    <string name="milktea_bubbletea" translatable="false">bubbletea</string>
+    <string name="alcohol_alcohol" translatable="false">beer_and_wine</string>
+    <string name="alcohol_breweries" translatable="false">breweries</string>
+    <string name="alcohol_wineries" translatable="false">wineries</string>
+    <string name="smoothie_juicebars" translatable="false">juicebars</string>
 
     <!-- LOCATION STRINGS -->
     <string name="no_location">Unable to detect user location. Please enable location services
@@ -144,6 +149,20 @@
     <string name="updateGPS">Please update Google Play Services from the Play Store and restart
         QuickE.</string>
 
-    <!-- AUTH INTENT SERVICE STRINGS -->
+    <!-- YELP SEARCH INTENT SERVICE STRINGS -->
     <string name="auth_URI" translatable="false">https://api.yelp.com/oauth2/token</string>
+    <string name="search_URI" translatable="false">https://api.yelp.com/v3/businesses/search</string>
+    <string name="yelpSearchScheme" translatable="false">https</string>
+    <string name="yelpSearchAuthority" translatable="false">api.yelp.com</string>
+    <string name="yelpSearchPathV3" translatable="false">v3</string>
+    <string name="yelpSearchPathBuss" translatable="false">businesses</string>
+    <string name="yelpSearchPathSearch" translatable="false">search</string>
+    <string name="search_latitude" translatable="false">latitude</string>
+    <string name="search_longitude" translatable="false">longitude</string>
+    <string name="search_radius" translatable="false">radius</string>
+    <string name="search_categories" translatable="false">categories</string>
+    <string name="search_limit" translatable="false">limit</string>
+    <string name="search_offset" translatable="false">offset</string>
+    <string name="search_price" translatable="false">price</string>
+    <string name="search_open" translatable="false">open_now</string>
 </resources>

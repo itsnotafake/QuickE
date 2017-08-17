@@ -17,6 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InterruptedIOException;
+
 import design.MealSelectAdapter;
 import nippledefensecommittee.quicke.R;
 import sync.YelpSearchIntentService;
@@ -127,11 +130,22 @@ public class FoodSelectFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(runCheck()){
-                    Intent yelpSync = new Intent(getContext(), YelpSearchIntentService.class);
-                    yelpSync.putExtra(YelpSearchIntentService.OFFSET_MULTIPLIER, 0);
-                    getContext().startService(yelpSync);
+                    try {
+                        if (hasInternet()) {
+                            Intent yelpSync = new Intent(getContext(), YelpSearchIntentService.class);
+                            yelpSync.putExtra(YelpSearchIntentService.OFFSET_MULTIPLIER, 0);
+                            getContext().startService(yelpSync);
+                        } else {
+                            Toast.makeText(getContext(), getString(R.string.toast_nointernet),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }catch(InterruptedException ie){
+                        Log.e(TAG, "InterrupptedExcpetion " + ie);
+                    }catch(IOException io){
+                        Log.e(TAG, "IOException " + io);
+                    }
                 }else{
-                    Toast.makeText(getContext(), "You must have a cuisine selected to continue",
+                    Toast.makeText(getContext(), getString(R.string.toast_nocuisine),
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -175,6 +189,13 @@ public class FoodSelectFragment extends Fragment {
     private boolean runCheck(){
         //if selectedisEmpty is true we want to return false to indicate the runCheck failed
         return !MainActivity.MealSelection.selectedIsEmpty();
+    }
+
+    //checks if there is an internet connection, returns true if connected
+    private boolean hasInternet() throws InterruptedException, IOException
+    {
+        String command = "ping -c 1 google.com";
+        return (Runtime.getRuntime().exec (command).waitFor() == 0);
     }
 
     private class CustomGridLayoutManager extends GridLayoutManager {
