@@ -138,6 +138,20 @@
     <string name="alcohol_wineries" translatable="false">wineries</string>
     <string name="smoothie_juicebars" translatable="false">juicebars</string>
 
+    <!-- BUSINESS LIST STRINGS -->
+    <string name="businesslist_businesses" translatable="false">businesses</string>
+    <string name="businesslist_id" translatable="false">id</string>
+    <string name="businesslist_name" translatable="false">name</string>
+    <string name="businesslist_imageurl" translatable="false">image_url</string>
+    <string name="businesslist_url" translatable="false">url</string>
+    <string name="businesslist_rating" translatable="false">rating</string>
+    <string name="businesslist_price" translatable="false">price</string>
+    <string name="businesslist_phonenumber" translatable="false">phone</string>
+    <string name="businesslist_coordinates" translatable="false">coordinates</string>
+    <string name="businesslist_latitude" translatable="false">latitude</string>
+    <string name="businesslist_longitude" translatable="false">longitude</string>
+    <string name="businesslist_distance" translatable="false">distance</string>
+
     <!-- LOCATION STRINGS -->
     <string name="no_location">Unable to detect user location. Please enable location services
         on this device.</string>

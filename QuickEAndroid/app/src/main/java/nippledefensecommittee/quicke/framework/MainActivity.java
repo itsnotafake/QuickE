@@ -57,6 +57,8 @@ import java.util.HashMap;
 import nippledefensecommittee.quicke.BuildConfig;
 import nippledefensecommittee.quicke.R;
 import sync.AuthIntentService;
+import utility.Business;
+import utility.BusinessList;
 
 public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,

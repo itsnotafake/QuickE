@@ -198,7 +198,7 @@ public class YelpSearchIntentService extends IntentService {
                     @Override
                     public void onResponse(String response) {
                         //Log.e(TAG, response);
-                        BusinessList.addBulk(response);
+                        BusinessList.addBulk(response, mContext);
                     }
                 }, new Response.ErrorListener() {
             @Override
