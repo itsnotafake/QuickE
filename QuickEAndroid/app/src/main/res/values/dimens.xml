@@ -44,4 +44,9 @@
 
     <item name="base_TV_elevation" type="dimen">4dp</item>
     <item name="base_button_elevation" type="dimen">4dp</item>
+
+
+    <!-- DIMENS FOR BROWSE ACTIVITY -->
+    <item name="browse_swipefling_margin_ver" type="dimen">32dp</item>
+    <item name="browse_swipefling_margin_hor" type="dimen">32dp</item>
 </resources>

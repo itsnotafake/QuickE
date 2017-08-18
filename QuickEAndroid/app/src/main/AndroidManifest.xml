@@ -25,6 +25,9 @@
         </activity>
 
         <activity
+            android:name=".framework.BrowseActivity" />
+
+        <activity
             android:name=".framework.RecommendationActivity"/>
 
         <activity android:name=".framework.PictureSlideFragmentActivity"/>

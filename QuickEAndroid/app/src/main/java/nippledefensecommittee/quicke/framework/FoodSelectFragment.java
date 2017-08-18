@@ -132,9 +132,14 @@ public class FoodSelectFragment extends Fragment {
                 if(runCheck()){
                     try {
                         if (hasInternet()) {
-                            Intent yelpSync = new Intent(getContext(), YelpSearchIntentService.class);
+                            Intent yelpSync = new Intent(
+                                    getContext(),
+                                    YelpSearchIntentService.class);
                             yelpSync.putExtra(YelpSearchIntentService.OFFSET_MULTIPLIER, 0);
                             getContext().startService(yelpSync);
+
+                            Intent browseActivity = new Intent(getContext(), BrowseActivity.class);
+                            startActivity(browseActivity);
                         } else {
                             Toast.makeText(getContext(), getString(R.string.toast_nointernet),
                                     Toast.LENGTH_LONG).show();

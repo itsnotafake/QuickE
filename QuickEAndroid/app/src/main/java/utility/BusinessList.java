@@ -1,6 +1,8 @@
 package utility;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -12,6 +14,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import nippledefensecommittee.quicke.R;
+import nippledefensecommittee.quicke.framework.BrowseFragment;
 
 /**
  * Created by Devin on 8/17/2017.
@@ -24,6 +27,10 @@ public class BusinessList {
 
     static{
         businessList = new ArrayList<>();
+    }
+
+    public static ArrayList<Business> getBusinessList(){
+        return businessList;
     }
 
     public static void addBusiness(Business b){
@@ -109,6 +116,8 @@ public class BusinessList {
 
                 BusinessList.addBusiness(new Business(businessMap, context));
             }
+            Intent businessListBroadcast = new Intent(BrowseFragment.BUSINESS_BROADCAST);
+            LocalBroadcastManager.getInstance(context).sendBroadcast(businessListBroadcast);
         }catch(JSONException e){
             Log.e(TAG, "JSONException handling bulkList in BusinessList... " + e);
         }

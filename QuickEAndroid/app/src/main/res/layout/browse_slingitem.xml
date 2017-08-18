@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@drawable/border"
+
+    android:layout_marginTop="@dimen/browse_swipefling_margin_ver"
+    android:layout_marginBottom="@dimen/browse_swipefling_margin_ver"
+    android:layout_marginLeft="@dimen/browse_swipefling_margin_hor"
+    android:layout_marginStart="@dimen/browse_swipefling_margin_hor"
+    android:layout_marginRight="@dimen/browse_swipefling_margin_hor"
+    android:layout_marginEnd="@dimen/browse_swipefling_margin_hor">
+
+    <TextView
+        android:id="@+id/sling_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="64sp"/>
+</FrameLayout>
