@@ -15,7 +15,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <android.support.constraint.ConstraintLayout
+    <FrameLayout
         android:id="@+id/browse_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import nippledefensecommittee.quicke.R;
 import utility.Business;
@@ -48,8 +51,13 @@ public class FlingAdapter extends BaseAdapter {
                     .getLayoutInflater(mSavedInstanceState)
                     .inflate(R.layout.browse_slingitem, container, false);
         }
-        TextView businessName = (TextView) convertView.findViewById(R.id.sling_text);
+        TextView businessName = (TextView) convertView.findViewById(R.id.sling_title);
+        ImageView businessImage = (ImageView) convertView.findViewById(R.id.sling_image);
+
         businessName.setText(BusinessList.getBusiness(position).getName());
+        Glide.with(mFragment)
+                .load(BusinessList.getBusiness(position).getImageUrl())
+                .into(businessImage);
         return convertView;
     }
 }

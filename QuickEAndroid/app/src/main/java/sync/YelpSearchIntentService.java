@@ -190,7 +190,7 @@ public class YelpSearchIntentService extends IntentService {
                 .appendQueryParameter(mContext.getString(R.string.search_open),
                         String.valueOf(isOpenNow));
         String url = yelpSearchURL.build().toString();
-        //Log.e(TAG, url);
+        Log.e(TAG, url);
 
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest jsonObjRequest = new StringRequest(Request.Method.GET,url,

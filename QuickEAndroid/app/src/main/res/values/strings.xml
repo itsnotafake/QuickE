@@ -138,6 +138,9 @@
     <string name="alcohol_wineries" translatable="false">wineries</string>
     <string name="smoothie_juicebars" translatable="false">juicebars</string>
 
+    <!-- BROWSE FRAGMENT STRINGS -->
+    <string name="sling_image_CD">Image of the restaurant</string>
+
     <!-- BUSINESS LIST STRINGS -->
     <string name="businesslist_businesses" translatable="false">businesses</string>
     <string name="businesslist_id" translatable="false">id</string>

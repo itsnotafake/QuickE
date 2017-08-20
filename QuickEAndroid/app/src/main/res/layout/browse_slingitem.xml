@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:background="@drawable/border"
+    android:background="@drawable/border">
 
-    android:layout_marginTop="@dimen/browse_swipefling_margin_ver"
-    android:layout_marginBottom="@dimen/browse_swipefling_margin_ver"
-    android:layout_marginLeft="@dimen/browse_swipefling_margin_hor"
-    android:layout_marginStart="@dimen/browse_swipefling_margin_hor"
-    android:layout_marginRight="@dimen/browse_swipefling_margin_hor"
-    android:layout_marginEnd="@dimen/browse_swipefling_margin_hor">
+    <ImageView
+        android:id="@+id/sling_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/sling_image_CD"
+        android:scaleType="centerCrop"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/swipeflingitem_guideline"/>
 
     <TextView
-        android:id="@+id/sling_text"
+        android:id="@+id/sling_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        style="@style/sling_title_style"
+
+        app:layout_constraintTop_toTopOf="@+id/sling_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingLeft="@dimen/sling_title_padding_hor"
+        android:paddingStart="@dimen/sling_title_padding_hor"
+        android:paddingRight="@dimen/sling_title_padding_hor"
+        android:paddingEnd="@dimen/sling_title_padding_hor"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/swipeflingitem_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="64sp"/>
-</FrameLayout>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65"/>
+</android.support.constraint.ConstraintLayout>

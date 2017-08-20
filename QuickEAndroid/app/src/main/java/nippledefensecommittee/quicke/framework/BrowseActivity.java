@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import nippledefensecommittee.quicke.R;
+import utility.BusinessList;
 
 /**
  * Created by Devin on 8/18/2017.
@@ -29,6 +30,7 @@ public class BrowseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_browse);
         mContainerId = R.id.browse_fragment_container;
 
+        BusinessList.clear();
         initializeAppBar();
         initializeFragment(savedInstanceState);
     }
