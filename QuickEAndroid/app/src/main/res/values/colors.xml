@@ -6,10 +6,14 @@
 
     <color name="colorPrimaryDark85Opac">#D90288D1</color>
     <color name="BLACK70Opac">#B3000000</color>
-    <color name="WHITE50Opac">#80FFFFFF</color>
+    <color name="WHITE45Opac">#73FFFFFF</color>
 
     <color name="BLACK">#000000</color>
     <color name="WHITE">#FFFFFF</color>
+    <color name="RED">#F44336</color>
+    <color name="GREEN">#4CAF50</color>
+    <color name="LIGHTRED">#FF80AB</color>
+    <color name="LIGHTGREEN">#B9F6CA</color>
 
     <color name="TRANSPARENT">#00000000</color>
 

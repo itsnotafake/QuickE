@@ -19,11 +19,19 @@
     </style>
 
     <style name="sling_title_style">
-        <item name="android:background">@color/WHITE50Opac</item>
+        <item name="android:background">@color/WHITE45Opac</item>
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Display1</item>
         <item name="android:textColor">@color/BLACK</item>
         <item name="android:textStyle">bold</item>
         <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="sling_body_style">
+        <item name="android:background">@color/WHITE45Opac</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Headline</item>
+        <item name="android:textColor">@color/BLACK</item>
+        <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
 </resources>

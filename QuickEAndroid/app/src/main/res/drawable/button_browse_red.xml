@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:color="@color/LIGHTRED"
+    tools:targetApi="lollipop">
+    <item android:id="@android:id/mask">
+        <shape android:shape="oval">
+            <solid android:color="@color/BLACK" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/button_browse_shadow"/>
+    <item
+        android:drawable="@drawable/button_browse_round_red"
+        android:bottom="4px" />
+</ripple>

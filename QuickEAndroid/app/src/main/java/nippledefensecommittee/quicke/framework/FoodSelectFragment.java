@@ -23,6 +23,7 @@ import java.io.InterruptedIOException;
 import design.MealSelectAdapter;
 import nippledefensecommittee.quicke.R;
 import sync.YelpSearchIntentService;
+import utility.BusinessList;
 import utility.ColorState;
 
 /**
@@ -132,6 +133,7 @@ public class FoodSelectFragment extends Fragment {
                 if(runCheck()){
                     try {
                         if (hasInternet()) {
+                            BusinessList.clear();
                             Intent yelpSync = new Intent(
                                     getContext(),
                                     YelpSearchIntentService.class);

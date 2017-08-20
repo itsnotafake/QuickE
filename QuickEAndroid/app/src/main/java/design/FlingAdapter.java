@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
+import java.text.DecimalFormat;
 
 import nippledefensecommittee.quicke.R;
 import utility.Business;
@@ -21,6 +24,7 @@ import utility.BusinessList;
  */
 
 public class FlingAdapter extends BaseAdapter {
+    private static final String TAG = FlingAdapter.class.getName();
     private Fragment mFragment;
     private Bundle mSavedInstanceState;
 
@@ -51,12 +55,23 @@ public class FlingAdapter extends BaseAdapter {
                     .getLayoutInflater(mSavedInstanceState)
                     .inflate(R.layout.browse_slingitem, container, false);
         }
+        Business business = BusinessList.getBusiness(position);
         TextView businessName = (TextView) convertView.findViewById(R.id.sling_title);
+        TextView businessDistance = (TextView) convertView.findViewById(R.id.sling_distance);
         ImageView businessImage = (ImageView) convertView.findViewById(R.id.sling_image);
 
-        businessName.setText(BusinessList.getBusiness(position).getName());
+        businessName.setText(business.getName());
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        double distance = Double.valueOf(decimalFormat.format(business.getDistance()));
+        String distanceAddOn;
+        if(distance == 1) {
+            distanceAddOn = String.valueOf(distance) + " Mile Away";
+        }else{
+            distanceAddOn = String.valueOf(distance) + " Miles Away";
+        }
+        businessDistance.setText(distanceAddOn);
         Glide.with(mFragment)
-                .load(BusinessList.getBusiness(position).getImageUrl())
+                .load(business.getImageUrl())
                 .into(businessImage);
         return convertView;
     }

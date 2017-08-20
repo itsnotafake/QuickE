@@ -116,6 +116,7 @@ public class BusinessList {
 
                 BusinessList.addBusiness(new Business(businessMap, context));
             }
+            randomize();
             Intent businessListBroadcast = new Intent(BrowseFragment.BUSINESS_BROADCAST);
             LocalBroadcastManager.getInstance(context).sendBroadcast(businessListBroadcast);
         }catch(JSONException e){

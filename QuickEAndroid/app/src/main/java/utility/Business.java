@@ -54,5 +54,13 @@ public class Business {
     public String getImageUrl(){
         return image_url;
     }
+
+    public String getPrice(){
+        return price;
+    }
+
+    public double getDistance(){
+        return distance;
+    }
 }
 

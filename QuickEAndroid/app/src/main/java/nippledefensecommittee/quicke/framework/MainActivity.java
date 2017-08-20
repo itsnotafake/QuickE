@@ -615,7 +615,7 @@ public class MainActivity extends AppCompatActivity implements
 
         //I'm assuming here that the default radius will be 5 miles;
         static{
-            areaRadius = 5;
+            areaRadius = 1;
         }
 
         static void setRadius(int radius){

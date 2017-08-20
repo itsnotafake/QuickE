@@ -47,6 +47,8 @@
 
 
     <!-- DIMENS FOR BROWSE ACTIVITY -->
+    <item name="browse_button_radius" type="dimen">120dp</item>
+
     <item name="browse_swipefling_margin_ver" type="dimen">28dp</item>
     <item name="browse_swipefling_margin_hor" type="dimen">4dp</item>
     <item name="sling_image_margin_top" type="dimen">16dp</item>
@@ -55,4 +57,5 @@
     <item name="sling_title_margin_hor" type="dimen">@dimen/sling_image_margin_hor</item>
 
     <item name="sling_title_padding_hor" type="dimen">8dp</item>
+    <item name="sling_body_padding_hor" type="dimen">6dp</item>
 </resources>

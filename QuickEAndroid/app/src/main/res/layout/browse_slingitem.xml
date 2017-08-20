@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:background="@drawable/border">
@@ -31,6 +32,21 @@
         android:paddingStart="@dimen/sling_title_padding_hor"
         android:paddingRight="@dimen/sling_title_padding_hor"
         android:paddingEnd="@dimen/sling_title_padding_hor"/>
+
+    <TextView
+        android:id="@+id/sling_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        style="@style/sling_body_style"
+        tools:text="1 Mile Away"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/sling_image"
+        android:paddingLeft="@dimen/sling_body_padding_hor"
+        android:paddingStart="@dimen/sling_body_padding_hor"
+        android:paddingRight="@dimen/sling_body_padding_hor"
+        android:paddingEnd="@dimen/sling_body_padding_hor"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/swipeflingitem_guideline"

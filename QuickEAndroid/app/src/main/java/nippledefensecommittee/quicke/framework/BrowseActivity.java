@@ -29,8 +29,7 @@ public class BrowseActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_browse);
         mContainerId = R.id.browse_fragment_container;
-
-        BusinessList.clear();
+        
         initializeAppBar();
         initializeFragment(savedInstanceState);
     }
