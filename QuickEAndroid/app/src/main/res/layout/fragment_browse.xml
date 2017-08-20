@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
+        android:background="@color/TRANSPARENT"
         app:rotation_degrees="16"
         app:max_visible="4"
         app:min_adapter_stack="6" />

@@ -40,7 +40,7 @@ public class BrowseFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        if(savedInstanceState == null){
+        if(savedInstanceState == null) {
             initializeBroadcastReceiver();
         }
     }
@@ -51,7 +51,16 @@ public class BrowseFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_browse, container, false);
         mProgress = (ProgressBar) view.findViewById(R.id.browse_progress);
         initializeSwipeFling(view, savedInstanceState);
+        if(!mAdapter.isEmpty()){
+            mProgress.setVisibility(View.GONE);
+            mFlingContainer.setVisibility(View.VISIBLE);
+        }
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -78,7 +87,6 @@ public class BrowseFragment extends Fragment {
                 (SwipeFlingAdapterView) view.findViewById(R.id.browse_swipefling);
 
         mAdapter = new FlingAdapter(this, savedInstanceState);
-        Log.e(TAG, "adapter size is: " + mAdapter.getCount());
 
         mFlingContainer.setAdapter(mAdapter);
         mFlingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener(){
