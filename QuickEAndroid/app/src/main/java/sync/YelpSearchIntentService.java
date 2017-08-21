@@ -34,13 +34,22 @@ import utility.BusinessList;
 public class YelpSearchIntentService extends IntentService {
     private static final String TAG = YelpSearchIntentService.class.getName();
     private Context mContext;
+
+    //default values for the two shared preference values (token & expiration)
     private static final String TOKEN_DEFAULT = "42069";
     private static final long TOKEN_EXP_DEFAULT = 999999999;
+
+    //time converter static for handling token expiration date
     private static final long SECONDS_IN_10_DAYS = 864000;
+
+    //values for dealing with the offset returned by Yelp. Only 50 values in a JSON return, out
+    //of possible thousands, so offsets need to be used to get subsequent data
     public static String OFFSET_MULTIPLIER = "OFFSET_MULTIPLIER";
-    public static int CURRENT_OFFSET_MULTIPLIER;
+    private static int CURRENT_OFFSET_MULTIPLIER;
+    public static int CURRENT_OFFSET_INCREMENT;
     private final int OFFSET = 50;
     private static int mTotalOffset;
+    private static int mTotalBusinesses;
 
     public YelpSearchIntentService(){
         super("YelpSearchIntentService");
@@ -50,6 +59,7 @@ public class YelpSearchIntentService extends IntentService {
     public void onHandleIntent(Intent intent){
         mContext = this;
         CURRENT_OFFSET_MULTIPLIER = intent.getIntExtra(OFFSET_MULTIPLIER, 0);
+        CURRENT_OFFSET_INCREMENT = CURRENT_OFFSET_MULTIPLIER + 1;
         mTotalOffset = OFFSET * CURRENT_OFFSET_MULTIPLIER;
         getToken();
     }
@@ -198,7 +208,9 @@ public class YelpSearchIntentService extends IntentService {
                     @Override
                     public void onResponse(String response) {
                         //Log.e(TAG, response);
-                        BusinessList.addBulk(response, mContext);
+                        if(hasNotExceededTotal(response)) {
+                            BusinessList.addBulk(response, mContext);
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -320,6 +332,27 @@ public class YelpSearchIntentService extends IntentService {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Looking at our current offset, total businesses per offset, and total businesses,
+     * determines whether or not this next batch of businesses would exceed the total
+     * businesses returned for this query. If it does, we do not issue the queury.
+     * @param response The JSON response from Yelp, we use it to determine total businesses
+     * @return return a boolean that signifies if the next batch would exceed the total
+     * businesses
+     */
+    private boolean hasNotExceededTotal(String response){
+        try{
+            JSONObject yelpResponseJSON = new JSONObject(response);
+            mTotalBusinesses = yelpResponseJSON
+                    .getInt(mContext.getString(R.string.businesslist_total));
+            Log.e(TAG, "total is " + mTotalBusinesses);
+            return (mTotalBusinesses > mTotalOffset);
+        }catch(JSONException e){
+            Log.e(TAG, "Trouble parsing String response from Yelp to JSON: " + e);
+            return true;
+        }
     }
 
     /**

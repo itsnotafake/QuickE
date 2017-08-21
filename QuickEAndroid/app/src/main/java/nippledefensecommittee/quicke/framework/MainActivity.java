@@ -829,6 +829,10 @@ public class MainActivity extends AppCompatActivity implements
         public static Collection<String> getSelectedCollection(){
             return selected.values();
         }
+
+        public static void printSelected(){
+            Log.e(TAG, "Selected: " + selected.toString());
+        }
     }
 
     /**

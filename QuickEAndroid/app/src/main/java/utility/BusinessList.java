@@ -33,8 +33,8 @@ public class BusinessList {
         return businessList;
     }
 
-    public static void addBusiness(Business b){
-        businessList.add(b);
+    public static void addBusiness(ArrayList<Business> aL, Business b){
+        aL.add(b);
     }
 
     public static Business getBusiness(int position){
@@ -45,6 +45,10 @@ public class BusinessList {
         businessList.remove(position);
     }
 
+    public static void removeLast(){
+        removeBusiness(size()-1);
+    }
+
     public static void clear(){
         businessList.clear();
     }
@@ -53,11 +57,12 @@ public class BusinessList {
         return businessList.size();
     }
 
-    public static void randomize(){
-        Collections.shuffle(businessList);
+    public static void randomize(ArrayList<Business> aL){
+        Collections.shuffle(aL);
     }
 
     public static void addBulk(String bulkList, Context context){
+        ArrayList<Business> tempList = new ArrayList<>();
         try{
             JSONObject bulkListJSON = new JSONObject(bulkList);
             JSONArray businessListJSON = bulkListJSON.getJSONArray(
@@ -114,9 +119,12 @@ public class BusinessList {
                 businessMap.put(context.getString(R.string.businesslist_latitude), latitude);
                 businessMap.put(context.getString(R.string.businesslist_longitude), longitude);
 
-                BusinessList.addBusiness(new Business(businessMap, context));
+                addBusiness(tempList, new Business(businessMap, context));
             }
-            randomize();
+            randomize(tempList);
+            for(Business b : tempList){
+                addBusiness(businessList, b);
+            }
             Intent businessListBroadcast = new Intent(BrowseFragment.BUSINESS_BROADCAST);
             LocalBroadcastManager.getInstance(context).sendBroadcast(businessListBroadcast);
         }catch(JSONException e){

@@ -51,9 +51,15 @@ public class BaseFragment extends Fragment {
         return view;
     }
 
+    /**
+     * We clear MealSelection here, because if the user restarts their meal selection then
+     * we want to wipe the mealselection category list. I believe that this is the best place
+     * to do it.
+     */
     @Override
     public void onStart(){
         super.onStart();
+        MainActivity.MealSelection.clear();
         try {
             mMainActionBar.setTitle(R.string.app_name);
         }catch(NullPointerException e){

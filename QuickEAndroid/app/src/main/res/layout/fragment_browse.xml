@@ -26,7 +26,8 @@
         android:background="@color/TRANSPARENT"
         app:rotation_degrees="16"
         app:max_visible="4"
-        app:min_adapter_stack="6" />
+        app:min_adapter_stack="8"
+        android:elevation="2dp"/>
     
     <android.support.v7.widget.AppCompatImageButton
         android:id="@+id/browse_button_no"
@@ -61,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65"/>
+        app:layout_constraintGuide_percent="@dimen/sling_horizontal_guideline"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/layoutmiddle_guideline"

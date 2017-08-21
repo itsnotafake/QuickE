@@ -154,6 +154,7 @@
     <string name="businesslist_latitude" translatable="false">latitude</string>
     <string name="businesslist_longitude" translatable="false">longitude</string>
     <string name="businesslist_distance" translatable="false">distance</string>
+    <string name="businesslist_total" translatable="false">total</string>
 
     <!-- LOCATION STRINGS -->
     <string name="no_location">Unable to detect user location. Please enable location services

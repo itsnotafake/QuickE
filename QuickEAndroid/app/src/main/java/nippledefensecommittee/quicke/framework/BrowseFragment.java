@@ -7,11 +7,15 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.widget.AppCompatImageButton;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.lorentzos.flingswipe.FlingCardListener;
@@ -21,6 +25,7 @@ import java.util.ArrayList;
 
 import design.FlingAdapter;
 import nippledefensecommittee.quicke.R;
+import sync.YelpSearchIntentService;
 import utility.Business;
 import utility.BusinessList;
 
@@ -31,10 +36,13 @@ import utility.BusinessList;
 public class BrowseFragment extends Fragment {
     private static final String TAG = BrowseFragment.class.getName();
     public static final String BUSINESS_BROADCAST = "myBusinessListBroadcastListener";
+    private Context mContext;
 
     private SwipeFlingAdapterView mFlingContainer;
     private FlingAdapter mAdapter;
     private ProgressBar mProgress;
+
+    private static boolean mUpdatingList = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -43,6 +51,7 @@ public class BrowseFragment extends Fragment {
         if(savedInstanceState == null) {
             initializeBroadcastReceiver();
         }
+        mContext = getContext();
     }
 
     @Override
@@ -55,6 +64,7 @@ public class BrowseFragment extends Fragment {
             mProgress.setVisibility(View.GONE);
             mFlingContainer.setVisibility(View.VISIBLE);
         }
+        initializeButtons(view);
         return view;
     }
 
@@ -72,6 +82,7 @@ public class BrowseFragment extends Fragment {
         BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+                mUpdatingList = false;
                 mAdapter.notifyDataSetChanged();
                 mProgress.setVisibility(View.GONE);
                 mFlingContainer.setVisibility(View.VISIBLE);
@@ -106,7 +117,16 @@ public class BrowseFragment extends Fragment {
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter){
-
+                if(!mUpdatingList) {
+                    mUpdatingList = true;
+                    Intent yelpSync = new Intent(
+                            mContext,
+                            YelpSearchIntentService.class);
+                    yelpSync.putExtra(
+                            YelpSearchIntentService.OFFSET_MULTIPLIER,
+                            YelpSearchIntentService.CURRENT_OFFSET_INCREMENT);
+                    getContext().startService(yelpSync);
+                }
             }
 
             @Override
@@ -114,5 +134,28 @@ public class BrowseFragment extends Fragment {
 
             }
         });
+    }
+
+    private void initializeButtons(View view){
+        AppCompatImageButton yesButton =
+                (AppCompatImageButton) view.findViewById(R.id.browse_button_yes);
+        AppCompatImageButton noButton =
+                (AppCompatImageButton) view.findViewById(R.id.browse_button_no);
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFlingContainer.getTopCardListener().selectRight();
+            }
+        });
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFlingContainer.getTopCardListener().selectLeft();
+            }
+        });
+    }
+
+    public static void setUpdatingList(boolean b){
+        mUpdatingList = b;
     }
 }

@@ -71,7 +71,7 @@ public class FoodSelectFragment extends Fragment {
     @Override
     public void onStop(){
         super.onStop();
-        MainActivity.MealSelection.clear();
+        /*MainActivity.MealSelection.clear();
         setCheckboxes(false);
         try {
             AppCompatCheckBox selectAll =
@@ -79,7 +79,7 @@ public class FoodSelectFragment extends Fragment {
             selectAll.setChecked(false);
         }catch(NullPointerException e){
             Log.e(TAG, "Did not find view 'mealselect_selectall, '" + e);
-        }
+        }*/
     }
 
     @Override
