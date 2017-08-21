@@ -17,6 +17,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.lorentzos.flingswipe.FlingCardListener;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
@@ -28,6 +29,7 @@ import nippledefensecommittee.quicke.R;
 import sync.YelpSearchIntentService;
 import utility.Business;
 import utility.BusinessList;
+import utility.Helper;
 
 /**
  * Created by Devin on 8/18/2017.
@@ -118,14 +120,22 @@ public class BrowseFragment extends Fragment {
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter){
                 if(!mUpdatingList) {
-                    mUpdatingList = true;
-                    Intent yelpSync = new Intent(
-                            mContext,
-                            YelpSearchIntentService.class);
-                    yelpSync.putExtra(
-                            YelpSearchIntentService.OFFSET_MULTIPLIER,
-                            YelpSearchIntentService.CURRENT_OFFSET_INCREMENT);
-                    getContext().startService(yelpSync);
+                    if(Helper.isInternetAvailable(getContext())) {
+                        mUpdatingList = true;
+                        Intent yelpSync = new Intent(
+                                mContext,
+                                YelpSearchIntentService.class);
+                        yelpSync.putExtra(
+                                YelpSearchIntentService.OFFSET_MULTIPLIER,
+                                YelpSearchIntentService.CURRENT_OFFSET_INCREMENT);
+                        getContext().startService(yelpSync);
+                    }else{
+                        Toast.makeText(
+                                getContext(),
+                                getString(R.string.browse_nointernet),
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
                 }
             }
 

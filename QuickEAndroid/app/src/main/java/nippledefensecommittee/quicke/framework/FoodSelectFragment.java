@@ -25,6 +25,7 @@ import nippledefensecommittee.quicke.R;
 import sync.YelpSearchIntentService;
 import utility.BusinessList;
 import utility.ColorState;
+import utility.Helper;
 
 /**
  * Created by Devin on 8/1/2017.
@@ -131,25 +132,19 @@ public class FoodSelectFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(runCheck()){
-                    try {
-                        if (hasInternet()) {
-                            BusinessList.clear();
-                            Intent yelpSync = new Intent(
-                                    getContext(),
-                                    YelpSearchIntentService.class);
-                            yelpSync.putExtra(YelpSearchIntentService.OFFSET_MULTIPLIER, 0);
-                            getContext().startService(yelpSync);
+                    if (Helper.isInternetAvailable(getContext())) {
+                        BusinessList.clear();
+                        Intent yelpSync = new Intent(
+                                getContext(),
+                                YelpSearchIntentService.class);
+                        yelpSync.putExtra(YelpSearchIntentService.OFFSET_MULTIPLIER, 0);
+                        getContext().startService(yelpSync);
 
-                            Intent browseActivity = new Intent(getContext(), BrowseActivity.class);
-                            startActivity(browseActivity);
-                        } else {
-                            Toast.makeText(getContext(), getString(R.string.toast_nointernet),
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }catch(InterruptedException ie){
-                        Log.e(TAG, "InterrupptedExcpetion " + ie);
-                    }catch(IOException io){
-                        Log.e(TAG, "IOException " + io);
+                        Intent browseActivity = new Intent(getContext(), BrowseActivity.class);
+                        startActivity(browseActivity);
+                    } else {
+                        Toast.makeText(getContext(), getString(R.string.toast_nointernet),
+                                Toast.LENGTH_LONG).show();
                     }
                 }else{
                     Toast.makeText(getContext(), getString(R.string.toast_nocuisine),
@@ -196,13 +191,6 @@ public class FoodSelectFragment extends Fragment {
     private boolean runCheck(){
         //if selectedisEmpty is true we want to return false to indicate the runCheck failed
         return !MainActivity.MealSelection.selectedIsEmpty();
-    }
-
-    //checks if there is an internet connection, returns true if connected
-    private boolean hasInternet() throws InterruptedException, IOException
-    {
-        String command = "ping -c 1 google.com";
-        return (Runtime.getRuntime().exec (command).waitFor() == 0);
     }
 
     private class CustomGridLayoutManager extends GridLayoutManager {
