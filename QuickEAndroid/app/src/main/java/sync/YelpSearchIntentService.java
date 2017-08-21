@@ -347,7 +347,6 @@ public class YelpSearchIntentService extends IntentService {
             JSONObject yelpResponseJSON = new JSONObject(response);
             mTotalBusinesses = yelpResponseJSON
                     .getInt(mContext.getString(R.string.businesslist_total));
-            Log.e(TAG, "total is " + mTotalBusinesses);
             return (mTotalBusinesses > mTotalOffset);
         }catch(JSONException e){
             Log.e(TAG, "Trouble parsing String response from Yelp to JSON: " + e);

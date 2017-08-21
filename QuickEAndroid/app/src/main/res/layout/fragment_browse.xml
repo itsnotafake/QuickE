@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/LIGHTGRAY">
 
     <ProgressBar
         android:id="@+id/browse_progress"
@@ -34,8 +34,8 @@
         android:layout_width="@dimen/browse_button_radius"
         android:layout_height="@dimen/browse_button_radius"
         android:background="@drawable/button_browse_red"
-        android:src="@drawable/ic_x"
-        android:scaleType="centerCrop"
+        android:src="@drawable/thumbdown"
+        android:scaleType="centerInside"
         android:elevation="8dp"
 
         app:layout_constraintTop_toTopOf="@+id/slingcontainer_guideline"
@@ -48,7 +48,7 @@
         android:layout_width="@dimen/browse_button_radius"
         android:layout_height="@dimen/browse_button_radius"
         android:background="@drawable/button_browse_green"
-        android:src="@drawable/eat"
+        android:src="@drawable/thumbup"
         android:scaleType="centerInside"
         android:elevation="8dp"
 
