@@ -172,6 +172,8 @@ public class BrowseFragment extends Fragment {
                 (AppCompatImageButton) view.findViewById(R.id.browse_button_yes);
         AppCompatImageButton noButton =
                 (AppCompatImageButton) view.findViewById(R.id.browse_button_no);
+        AppCompatImageButton refreshButton =
+                (AppCompatImageButton) view.findViewById(R.id.browse_refresh_button);
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,6 +184,17 @@ public class BrowseFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mFlingContainer.getTopCardListener().selectLeft();
+            }
+        });
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        mContext,
+                        MainActivity.class
+                );
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
             }
         });
     }
