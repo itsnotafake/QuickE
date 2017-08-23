@@ -12,26 +12,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lorentzos.flingswipe.FlingCardListener;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
-
-import java.util.ArrayList;
 
 import design.FlingAdapter;
 import nippledefensecommittee.quicke.R;
 import sync.YelpSearchIntentService;
 import utility.Business;
 import utility.BusinessList;
+import utility.DineList;
 import utility.Helper;
 
 /**
@@ -57,6 +50,7 @@ public class BrowseFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if(savedInstanceState == null) {
+            DineList.clear();
             initializeBroadcastReceiver();
         }
         mContext = getContext();
@@ -130,6 +124,9 @@ public class BrowseFragment extends Fragment {
 
             @Override
             public void onRightCardExit(Object dataObject){
+                DineList.add((Business) dataObject);
+                BrowseActivity activity = (BrowseActivity) getActivity();
+                activity.updateListTotal(DineList.size());
             }
 
             @Override

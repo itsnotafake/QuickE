@@ -139,6 +139,7 @@
     <string name="smoothie_juicebars" translatable="false">juicebars</string>
 
     <!-- BROWSE FRAGMENT STRINGS -->
+    <string name="action_list">List Chosen Restaurants</string>
     <string name="browse_refresh_text">Sorry, but those were all the restaurants matching your
         search. Would you like to try again?</string>
     <string name="sling_image_CD">Image of the restaurant</string>

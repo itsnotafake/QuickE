@@ -9,9 +9,15 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import nippledefensecommittee.quicke.R;
 import utility.BusinessList;
+import utility.DineList;
 
 /**
  * Created by Devin on 8/18/2017.
@@ -21,6 +27,8 @@ public class BrowseActivity extends AppCompatActivity implements FragmentChangeL
     private static final String TAG = BrowseActivity.class.getName();
     private Context mContext;
     private int mContainerId;
+    public TextView mListTotal;
+
     private static final String FRAGTAG = "fragtag";
     private static final String BROWSETAG = "BrowseFragment";
     private static final String SWIPEVIEWTAG = "SwipeViewFragment";
@@ -35,6 +43,28 @@ public class BrowseActivity extends AppCompatActivity implements FragmentChangeL
 
         initializeAppBar();
         initializeFragment(savedInstanceState);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.browse_menu, menu);
+
+        final View list = menu.findItem(R.id.action_list).getActionView();
+        mListTotal = (TextView) list.findViewById(R.id.actionbar_listtotal);
+        updateListTotal(DineList.size());
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            case R.id.action_list:
+                return true;
+            default:
+                Log.e(TAG, "Unrecognized menu item id");
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -89,5 +119,24 @@ public class BrowseActivity extends AppCompatActivity implements FragmentChangeL
         fragmentTransaction.add(mContainerId, fragment, fragment.toString());
         fragmentTransaction.addToBackStack(fragment.toString());
         fragmentTransaction.commit();
+    }
+
+    // call the updating code on the main thread,
+// so we can call this asynchronously
+    public void updateListTotal(final int listTotal) {
+        if (mListTotal == null){
+            return;
+        }
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (listTotal == 0)
+                    mListTotal.setVisibility(View.INVISIBLE);
+                else {
+                    mListTotal.setVisibility(View.VISIBLE);
+                    mListTotal.setText(Integer.toString(listTotal));
+                }
+            }
+        });
     }
 }
