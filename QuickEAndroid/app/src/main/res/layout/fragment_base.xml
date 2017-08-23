@@ -178,10 +178,10 @@
             android:layout_marginLeft="@dimen/base_progress_margin_hor"
             android:layout_marginRight="@dimen/base_progress_margin_hor"
             android:layout_marginStart="@dimen/base_progress_margin_hor"
-            android:layout_marginTop="@dimen/base_progress_margin_ver"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_TV_distance" />
+            app:layout_constraintTop_toTopOf="@+id/main_TV_distance"
+            app:layout_constraintBottom_toBottomOf="@+id/main_seekbar_indicator"/>
 
         <TextView
             android:id="@+id/main_seekbar_indicator"
@@ -203,8 +203,8 @@
             android:paddingTop="@dimen/base_seekbar_TV_padding_ver"
             android:paddingBottom="@dimen/base_seekbar_TV_padding_ver"
             app:layout_constraintRight_toLeftOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/main_button_go"
-            app:layout_constraintTop_toBottomOf="@+id/main_seekbar_distance"/>
+            app:layout_constraintTop_toTopOf="@+id/main_seekbar_distance"
+            app:layout_constraintBottom_toBottomOf="@+id/main_button_go"/>
 
         <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/main_button_go"

@@ -47,6 +47,7 @@
 
 
     <!-- DIMENS FOR BROWSE ACTIVITY -->
+    <item name="browse_refresh_button_diameter" type="dimen">100dp</item>
     <item name="browse_button_radius" type="dimen">120dp</item>
     <item name="sling_horizontal_guideline" format="float" type="dimen">0.7</item>
 
@@ -57,6 +58,11 @@
     <item name="sling_image_margin_hor" type="dimen">8dp</item>
     <item name="sling_title_margin_hor" type="dimen">@dimen/sling_image_margin_hor</item>
 
+    <item name="browse_refreshtext_padding_hor" type="dimen">24dp</item>
     <item name="sling_title_padding_hor" type="dimen">8dp</item>
     <item name="sling_body_padding_hor" type="dimen">6dp</item>
+
+    <item name="browse_button_elevation" type="dimen">12dp</item>
+    <item name="browse_button_refresh_elevation" type="dimen">8dp</item>
+    <item name="browse_swipefling_elevation" type="dimen">10dp</item>
 </resources>

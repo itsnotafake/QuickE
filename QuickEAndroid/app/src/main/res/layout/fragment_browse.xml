@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/LIGHTGRAY">
@@ -18,6 +17,45 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <WebView
+        android:id="@+id/web_web2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/browse_refresh_button"
+        android:layout_width="@dimen/browse_refresh_button_diameter"
+        android:layout_height="@dimen/browse_refresh_button_diameter"
+        android:src="@drawable/ic_refresh"
+        android:scaleType="centerCrop"
+        android:background="@drawable/button_browse_refresh"
+        android:visibility="gone"
+        android:elevation="@dimen/browse_button_refresh_elevation"
+
+        app:layout_constraintTop_toTopOf="@+id/browse_guideline_middle_hor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <TextView
+        android:id="@+id/browse_refresh_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/browse_refresh_text"
+        android:visibility="gone"
+        android:text="@string/browse_refresh_text"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/browse_guideline_middle_hor"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="100.0"
+        android:paddingLeft="@dimen/browse_refreshtext_padding_hor"
+        android:paddingStart="@dimen/browse_refreshtext_padding_hor"
+        android:paddingRight="@dimen/browse_refreshtext_padding_hor"
+        android:paddingEnd="@dimen/browse_refreshtext_padding_hor"/>
+
     <com.lorentzos.flingswipe.SwipeFlingAdapterView
         android:id="@+id/browse_swipefling"
         android:layout_width="match_parent"
@@ -27,7 +65,7 @@
         app:rotation_degrees="16"
         app:max_visible="4"
         app:min_adapter_stack="8"
-        android:elevation="2dp"/>
+        android:elevation="@dimen/browse_swipefling_elevation"/>
     
     <android.support.v7.widget.AppCompatImageButton
         android:id="@+id/browse_button_no"
@@ -36,11 +74,11 @@
         android:background="@drawable/button_browse_red"
         android:src="@drawable/thumbdown"
         android:scaleType="centerInside"
-        android:elevation="8dp"
+        android:elevation="@dimen/browse_button_elevation"
 
         app:layout_constraintTop_toTopOf="@+id/slingcontainer_guideline"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/layoutmiddle_guideline"
+        app:layout_constraintRight_toRightOf="@+id/browse_guideline_middle_ver"
         app:layout_constraintLeft_toLeftOf="parent"/>
     
     <android.support.v7.widget.AppCompatImageButton
@@ -50,12 +88,19 @@
         android:background="@drawable/button_browse_green"
         android:src="@drawable/thumbup"
         android:scaleType="centerInside"
-        android:elevation="8dp"
+        android:elevation="@dimen/browse_button_elevation"
 
         app:layout_constraintTop_toTopOf="@+id/slingcontainer_guideline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="@+id/layoutmiddle_guideline"/>
+        app:layout_constraintLeft_toLeftOf="@+id/browse_guideline_middle_ver"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/browse_guideline_middle_hor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/slingcontainer_guideline"
@@ -65,7 +110,7 @@
         app:layout_constraintGuide_percent="@dimen/sling_horizontal_guideline"/>
 
     <android.support.constraint.Guideline
-        android:id="@+id/layoutmiddle_guideline"
+        android:id="@+id/browse_guideline_middle_ver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"

@@ -55,6 +55,10 @@ public class Business {
         return image_url;
     }
 
+    public String getUrl(){
+        return url;
+    }
+
     public String getPrice(){
         return price;
     }

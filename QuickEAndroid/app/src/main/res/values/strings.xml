@@ -139,8 +139,11 @@
     <string name="smoothie_juicebars" translatable="false">juicebars</string>
 
     <!-- BROWSE FRAGMENT STRINGS -->
+    <string name="browse_refresh_text">Sorry, but those were all the restaurants matching your
+        search. Would you like to try again?</string>
     <string name="sling_image_CD">Image of the restaurant</string>
-    <string name="browse_nointernet">Sorry but we can\'t detect an internet connection, we won\'t be able to get more restaurants for you</string>
+    <string name="browse_nointernet">Sorry but we can\'t detect an internet connection,
+        we won\'t be able to get more restaurants for you</string>
 
     <!-- BUSINESS LIST STRINGS -->
     <string name="businesslist_businesses" translatable="false">businesses</string>

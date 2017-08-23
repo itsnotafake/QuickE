@@ -12,11 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lorentzos.flingswipe.FlingCardListener;
@@ -43,6 +46,9 @@ public class BrowseFragment extends Fragment {
     private SwipeFlingAdapterView mFlingContainer;
     private FlingAdapter mAdapter;
     private ProgressBar mProgress;
+    private AppCompatImageButton mRefreshButton;
+    private TextView mRefreshText;
+    private WebView mWebView;
 
     private static boolean mUpdatingList = false;
 
@@ -60,7 +66,7 @@ public class BrowseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_browse, container, false);
-        mProgress = (ProgressBar) view.findViewById(R.id.browse_progress);
+        initializeViews(view);
         initializeSwipeFling(view, savedInstanceState);
         if(!mAdapter.isEmpty()){
             mProgress.setVisibility(View.GONE);
@@ -80,6 +86,14 @@ public class BrowseFragment extends Fragment {
         return "BrowseFragment";
     }
 
+    private void initializeViews(View view){
+        mProgress = (ProgressBar) view.findViewById(R.id.browse_progress);
+        mRefreshButton = (AppCompatImageButton)
+                view.findViewById(R.id.browse_refresh_button);
+        mRefreshText = (TextView) view.findViewById(R.id.browse_refresh_text);
+        mWebView = (WebView) view.findViewById(R.id.web_web2);
+    }
+
     private void initializeBroadcastReceiver(){
         BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
@@ -88,7 +102,8 @@ public class BrowseFragment extends Fragment {
                 mAdapter.notifyDataSetChanged();
                 mProgress.setVisibility(View.GONE);
                 mFlingContainer.setVisibility(View.VISIBLE);
-
+                mRefreshButton.setVisibility(View.VISIBLE);
+                mRefreshText.setVisibility(View.VISIBLE);
             }
         };
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(
@@ -142,6 +157,12 @@ public class BrowseFragment extends Fragment {
             @Override
             public void onScroll(float scroll){
 
+            }
+        });
+        mFlingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClicked(int i, Object o) {
+                mWebView.loadUrl(BusinessList.getBusiness(0).getUrl());
             }
         });
     }

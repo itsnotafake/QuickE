@@ -17,7 +17,7 @@ import utility.BusinessList;
  * Created by Devin on 8/18/2017.
  */
 
-public class BrowseActivity extends AppCompatActivity {
+public class BrowseActivity extends AppCompatActivity implements FragmentChangeListener{
     private static final String TAG = BrowseActivity.class.getName();
     private Context mContext;
     private int mContainerId;
@@ -47,7 +47,7 @@ public class BrowseActivity extends AppCompatActivity {
                 .findFragmentByTag(BROWSETAG);
         if(browseFragment != null && browseFragment.isVisible()){
             getSupportFragmentManager().putFragment(outState, FRAGTAG, browseFragment);
-        }else if(swipeViewFragment != null && swipeViewFragment.isVisible()){
+        }else if(swipeViewFragment != null && swipeViewFragment.isVisible()) {
             getSupportFragmentManager().putFragment(outState, FRAGTAG, swipeViewFragment);
         }
     }
@@ -81,5 +81,13 @@ public class BrowseActivity extends AppCompatActivity {
                     .add(mContainerId, new BrowseFragment(), BROWSETAG)
                     .commit();
         }
+    }
+
+    public void replaceFragment(Fragment fragment, boolean addToBackStack){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(mContainerId, fragment, fragment.toString());
+        fragmentTransaction.addToBackStack(fragment.toString());
+        fragmentTransaction.commit();
     }
 }

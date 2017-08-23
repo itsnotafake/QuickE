@@ -8,8 +8,7 @@
             <solid android:color="@color/BLACK" />
         </shape>
     </item>
-    <item android:drawable="@drawable/button_browse_shadow"/>
     <item
-        android:drawable="@drawable/button_browse_round_red"
+        android:drawable="@drawable/button_round"
         android:bottom="4px" />
 </ripple>
