@@ -121,8 +121,12 @@ public class BrowseActivity extends AppCompatActivity implements FragmentChangeL
         fragmentTransaction.commit();
     }
 
-    // call the updating code on the main thread,
-// so we can call this asynchronously
+    /**
+     * updates the number being displayed in the actionbar, represents the number
+     * of businesses selected and added to the DineList. Called on the main thread, so
+     * that we can call this asynchronously
+     * @param listTotal new number to be displayed on actionbar
+     */
     public void updateListTotal(final int listTotal) {
         if (mListTotal == null){
             return;

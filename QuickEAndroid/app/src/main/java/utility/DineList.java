@@ -18,7 +18,6 @@ public class DineList {
     }
 
     public static void add(Business b){
-        Log.e(TAG, "Business: " + b.getName());
         dineList.add(b);
     }
 
