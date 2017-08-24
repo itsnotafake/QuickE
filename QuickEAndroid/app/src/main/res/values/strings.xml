@@ -147,6 +147,9 @@
     <string name="browse_nointernet">Sorry but we can\'t detect an internet connection,
         we won\'t be able to get more restaurants for you</string>
 
+    <!-- DINE LIST FRAGMENT STRINGS -->
+    <string name="viewpage_rating">Review Rating</string>
+
     <!-- BUSINESS LIST STRINGS -->
     <string name="businesslist_businesses" translatable="false">businesses</string>
     <string name="businesslist_id" translatable="false">id</string>
@@ -154,6 +157,7 @@
     <string name="businesslist_imageurl" translatable="false">image_url</string>
     <string name="businesslist_url" translatable="false">url</string>
     <string name="businesslist_rating" translatable="false">rating</string>
+    <string name="businesslist_reviewCount" translatable="false">review_count</string>
     <string name="businesslist_price" translatable="false">price</string>
     <string name="businesslist_phonenumber" translatable="false">phone</string>
     <string name="businesslist_coordinates" translatable="false">coordinates</string>

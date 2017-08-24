@@ -45,9 +45,16 @@
 
     <style name="dinelist_title_text">
         <item name="android:background">@color/TRANSPARENT</item>
-        <item name="android:textColor">@color/WHITE</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/BLACK</item>
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Headline</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="dinelist_distance_text">
+        <item name="android:background">@color/TRANSPARENT</item>
+        <item name="android:textColor">@color/DARKGREY</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Title</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>

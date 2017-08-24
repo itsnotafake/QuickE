@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
+
 import nippledefensecommittee.quicke.R;
 import utility.Business;
 import utility.DineList;
@@ -64,11 +66,35 @@ public class DineListFragment extends Fragment {
                     .from(mContext)
                     .inflate(mDineListPage, collection, false);
 
-            ImageView imageView = (ImageView) layout.findViewById(R.id.viewpage_image);
+            DecimalFormat decimalFormat = new DecimalFormat("#.#");
+            double distance = Double.valueOf(decimalFormat.format(business.getDistance()));
+            String distanceAddOn;
+            if(distance == 1) {
+                distanceAddOn = String.valueOf(distance) + " Mile Away";
+            }else{
+                distanceAddOn = String.valueOf(distance) + " Miles Away";
+            }
+
+            int reviewCount = business.getReviewCount();
+            String reviewCountAddOn = "Based on " + reviewCount + " Reviews";
+
+            ImageView storeImage = (ImageView) layout.findViewById(R.id.viewpage_image);
+            ImageView ratingImage = (ImageView) layout.findViewById(R.id.viewpage_rating);
             Glide.with(mContext)
                     .load(business.getImageUrl())
-                    .into(imageView);
-            ((TextView)layout.findViewById(R.id.viewpage_title)).setText(business.getName());
+                    .into(storeImage);
+            Glide.with(mContext)
+                    .load(business.getRatingDrawable())
+                    .into(ratingImage);
+            ((TextView)layout
+                    .findViewById(R.id.viewpage_title))
+                    .setText(business.getName());
+            ((TextView)layout
+                    .findViewById(R.id.viewpage_distance))
+                    .setText(distanceAddOn);
+            ((TextView)layout
+                    .findViewById(R.id.viewpage_review))
+                    .setText(reviewCountAddOn);
 
             collection.addView(layout);
             return layout;

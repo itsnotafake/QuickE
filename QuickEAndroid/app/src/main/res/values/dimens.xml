@@ -62,6 +62,14 @@
     <item name="browse_refreshtext_padding_hor" type="dimen">24dp</item>
     <item name="sling_title_padding_hor" type="dimen">8dp</item>
     <item name="sling_body_padding_hor" type="dimen">6dp</item>
+    <item name="dinelist_title_padding_ver" type="dimen">2dp</item>
+    <item name="dinelist_title_padding_hor" type="dimen">10dp</item>
+    <item name="dinelist_distance_padding_ver" type="dimen">@dimen/dinelist_title_padding_ver</item>
+    <item name="dinelist_distance_padding_hor" type="dimen">@dimen/dinelist_title_padding_hor</item>
+    <item name="dinelist_rating_padding_ver" type="dimen">@dimen/dinelist_title_padding_ver</item>
+    <item name="dinelist_rating_padding_hor" type="dimen">@dimen/dinelist_title_padding_hor</item>
+    <item name="dinelist_review_padding_ver" type="dimen">@dimen/dinelist_title_padding_ver</item>
+    <item name="dinelist_review_padding_hor" type="dimen">@dimen/dinelist_title_padding_hor</item>
 
     <item name="browse_button_elevation" type="dimen">12dp</item>
     <item name="browse_button_refresh_elevation" type="dimen">8dp</item>

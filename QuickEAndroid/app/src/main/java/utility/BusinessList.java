@@ -77,6 +77,7 @@ public class BusinessList {
             String url;
 
             String rating;
+            String reviewCount;
             String price;
             String phone_number;
 
@@ -94,6 +95,8 @@ public class BusinessList {
                         (context.getString(R.string.businesslist_url));
                 rating = String.valueOf(businessJSON.getDouble(
                         context.getString(R.string.businesslist_rating)));
+                reviewCount = String.valueOf(businessJSON.getInt(
+                        context.getString(R.string.businesslist_reviewCount)));
                 price = businessJSON.getString(context.getString(R.string.businesslist_price));
                 phone_number = businessJSON.getString(
                         context.getString(R.string.businesslist_phonenumber));
@@ -112,6 +115,7 @@ public class BusinessList {
                 businessMap.put(context.getString(R.string.businesslist_imageurl), image_url);
                 businessMap.put(context.getString(R.string.businesslist_url), url);
                 businessMap.put(context.getString(R.string.businesslist_rating), rating);
+                businessMap.put(context.getString(R.string.businesslist_reviewCount), reviewCount);
                 businessMap.put(context.getString(R.string.businesslist_price), price);
                 businessMap.put(
                         context.getString(R.string.businesslist_phonenumber), phone_number);

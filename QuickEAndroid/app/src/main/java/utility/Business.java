@@ -21,6 +21,7 @@ public class Business {
     private String url;
 
     private double rating;
+    private int reviewCount;
     private String price;
     private String phone_number;
 
@@ -37,6 +38,8 @@ public class Business {
         url = businessMap.get(context.getString(R.string.businesslist_url));
         rating = Double.parseDouble(
                 businessMap.get(context.getString(R.string.businesslist_rating)));
+        reviewCount = Integer.parseInt(
+                businessMap.get(context.getString(R.string.businesslist_reviewCount)));
         price = businessMap.get(context.getString(R.string.businesslist_price));
         phone_number = businessMap.get(context.getString(R.string.businesslist_phonenumber));
         latitude = Double.parseDouble(
@@ -57,6 +60,37 @@ public class Business {
 
     public String getUrl(){
         return url;
+    }
+
+    public int getRatingDrawable(){
+        if(rating == 0.0){
+            return R.drawable.stars_regular_0;
+        }else if(rating == 1.0){
+            return R.drawable.stars_regular_1;
+        }else if(rating == 1.5){
+            return R.drawable.stars_regular_1_half;
+        }else if(rating == 2.0){
+            return R.drawable.stars_regular_2;
+        }else if(rating == 2.5){
+            return R.drawable.stars_regular_2_half;
+        }else if(rating == 3.0){
+            return R.drawable.stars_regular_3;
+        }else if(rating == 3.5){
+            return R.drawable.stars_regular_3_half;
+        }else if(rating == 4.0){
+            return R.drawable.stars_regular_4;
+        }else if(rating == 4.5){
+            return R.drawable.stars_regular_4_half;
+        }else if(rating == 5.0){
+            return R.drawable.stars_regular_5;
+        }else{
+            Log.e(TAG, "Bad rating value for business: " + getName());
+            return R.drawable.stars_regular_0;
+        }
+    }
+
+    public int getReviewCount(){
+        return reviewCount;
     }
 
     public String getPrice(){
