@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -61,7 +62,7 @@ public class DineListFragment extends Fragment {
 
         @Override
         public Object instantiateItem(ViewGroup collection, int position){
-            Business business = DineList.get(position);
+            final Business business = DineList.get(position);
             ViewGroup layout = (ViewGroup) LayoutInflater
                     .from(mContext)
                     .inflate(mDineListPage, collection, false);
@@ -95,6 +96,14 @@ public class DineListFragment extends Fragment {
             ((TextView)layout
                     .findViewById(R.id.viewpage_review))
                     .setText(reviewCountAddOn);
+
+            storeImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WebView webView = new WebView(mContext);
+                    webView.loadUrl(business.getUrl());
+                }
+            });
 
             collection.addView(layout);
             return layout;
