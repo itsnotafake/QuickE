@@ -15,11 +15,25 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/swipeflingitem_guideline"/>
+        app:layout_constraintBottom_toTopOf="@+id/swipeflingitem_guideline" />
+
+    <ImageView
+        android:id="@+id/sling_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/sling_logo_CD"
+        android:scaleType="centerInside"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/sling_distance"
+        app:layout_constraintTop_toTopOf="@+id/swipeflingitem_logotop"
+        app:layout_constraintBottom_toBottomOf="@+id/swipeflingitem_guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginRight="90dp"/>
 
     <TextView
         android:id="@+id/sling_title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         style="@style/sling_title_style"
@@ -48,9 +62,20 @@
         android:paddingEnd="@dimen/sling_body_padding_hor"/>
 
     <android.support.constraint.Guideline
+        android:id="@+id/swipeflingitem_logotop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6"
+        tools:layout_editor_absoluteY="340dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <android.support.constraint.Guideline
         android:id="@+id/swipeflingitem_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="@dimen/sling_horizontal_guideline"/>
+        app:layout_constraintGuide_percent="@dimen/sling_horizontal_guideline"
+        tools:layout_editor_absoluteY="397dp"
+        tools:layout_editor_absoluteX="0dp" />
 </android.support.constraint.ConstraintLayout>

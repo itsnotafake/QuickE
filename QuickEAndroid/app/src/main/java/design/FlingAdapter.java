@@ -59,6 +59,7 @@ public class FlingAdapter extends BaseAdapter {
         TextView businessName = (TextView) convertView.findViewById(R.id.sling_title);
         TextView businessDistance = (TextView) convertView.findViewById(R.id.sling_distance);
         ImageView businessImage = (ImageView) convertView.findViewById(R.id.sling_image);
+        ImageView yelpImage = (ImageView) convertView.findViewById(R.id.sling_logo);
 
         businessName.setText(business.getName());
         DecimalFormat decimalFormat = new DecimalFormat("#.#");
@@ -73,6 +74,9 @@ public class FlingAdapter extends BaseAdapter {
         Glide.with(mFragment)
                 .load(business.getImageUrl())
                 .into(businessImage);
+        Glide.with(mFragment)
+                .load(R.drawable.yelp)
+                .into(yelpImage);
         return convertView;
     }
 }
