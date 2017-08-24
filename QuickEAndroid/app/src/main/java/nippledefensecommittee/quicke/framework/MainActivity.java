@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements
         FragmentChangeListener {
 
     private static final String TAG = MainActivity.class.getName();
-    private static final String TAG2 = "WTF";
     //key for our out/in statebundle that determines which fragment we show in onCreate().
     private static final String FRAGCHECK = "basefragcheck";
 
@@ -80,12 +79,6 @@ public class MainActivity extends AppCompatActivity implements
     // Desired and fastest interval rate for location updates
     public static final long UPDATE_INTERVAL_BASE = 10000;
     public static final long UPDATE_INTERVAL_FAST = UPDATE_INTERVAL_BASE / 2;
-
-    // Bundle keys for storing activity state
-    // Most likely unnecessary
-    protected final String KEY_REQ_LOC = "requesting_location_updates";
-    protected final String KEY_LOC = "location";
-    protected final String KEY_TIME_UPDATED = "last_time_updated";
 
     protected GoogleApiClient mGoogleApiClient;
     protected LocationRequest mLocationReq;
@@ -447,9 +440,8 @@ public class MainActivity extends AppCompatActivity implements
                         Log.i(TAG, "User did not make required changes.");
                         showSnack("Unable to access location services. Closing application.");
 
-                        // TODO
-                        //android.os.Process.killProcess(android.os.Process.myPid());
-                        //System.exit(0);
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(0);
                         break;
                 }
                 break;
