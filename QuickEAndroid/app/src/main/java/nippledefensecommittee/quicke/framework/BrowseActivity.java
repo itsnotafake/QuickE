@@ -56,11 +56,19 @@ public class BrowseActivity extends AppCompatActivity implements FragmentChangeL
         list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(TAG, DineList.print());
                 try {
                     if (Integer.valueOf(mListTotal.getText().toString()) > 0) {
-                        DineListFragment fragment = new DineListFragment();
-                        replaceFragment(fragment, true);
+                        Fragment dineFragment = getSupportFragmentManager()
+                                .findFragmentByTag(DINELISTTAG);
+                        if(dineFragment == null) {
+                            DineListFragment fragment = new DineListFragment();
+                            replaceFragment(fragment, true);
+                        }else{
+                            getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .show(dineFragment)
+                                    .commit();
+                        }
                     }
                 }catch(NumberFormatException e){
                     Log.e(TAG, "numberformatexception");
