@@ -31,7 +31,7 @@ public class BrowseActivity extends AppCompatActivity implements FragmentChangeL
 
     private static final String FRAGTAG = "fragtag";
     private static final String BROWSETAG = "BrowseFragment";
-    private static final String SWIPEVIEWTAG = "SwipeViewFragment";
+    private static final String DINELISTTAG = "DineListFragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,20 @@ public class BrowseActivity extends AppCompatActivity implements FragmentChangeL
         final View list = menu.findItem(R.id.action_list).getActionView();
         mListTotal = (TextView) list.findViewById(R.id.actionbar_listtotal);
         updateListTotal(DineList.size());
+        list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e(TAG, DineList.print());
+                try {
+                    if (Integer.valueOf(mListTotal.getText().toString()) > 0) {
+                        DineListFragment fragment = new DineListFragment();
+                        replaceFragment(fragment, true);
+                    }
+                }catch(NumberFormatException e){
+                    Log.e(TAG, "numberformatexception");
+                }
+            }
+        });
         return true;
     }
 
@@ -71,14 +85,14 @@ public class BrowseActivity extends AppCompatActivity implements FragmentChangeL
     public void onSaveInstanceState(Bundle outState){
         super.onSaveInstanceState(outState);
 
-        Fragment swipeViewFragment = getSupportFragmentManager()
-                .findFragmentByTag(SWIPEVIEWTAG);
         Fragment browseFragment = getSupportFragmentManager()
                 .findFragmentByTag(BROWSETAG);
+        Fragment dineListFragment = getSupportFragmentManager()
+                .findFragmentByTag(DINELISTTAG);
         if(browseFragment != null && browseFragment.isVisible()){
             getSupportFragmentManager().putFragment(outState, FRAGTAG, browseFragment);
-        }else if(swipeViewFragment != null && swipeViewFragment.isVisible()) {
-            getSupportFragmentManager().putFragment(outState, FRAGTAG, swipeViewFragment);
+        }else if(dineListFragment != null && dineListFragment.isVisible()) {
+            getSupportFragmentManager().putFragment(outState, FRAGTAG, dineListFragment);
         }
     }
 

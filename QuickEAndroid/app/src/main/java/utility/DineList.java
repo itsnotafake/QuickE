@@ -32,4 +32,8 @@ public class DineList {
     public static int size(){
         return dineList.size();
     }
+
+    public static String print(){
+        return dineList.toString();
+    }
 }

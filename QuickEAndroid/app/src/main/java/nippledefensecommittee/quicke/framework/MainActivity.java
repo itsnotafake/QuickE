@@ -131,10 +131,6 @@ public class MainActivity extends AppCompatActivity implements
                 Fragment fragment = new BaseFragment();
                 replaceFragment(fragment, false);
                 return true;
-            case R.id.action_test_rec:
-                Intent intent = new Intent(MainActivity.this, RecommendationActivity.class);
-                startActivity(intent);
-                return true;
             default:
                 Log.e(TAG, "Unrecognized item onOptionsItemSelected");
                 return super.onOptionsItemSelected(item);

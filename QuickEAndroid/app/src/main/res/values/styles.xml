@@ -42,4 +42,13 @@
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="dinelist_title_text">
+        <item name="android:background">@color/TRANSPARENT</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Headline</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
 </resources>

@@ -29,11 +29,6 @@
         <activity
             android:name=".framework.BrowseActivity" />
 
-        <activity
-            android:name=".framework.RecommendationActivity"/>
-
-        <activity android:name=".framework.PictureSlideFragmentActivity"/>
-
         <service
             android:name="sync.AuthIntentService"
             android:exported="false"/>

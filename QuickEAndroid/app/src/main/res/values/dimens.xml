@@ -57,6 +57,7 @@
     <item name="sling_image_margin_bottom" type="dimen">72dp</item>
     <item name="sling_image_margin_hor" type="dimen">8dp</item>
     <item name="sling_title_margin_hor" type="dimen">@dimen/sling_image_margin_hor</item>
+    <item name="dinelist_cardview_margin_ver" type="dimen">16dp</item>
 
     <item name="browse_refreshtext_padding_hor" type="dimen">24dp</item>
     <item name="sling_title_padding_hor" type="dimen">8dp</item>

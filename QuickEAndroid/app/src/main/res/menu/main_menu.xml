@@ -7,11 +7,5 @@
         android:icon="@drawable/ic_refreshw"
         android:title="@string/action_refresh"
         app:showAsAction="always"/>
-
-    <item
-        android:id="@+id/action_test_rec"
-        android:icon="@drawable/ic_test_rec"
-        android:title="Test Rec"
-        app:showAsAction="ifRoom"/>
 </menu>
 
