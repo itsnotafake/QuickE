@@ -96,8 +96,6 @@ public class BrowseFragment extends Fragment {
                 mAdapter.notifyDataSetChanged();
                 mProgress.setVisibility(View.GONE);
                 mFlingContainer.setVisibility(View.VISIBLE);
-                mRefreshButton.setVisibility(View.VISIBLE);
-                mRefreshText.setVisibility(View.VISIBLE);
             }
         };
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(
@@ -131,6 +129,8 @@ public class BrowseFragment extends Fragment {
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter){
+                mRefreshButton.setVisibility(View.VISIBLE);
+                mRefreshText.setVisibility(View.VISIBLE);
                 if(!mUpdatingList) {
                     if(Helper.isInternetAvailable(getContext())) {
                         mUpdatingList = true;
