@@ -105,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements
         mRequestingLocation = false;
         mLastUpdateTime = "";
 
-        //createGoogleApiClient();
         createLocationRequest();
         createLocationSettingsRequest();
     }
@@ -182,12 +181,6 @@ public class MainActivity extends AppCompatActivity implements
         super.onResume();
 
         locationStartup();
-        /*
-        if (mGoogleApiClient.isConnected()) {
-            checkLocationSettings();
-        } else {
-            locationStartup();
-        } */
     }
 
     @Override
@@ -195,19 +188,13 @@ public class MainActivity extends AppCompatActivity implements
         super.onStop();
 
         locationStartup();
-        /*
-        if (mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.disconnect();
-        } */
     }
 
-    // TODO: DECIDE WHETHER OR NOT TO USE GOOGLE API CLIENT
     private void locationStartup() {
         if (!checkUserPermission()) {
             requestUserPermission();
         } else {
             checkLocationSettings2();
-            //mGoogleApiClient.connect();
         }
     }
 
@@ -242,22 +229,11 @@ public class MainActivity extends AppCompatActivity implements
         userLoc.setGrantedPermission(true);
     }
 
-    protected synchronized void createGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
-    }
-
     protected void createLocationRequest() {
         mLocationReq = new LocationRequest();
         mLocationReq.setInterval(UPDATE_INTERVAL_BASE);
         mLocationReq.setFastestInterval(UPDATE_INTERVAL_FAST);
         mLocationReq.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-        // TODO: See if this works
-        //mLocationReq.setNumUpdates(1);
     }
 
     protected void createLocationSettingsRequest() {
