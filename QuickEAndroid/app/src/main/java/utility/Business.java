@@ -100,5 +100,13 @@ public class Business {
     public double getDistance(){
         return distance;
     }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
 }
 

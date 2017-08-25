@@ -1,6 +1,8 @@
 package nippledefensecommittee.quicke.framework;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
@@ -9,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -105,6 +108,14 @@ public class DineListFragment extends Fragment {
                 }
             });
 
+            Button directionButton = (Button) layout.findViewById(R.id.directionBtn);
+            directionButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getDirections(business.getLatitude(), business.getLongitude());
+                }
+            });
+
             collection.addView(layout);
             return layout;
         }
@@ -122,6 +133,19 @@ public class DineListFragment extends Fragment {
         @Override
         public boolean isViewFromObject(View view, Object object){
             return view == object;
+        }
+    }
+
+    private void getDirections(Double latitude, Double longitude) {
+        String navString = "google.navigation:q=" + String.valueOf(latitude) + "," + String.valueOf(longitude);
+        Uri gmmIntentUri = Uri.parse(navString);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+
+        if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(mapIntent);
+        } else {
+            //TODO: What to do if they don't have google maps?
         }
     }
 }
