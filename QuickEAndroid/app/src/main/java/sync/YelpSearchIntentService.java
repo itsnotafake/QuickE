@@ -166,6 +166,8 @@ public class YelpSearchIntentService extends IntentService {
         //Assign all the variables we need to make a Yelp query
         double latitude = MainActivity.UserLocation.getLatitude();
         double longitude = MainActivity.UserLocation.getLongitude();
+        //double latitude = 37.422006;
+        //double longitude = -122.084095;
         int radius = MainActivity.AreaRadius.getRadius();
         String price = MainActivity.PriceRange.getPriceRangeString();
         final boolean isOpenNow = true;
@@ -207,7 +209,7 @@ public class YelpSearchIntentService extends IntentService {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //Log.e(TAG, response);
+                        Log.e(TAG, response);
                         if(hasNotExceededTotal(response)) {
                             BusinessList.addBulk(response, mContext);
                         }
@@ -347,7 +349,7 @@ public class YelpSearchIntentService extends IntentService {
             JSONObject yelpResponseJSON = new JSONObject(response);
             mTotalBusinesses = yelpResponseJSON
                     .getInt(mContext.getString(R.string.businesslist_total));
-            return (mTotalBusinesses > mTotalOffset);
+            return (mTotalBusinesses >= mTotalOffset);
         }catch(JSONException e){
             Log.e(TAG, "Trouble parsing String response from Yelp to JSON: " + e);
             return true;
