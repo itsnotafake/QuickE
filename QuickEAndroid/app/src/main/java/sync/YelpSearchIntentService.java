@@ -209,7 +209,7 @@ public class YelpSearchIntentService extends IntentService {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.e(TAG, response);
+                        //Log.e(TAG, response);
                         if(hasNotExceededTotal(response)) {
                             BusinessList.addBulk(response, mContext);
                         }

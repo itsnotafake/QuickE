@@ -89,7 +89,7 @@
             android:layout_width="@dimen/base_button_price_width"
             android:layout_height="@dimen/base_button_price_height"
             android:text="@string/base_button_price_1"
-            android:background="@drawable/button_price_left"
+            android:background="@drawable/button_price_left_ripple"
             android:theme="@style/StandardButton"
 
             android:layout_marginBottom="@dimen/base_button_price_margin_ver"
@@ -105,7 +105,7 @@
             android:layout_width="@dimen/base_button_price_width"
             android:layout_height="@dimen/base_button_price_height"
             android:text="@string/base_button_price_2"
-            android:background="@drawable/button_bg"
+            android:background="@drawable/button_bg_ripple"
             android:theme="@style/StandardButton"
 
             android:layout_marginBottom="@dimen/base_button_price_margin_ver"
@@ -120,7 +120,7 @@
             android:layout_width="@dimen/base_button_price_width"
             android:layout_height="@dimen/base_button_price_height"
             android:text="@string/base_button_price_3"
-            android:background="@drawable/button_bg"
+            android:background="@drawable/button_bg_ripple"
             android:theme="@style/StandardButton"
 
             android:layout_marginBottom="@dimen/base_button_price_margin_ver"
@@ -135,7 +135,7 @@
             android:layout_width="@dimen/base_button_price_width"
             android:layout_height="@dimen/base_button_price_height"
             android:text="@string/base_button_price_4"
-            android:background="@drawable/button_price_right"
+            android:background="@drawable/button_price_right_ripple"
             android:theme="@style/StandardButton"
 
             android:layout_marginBottom="@dimen/base_button_price_margin_ver"

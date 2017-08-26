@@ -28,8 +28,9 @@
         android:layout_height="@dimen/browse_refresh_button_diameter"
         android:src="@drawable/ic_refresh"
         android:scaleType="centerCrop"
-        style="@style/browse_button_refresh"
+        android:background="@drawable/button_browse_refresh"
         android:visibility="gone"
+        android:elevation="@dimen/browse_button_refresh_elevation"
 
         app:layout_constraintTop_toTopOf="@+id/browse_guideline_middle_hor"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -63,15 +64,17 @@
         android:background="@color/TRANSPARENT"
         app:rotation_degrees="16"
         app:max_visible="4"
-        app:min_adapter_stack="8"/>
+        app:min_adapter_stack="8"
+        android:elevation="@dimen/browse_swipefling_elevation"/>
     
     <android.support.v7.widget.AppCompatImageButton
         android:id="@+id/browse_button_no"
         android:layout_width="@dimen/browse_button_radius"
         android:layout_height="@dimen/browse_button_radius"
-        style="@style/browse_button_red"
+        android:background="@drawable/button_browse_red"
         android:src="@drawable/thumbdown"
         android:scaleType="centerInside"
+        android:elevation="@dimen/browse_button_elevation"
 
         app:layout_constraintTop_toTopOf="@+id/slingcontainer_guideline"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,9 +85,10 @@
         android:id="@+id/browse_button_yes"
         android:layout_width="@dimen/browse_button_radius"
         android:layout_height="@dimen/browse_button_radius"
-        style="@style/browse_button_green"
+        android:background="@drawable/button_browse_green"
         android:src="@drawable/thumbup"
         android:scaleType="centerInside"
+        android:elevation="@dimen/browse_button_elevation"
 
         app:layout_constraintTop_toTopOf="@+id/slingcontainer_guideline"
         app:layout_constraintBottom_toBottomOf="parent"

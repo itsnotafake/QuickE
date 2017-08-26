@@ -174,13 +174,21 @@ public class BrowseFragment extends Fragment {
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mFlingContainer.getTopCardListener().selectRight();
+                 try{
+                    mFlingContainer.getTopCardListener().selectRight();
+                }catch(NullPointerException e){
+                     Log.e(TAG, "Yes click ignored, FlingContainer is still empty");
+                 }
             }
         });
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mFlingContainer.getTopCardListener().selectLeft();
+                try{
+                    mFlingContainer.getTopCardListener().selectLeft();
+                }catch(NullPointerException e){
+                    Log.e(TAG, "No click ignored, FlingContainer is still empty");
+                }
             }
         });
         refreshButton.setOnClickListener(new View.OnClickListener() {

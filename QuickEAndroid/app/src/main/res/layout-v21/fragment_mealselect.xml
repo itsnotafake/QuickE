@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:gravity="center_horizontal|center_vertical"
             android:theme="@style/StandardButton"
-            android:background="@drawable/mealselect_listitem_bg"
+            android:background="@drawable/mealselect_listitem_ripple"
             android:text="@string/mealselection_selectall"
 
             app:layout_constraintTop_toBottomOf="@+id/mealselect_recycler"

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -27,6 +27,8 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <!-- BrowseActivity Styles -->
+
     <style name="sling_body_style">
         <item name="android:background">@color/WHITE45Opac</item>
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Headline</item>
@@ -41,6 +43,18 @@
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Headline</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="browse_button_refresh">
+        <item name="android:background">@drawable/button_browse_refresh16</item>
+    </style>
+
+    <style name="browse_button_red">
+        <item name="android:background">@drawable/button_browse_red16</item>
+    </style>
+
+    <style name="browse_button_green">
+        <item name="android:background">@drawable/button_browse_green16</item>
     </style>
 
     <style name="dinelist_title_text">
