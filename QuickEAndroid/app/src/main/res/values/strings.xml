@@ -149,6 +149,7 @@
 
     <!-- DINE LIST FRAGMENT STRINGS -->
     <string name="viewpage_rating">Review Rating</string>
+    <string name="viewpage_go">Let\'s Eat!</string>
 
     <!-- BUSINESS LIST STRINGS -->
     <string name="businesslist_businesses" translatable="false">businesses</string>
