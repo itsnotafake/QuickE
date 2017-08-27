@@ -19,17 +19,14 @@
 
     <ImageView
         android:id="@+id/sling_logo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/yelp"
         android:contentDescription="@string/sling_logo_CD"
         android:scaleType="centerInside"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/sling_distance"
-        app:layout_constraintTop_toTopOf="@+id/swipeflingitem_logotop"
-        app:layout_constraintBottom_toBottomOf="@+id/swipeflingitem_guideline"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginRight="90dp"/>
+        app:layout_constraintBottom_toTopOf="@+id/swipeflingitem_guideline"/>
 
     <TextView
         android:id="@+id/sling_title"

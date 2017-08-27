@@ -74,9 +74,9 @@ public class FlingAdapter extends BaseAdapter {
         Glide.with(mFragment)
                 .load(business.getImageUrl())
                 .into(businessImage);
-        Glide.with(mFragment)
+        /*Glide.with(mFragment)
                 .load(R.drawable.yelp)
-                .into(yelpImage);
+                .into(yelpImage);*/
         return convertView;
     }
 }
