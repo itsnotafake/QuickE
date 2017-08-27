@@ -74,9 +74,9 @@ public class DineListFragment extends Fragment {
             double distance = Double.valueOf(decimalFormat.format(business.getDistance()));
             String distanceAddOn;
             if(distance == 1) {
-                distanceAddOn = String.valueOf(distance) + " Mile Away";
+                distanceAddOn = String.valueOf(distance) + " Mile Away - ";
             }else{
-                distanceAddOn = String.valueOf(distance) + " Miles Away";
+                distanceAddOn = String.valueOf(distance) + " Miles Away -";
             }
 
             int reviewCount = business.getReviewCount();
@@ -96,6 +96,9 @@ public class DineListFragment extends Fragment {
             ((TextView)layout
                     .findViewById(R.id.viewpage_distance))
                     .setText(distanceAddOn);
+            ((TextView)layout
+                    .findViewById(R.id.viewpage_price))
+                    .setText(business.getPrice());
             ((TextView)layout
                     .findViewById(R.id.viewpage_review))
                     .setText(reviewCountAddOn);

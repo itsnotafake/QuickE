@@ -73,6 +73,14 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="dinelist_price_text">
+        <item name="android:background">@color/TRANSPARENT</item>
+        <item name="android:textColor">@color/GREEN</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Title</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
     <style name="viewpage_go" parent="ThemeOverlay.AppCompat.Dark">
         <item name="colorButtonNormal">@color/colorPrimaryDark</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>

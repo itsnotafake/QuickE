@@ -164,10 +164,10 @@ public class YelpSearchIntentService extends IntentService {
 
     private void doSync(){
         //Assign all the variables we need to make a Yelp query
-        double latitude = MainActivity.UserLocation.getLatitude();
-        double longitude = MainActivity.UserLocation.getLongitude();
-        //double latitude = 37.422006;
-        //double longitude = -122.084095;
+        //double latitude = MainActivity.UserLocation.getLatitude();
+        //double longitude = MainActivity.UserLocation.getLongitude();
+        double latitude = 37.422006;
+        double longitude = -122.084095;
         int radius = MainActivity.AreaRadius.getRadius();
         String price = MainActivity.PriceRange.getPriceRangeString();
         final boolean isOpenNow = true;

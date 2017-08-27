@@ -643,7 +643,6 @@ public class MainActivity extends AppCompatActivity implements
                     R.string.american_cajun,
                     R.string.american_diners,
                     R.string.american_hotdog,
-                    R.string.american_sandwiches,
                     R.string.american_soulfood,
                     R.string.american_southern,
                     R.string.american_steak
