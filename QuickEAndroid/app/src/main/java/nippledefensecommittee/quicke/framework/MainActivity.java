@@ -24,8 +24,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.design.widget.Snackbar;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.ErrorDialogFragment;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -56,8 +58,6 @@ import nippledefensecommittee.quicke.BuildConfig;
 import nippledefensecommittee.quicke.R;
 
 public class MainActivity extends AppCompatActivity implements
-        GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,
         LocationListener,
         ResultCallback<LocationSettingsResult>,
         FragmentChangeListener {
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements
     public static final long UPDATE_INTERVAL_BASE = 10000;
     public static final long UPDATE_INTERVAL_FAST = UPDATE_INTERVAL_BASE / 2;
 
-    protected GoogleApiClient mGoogleApiClient;
+    //protected GoogleApiClient mGoogleApiClient;
     protected LocationRequest mLocationReq;
     protected LocationSettingsRequest mLocationSettingsReq;
     protected Location mLocation;
@@ -96,12 +96,13 @@ public class MainActivity extends AppCompatActivity implements
         initializeAppBar();
         initializeFragment(savedInstanceState);
 
-        locationClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
+        locationClient = LocationServices.getFusedLocationProviderClient(this);
         mRequestingLocation = false;
         mLastUpdateTime = "";
 
         createLocationRequest();
         createLocationSettingsRequest();
+        locationStartup();
     }
 
     @Override
@@ -168,21 +169,21 @@ public class MainActivity extends AppCompatActivity implements
     public void onStart() {
         super.onStart();
 
-        locationStartup();
+        //locationStartup();
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        locationStartup();
+        //locationStartup();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        locationStartup();
+        //locationStartup();
     }
 
     private void locationStartup() {
@@ -237,11 +238,11 @@ public class MainActivity extends AppCompatActivity implements
         mLocationSettingsReq = mBuilder.build();
     }
 
-    protected void checkLocationSettings() {
+   /*protected void checkLocationSettings() {
         PendingResult<LocationSettingsResult> result = LocationServices.SettingsApi
                 .checkLocationSettings(mGoogleApiClient, mLocationSettingsReq);
         result.setResultCallback(this);
-    }
+    }*/
 
     protected void checkLocationSettings2() {
         SettingsClient client = LocationServices.getSettingsClient(this);
@@ -274,6 +275,9 @@ public class MainActivity extends AppCompatActivity implements
                 }
             }
         });
+
+        Boolean check = task.isComplete();
+        Log.e(TAG, check.toString());
     }
 
     /**
@@ -321,19 +325,35 @@ public class MainActivity extends AppCompatActivity implements
      */
     @SuppressWarnings("MissingPermission")
     private void getUserLocation() {
-        locationClient.getLastLocation().addOnCompleteListener(this, new OnCompleteListener<Location>() {
+        Toast.makeText(MainActivity.this, "Attempting to get user location.", Toast.LENGTH_SHORT).show();
+        locationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    mLocation = location;
+                    updateUserLocation();
+                }
+            }
+        }).addOnFailureListener(this, new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "Unable to detect location.");
+                showSnack(getString(R.string.no_location));
+            }
+        });
+        /*locationClient.getLastLocation().addOnCompleteListener(this, new OnCompleteListener<Location>() {
             @Override
             public void onComplete(@NonNull Task<Location> task) {
-                if (task.isSuccessful() && task.getResult() != null) {
+                if (task.isSuccessful()) {
+                //if (task.isSuccessful() && task.getResult() != null) {
                     mLocation = task.getResult();
                     updateUserLocation();
-                    showSnack("Location found at LONG: " + userLoc.getLongStr() + " LAT: " + userLoc.getLatStr());
                 } else {
                     Log.d(TAG, "Unable to detect location.");
                     showSnack(getString(R.string.no_location));
                 }
             }
-        });
+        });*/
     }
 
     /**
@@ -422,12 +442,12 @@ public class MainActivity extends AppCompatActivity implements
     /**
      * Runs when a GoogleApiClient object successfully connects.
      */
-    @Override
+    /*@Override
     public void onConnected(Bundle connectionHint) {
         Log.i(TAG, "Connected to GoogleApiClient");
 
-        checkLocationSettings();
-    }
+        checkLocationSettings2();
+    }*/
 
     /**
      * Callback that fires when the location changes.
@@ -439,6 +459,7 @@ public class MainActivity extends AppCompatActivity implements
         updateUserLocation();
     }
 
+    /*
     @Override
     public void onConnectionSuspended(int cause) {
         Log.i(TAG, "Connection suspended");
@@ -450,7 +471,7 @@ public class MainActivity extends AppCompatActivity implements
         if (result.getErrorCode() == 2) {
             showSnack(getString(R.string.updateGPS));
         }
-    }
+    }*/
 
     /**
      * Creates a snackbar to display a message to user.
