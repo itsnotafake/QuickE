@@ -217,12 +217,14 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void updateUserLocation() {
+        Log.e(TAG, "Hi5");
         double longitude = mLocation.getLongitude();
         double latitude = mLocation.getLatitude();
 
         userLoc.setUserLocation(longitude, latitude);
         userLoc.setUserLocationStrings(mLocation.convert(longitude, Location.FORMAT_DEGREES), mLocation.convert(latitude, Location.FORMAT_DEGREES));
         userLoc.setGrantedPermission(true);
+        Log.e(TAG, "Long is: " + UserLocation.getLongitude());
     }
 
     protected void createLocationRequest() {
@@ -325,18 +327,24 @@ public class MainActivity extends AppCompatActivity implements
      */
     @SuppressWarnings("MissingPermission")
     private void getUserLocation() {
+        Log.e(TAG, "Hi");
         Toast.makeText(MainActivity.this, "Attempting to get user location.", Toast.LENGTH_SHORT).show();
         locationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
+                Log.e(TAG, "Hi2");
                 if (location != null) {
+                    Log.e(TAG, "Hi3");
                     mLocation = location;
                     updateUserLocation();
                 }
+                Log.e(TAG, "Location is: " + location);
+                Log.e(TAG, "OnSucces long is: " + UserLocation.getLongitude());
             }
         }).addOnFailureListener(this, new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Hi4");
                 Log.d(TAG, "Unable to detect location.");
                 showSnack(getString(R.string.no_location));
             }
