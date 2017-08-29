@@ -294,7 +294,6 @@ public class MainActivity extends AppCompatActivity implements
                 switch (resCode) {
                     case Activity.RESULT_OK:
                         Log.i(TAG, "User made required location settings changes.");
-                        Toast.makeText(MainActivity.this, "Location enabled by user!", Toast.LENGTH_LONG).show();
                         getLocation();
                         break;
                     case Activity.RESULT_CANCELED:
